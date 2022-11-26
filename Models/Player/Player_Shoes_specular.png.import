@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Player_Shoes_specular.png-7b1f7b5e41df7b48deafde0c6671e06c.s3tc.stex"
-path.etc2="res://.import/Player_Shoes_specular.png-7b1f7b5e41df7b48deafde0c6671e06c.etc2.stex"
+path.s3tc="res://.import/Player_Shoes_specular.png-5696278ced91d0052c18ae700671e2f7.s3tc.stex"
+path.etc2="res://.import/Player_Shoes_specular.png-5696278ced91d0052c18ae700671e2f7.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Player/Player_Shoes_specular.png"
-dest_files=[ "res://.import/Player_Shoes_specular.png-7b1f7b5e41df7b48deafde0c6671e06c.s3tc.stex", "res://.import/Player_Shoes_specular.png-7b1f7b5e41df7b48deafde0c6671e06c.etc2.stex" ]
+source_file="res://Models/Player/Player_Shoes_specular.png"
+dest_files=[ "res://.import/Player_Shoes_specular.png-5696278ced91d0052c18ae700671e2f7.s3tc.stex", "res://.import/Player_Shoes_specular.png-5696278ced91d0052c18ae700671e2f7.etc2.stex" ]
 
 [params]
 

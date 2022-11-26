@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Player_Body_diffuse.png-87787a1c58faf050f7d16a9a8397d0f5.s3tc.stex"
-path.etc2="res://.import/Player_Body_diffuse.png-87787a1c58faf050f7d16a9a8397d0f5.etc2.stex"
+path.s3tc="res://.import/Player_Body_diffuse.png-953937c38b8825f5bbe2a47f682bda8b.s3tc.stex"
+path.etc2="res://.import/Player_Body_diffuse.png-953937c38b8825f5bbe2a47f682bda8b.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Player/Player_Body_diffuse.png"
-dest_files=[ "res://.import/Player_Body_diffuse.png-87787a1c58faf050f7d16a9a8397d0f5.s3tc.stex", "res://.import/Player_Body_diffuse.png-87787a1c58faf050f7d16a9a8397d0f5.etc2.stex" ]
+source_file="res://Models/Player/Player_Body_diffuse.png"
+dest_files=[ "res://.import/Player_Body_diffuse.png-953937c38b8825f5bbe2a47f682bda8b.s3tc.stex", "res://.import/Player_Body_diffuse.png-953937c38b8825f5bbe2a47f682bda8b.etc2.stex" ]
 
 [params]
 
@@ -25,7 +25,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

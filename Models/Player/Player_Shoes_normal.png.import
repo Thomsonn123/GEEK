@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Player_Shoes_normal.png-8820239fb0a563e801450baf41b05e67.stex"
+path="res://.import/Player_Shoes_normal.png-bb433cfc4c10a82f177b4ffd9d7d8973.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://models/Player/Player_Shoes_normal.png"
-dest_files=[ "res://.import/Player_Shoes_normal.png-8820239fb0a563e801450baf41b05e67.stex" ]
+source_file="res://Models/Player/Player_Shoes_normal.png"
+dest_files=[ "res://.import/Player_Shoes_normal.png-bb433cfc4c10a82f177b4ffd9d7d8973.stex" ]
 
 [params]
 

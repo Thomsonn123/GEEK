@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Player_Hair_specular.png-44bc929e4be7b8249480fc2d7cfc2517.s3tc.stex"
-path.etc2="res://.import/Player_Hair_specular.png-44bc929e4be7b8249480fc2d7cfc2517.etc2.stex"
+path.s3tc="res://.import/Player_Hair_specular.png-199fcc457cb40a0fd36686c51c7fe522.s3tc.stex"
+path.etc2="res://.import/Player_Hair_specular.png-199fcc457cb40a0fd36686c51c7fe522.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Player/Player_Hair_specular.png"
-dest_files=[ "res://.import/Player_Hair_specular.png-44bc929e4be7b8249480fc2d7cfc2517.s3tc.stex", "res://.import/Player_Hair_specular.png-44bc929e4be7b8249480fc2d7cfc2517.etc2.stex" ]
+source_file="res://Models/Player/Player_Hair_specular.png"
+dest_files=[ "res://.import/Player_Hair_specular.png-199fcc457cb40a0fd36686c51c7fe522.s3tc.stex", "res://.import/Player_Hair_specular.png-199fcc457cb40a0fd36686c51c7fe522.etc2.stex" ]
 
 [params]
 

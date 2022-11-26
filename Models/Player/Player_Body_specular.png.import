@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Player_Body_specular.png-bcf61f2314259b81c8d910a19aea2ccc.s3tc.stex"
-path.etc2="res://.import/Player_Body_specular.png-bcf61f2314259b81c8d910a19aea2ccc.etc2.stex"
+path.s3tc="res://.import/Player_Body_specular.png-1edc6af6c6d9207a077b4e108b463439.s3tc.stex"
+path.etc2="res://.import/Player_Body_specular.png-1edc6af6c6d9207a077b4e108b463439.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Player/Player_Body_specular.png"
-dest_files=[ "res://.import/Player_Body_specular.png-bcf61f2314259b81c8d910a19aea2ccc.s3tc.stex", "res://.import/Player_Body_specular.png-bcf61f2314259b81c8d910a19aea2ccc.etc2.stex" ]
+source_file="res://Models/Player/Player_Body_specular.png"
+dest_files=[ "res://.import/Player_Body_specular.png-1edc6af6c6d9207a077b4e108b463439.s3tc.stex", "res://.import/Player_Body_specular.png-1edc6af6c6d9207a077b4e108b463439.etc2.stex" ]
 
 [params]
 

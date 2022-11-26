@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Player_Shoes_diffuse.png-281d0a478db1f9e0731ad8d9e8b5d420.s3tc.stex"
-path.etc2="res://.import/Player_Shoes_diffuse.png-281d0a478db1f9e0731ad8d9e8b5d420.etc2.stex"
+path.s3tc="res://.import/Player_Shoes_diffuse.png-363aab6a00f3b2eda7a153b6b60aeeb6.s3tc.stex"
+path.etc2="res://.import/Player_Shoes_diffuse.png-363aab6a00f3b2eda7a153b6b60aeeb6.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Player/Player_Shoes_diffuse.png"
-dest_files=[ "res://.import/Player_Shoes_diffuse.png-281d0a478db1f9e0731ad8d9e8b5d420.s3tc.stex", "res://.import/Player_Shoes_diffuse.png-281d0a478db1f9e0731ad8d9e8b5d420.etc2.stex" ]
+source_file="res://Models/Player/Player_Shoes_diffuse.png"
+dest_files=[ "res://.import/Player_Shoes_diffuse.png-363aab6a00f3b2eda7a153b6b60aeeb6.s3tc.stex", "res://.import/Player_Shoes_diffuse.png-363aab6a00f3b2eda7a153b6b60aeeb6.etc2.stex" ]
 
 [params]
 
@@ -25,7 +25,7 @@ flags/repeat=true
 flags/filter=true
 flags/mipmaps=true
 flags/anisotropic=false
-flags/srgb=2
+flags/srgb=1
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false

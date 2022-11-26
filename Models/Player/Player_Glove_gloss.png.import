@@ -2,8 +2,8 @@
 
 importer="texture"
 type="StreamTexture"
-path.s3tc="res://.import/Player_Glove_gloss.png-b81a1ca82aab7250bfe1c8e7c47d64da.s3tc.stex"
-path.etc2="res://.import/Player_Glove_gloss.png-b81a1ca82aab7250bfe1c8e7c47d64da.etc2.stex"
+path.s3tc="res://.import/Player_Glove_gloss.png-f873e92662d90b207db348302174a0cb.s3tc.stex"
+path.etc2="res://.import/Player_Glove_gloss.png-f873e92662d90b207db348302174a0cb.etc2.stex"
 metadata={
 "imported_formats": [ "s3tc", "etc2" ],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://models/Player/Player_Glove_gloss.png"
-dest_files=[ "res://.import/Player_Glove_gloss.png-b81a1ca82aab7250bfe1c8e7c47d64da.s3tc.stex", "res://.import/Player_Glove_gloss.png-b81a1ca82aab7250bfe1c8e7c47d64da.etc2.stex" ]
+source_file="res://Models/Player/Player_Glove_gloss.png"
+dest_files=[ "res://.import/Player_Glove_gloss.png-f873e92662d90b207db348302174a0cb.s3tc.stex", "res://.import/Player_Glove_gloss.png-f873e92662d90b207db348302174a0cb.etc2.stex" ]
 
 [params]
 
