@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Graphics/SpriteFrames/PlayerDownRight.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://work/dymek.png" type="Texture" id=3]
+[ext_resource path="res://fonts/RobotoSlab-Regular.ttf" type="DynamicFontData" id=204]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 8 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 11
+font_data = ExtResource( 204 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 32, 48 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 204 )
+
+[node name="Player" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 40 )
+shape = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 0.6, 0.6 )
+
+[node name="Dymek" type="Sprite" parent="Camera2D"]
+position = Vector2( -288, -170 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="Camera2D"]
+margin_left = -352.0
+margin_top = -205.0
+margin_right = -224.0
+margin_bottom = -141.0
+custom_fonts/font = SubResource( 5 )
+text = "Aby skorzystać z monitorka naciśnij \"e\""
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Timer" type="Timer" parent="Camera2D/Label"]
+wait_time = 2.0
+
+[node name="Collider" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+shape = SubResource( 3 )
+
+[node name="PlayerAnimations" type="AnimatedSprite" parent="."]
+position = Vector2( 0.0910043, 0 )
+scale = Vector2( 0.143245, 0.133 )
+frames = ExtResource( 2 )
+frame = 3
+
+[node name="Status" type="Label" parent="."]
+margin_left = -192.0
+margin_top = -192.0
+margin_right = 192.0
+margin_bottom = -170.0
+custom_fonts/font = SubResource( 4 )
+align = 1
+valign = 1
+
+[node name="Timer" type="Timer" parent="Status"]
+
+[connection signal="timeout" from="Camera2D/Label/Timer" to="." method="_tutHelp_Timeout"]
+[connection signal="timeout" from="Status/Timer" to="." method="_on_Timer_timeout"]
