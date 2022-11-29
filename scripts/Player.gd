@@ -74,7 +74,8 @@ func _input(_event):
 			action.sendAction()
 
 func _fixed_process():
-	print(Engine.get_frames_per_second())
+	#print(Engine.get_frames_per_second())
+	pass
 
 func changeStatus(text):
 	$Status.text = text
