@@ -21,7 +21,7 @@ window/size/height=720
 window/size/resizable=false
 window/size/borderless=true
 window/size/fullscreen=true
-window/vsync/use_vsync=false
+window/vsync/vsync_via_compositor=true
 window/energy_saving/keep_screen_on=false
 window/ios/hide_home_indicator=false
 
@@ -69,8 +69,14 @@ action_key={
 
 [physics]
 
+common/physics_fps=30
+common/physics_jitter_fix=0.01
 common/enable_pause_aware_picking=true
+2d/thread_model=2
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
+threads/thread_model=2
+gles2/compatibility/disable_half_float.iOS=false
 environment/default_environment="res://default_env.tres"

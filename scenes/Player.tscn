@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
-[ext_resource path="res://Graphics/SpriteFrames/PlayerDownRight.tres" type="SpriteFrames" id=2]
+[ext_resource path="res://Graphics/SpriteFrames/PlayerRight.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://work/dymek.png" type="Texture" id=3]
 [ext_resource path="res://fonts/RobotoSlab-Regular.ttf" type="DynamicFontData" id=204]
 
@@ -57,7 +57,6 @@ shape = SubResource( 3 )
 position = Vector2( 0.0910043, 0 )
 scale = Vector2( 0.143245, 0.133 )
 frames = ExtResource( 2 )
-frame = 3
 
 [node name="Status" type="Label" parent="."]
 margin_left = -192.0

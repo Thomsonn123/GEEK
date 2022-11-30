@@ -11,4 +11,6 @@ func startGame():
 func restartGame():
 	$Player.changeStatus("Zaczynasz od nowa")
 	startGame()
+func _physics_process(_delta):
+	print(Engine.get_frames_per_second())
 	

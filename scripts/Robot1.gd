@@ -19,9 +19,8 @@ onready var player = get_node("../Player")
 func _ready():
 	walking = true
 
-func _physics_process(delta):
+func _process(delta):
 	if seePlayer:
-		
 		self.position = position.move_toward(player.position, delta * sprintSpeed)
 	else:
 		if lastPosition != null and reversion:
@@ -37,6 +36,7 @@ func _physics_process(delta):
 		elif self.position == place2:
 			movePosition = place1
 		self.position = position.move_toward(movePosition, delta * walkingSpeed)
+	
 
 func _on_Area2D_body_entered(body:Node):
 	if body.name == "Player":

@@ -19,7 +19,14 @@ var MonitTutorial = false
 func _ready():
 	tutHelp("Witaj w grze")
 
-func _physics_process(_delta):
+func _input(_event):
+	if Input.is_action_pressed("action_key"):
+		print("action")
+		if action != null:
+			action.sendAction()
+	
+
+func _process(_delta):
 	var vel = Vector2()
 	if Input.is_action_pressed("ui_sprint"):
 		speed = sprintSpeed
@@ -66,12 +73,6 @@ func _physics_process(_delta):
 			$PlayerAnimations.flip_h = true
 	vel = vel.normalized() * speed
 	var _returrn = move_and_slide(vel)
-
-func _input(_event):
-	if Input.is_action_pressed("action_key"):
-		print("action")
-		if action != null:
-			action.sendAction()
 
 func _fixed_process():
 	#print(Engine.get_frames_per_second())

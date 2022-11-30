@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Graphics/Map1/tilemapONGROUND.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Map1/tilemapsGround.png" type="Texture" id=2]
 [ext_resource path="res://scripts/Map.gd" type="Script" id=3]
-[ext_resource path="res://Graphics/Water/water.webm" type="VideoStream" id=51]
 [ext_resource path="res://scenes/DarkWoodenHouse.tscn" type="PackedScene" id=54]
 
 [sub_resource type="TileSet" id=4]
@@ -128,22 +127,6 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 3 )
-
-[node name="VideoPlayer" type="VideoPlayer" parent="."]
-margin_left = -718.0
-margin_top = -483.0
-margin_right = 352.0
-margin_bottom = 143.0
-stream = ExtResource( 51 )
-autoplay = true
-
-[node name="VideoPlayer2" type="VideoPlayer" parent="."]
-margin_left = -900.0
-margin_top = 300.0
-margin_right = -445.0
-margin_bottom = 960.0
-stream = ExtResource( 51 )
-autoplay = true
 
 [node name="Ground" type="TileMap" parent="."]
 tile_set = SubResource( 4 )
