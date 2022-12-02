@@ -47,6 +47,7 @@ func _process(_delta):
 		vel.x += 1
 	else:
 		$PlayerAnimations.playing = false
+		
 #pouszanie się góra dół
 	if Input.is_action_pressed("ui_up"):
 		vel.y -= 1
@@ -71,6 +72,10 @@ func _process(_delta):
 		if Input.is_action_pressed("ui_left"):
 			$PlayerAnimations.frames = animDownRight
 			$PlayerAnimations.flip_h = true
+	
+	if Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
+		$PlayerAnimations.frame = 12
+		
 	vel = vel.normalized() * speed
 	var _returrn = move_and_slide(vel)
 
