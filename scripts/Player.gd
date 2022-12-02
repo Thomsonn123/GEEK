@@ -5,11 +5,11 @@ export var sprintSpeed = 300
 
 onready var overWorld = get_node("..")
 
-var animUp = load("res://Graphics/SpriteFrames/PlayerUp.tres") 
-var animDown = load("res://Graphics/SpriteFrames/PlayerDown.tres")
-var animRight = load("res://Graphics/SpriteFrames/PlayerRight.tres")
-var animUpRight = load("res://Graphics/SpriteFrames/PlayerUpRight.tres")
-var animDownRight = load("res://Graphics/SpriteFrames/PlayerDownRight.tres")
+var animUp = preload("res://Graphics/SpriteFrames/PlayerUp.tres") 
+var animDown = preload("res://Graphics/SpriteFrames/PlayerDown.tres")
+var animRight = preload("res://Graphics/SpriteFrames/PlayerRight.tres")
+var animUpRight = preload("res://Graphics/SpriteFrames/PlayerUpRight.tres")
+var animDownRight = preload("res://Graphics/SpriteFrames/PlayerDownRight.tres")
 var speed
 var action = null 
 
@@ -24,7 +24,6 @@ func _input(_event):
 		print("action")
 		if action != null:
 			action.sendAction()
-	
 
 func _process(_delta):
 	var vel = Vector2()
@@ -49,9 +48,6 @@ func _process(_delta):
 		if $PlayerAnimations.frames == animRight:
 			$PlayerAnimations.frame = 12
 		$PlayerAnimations.playing = false
-		
-
-		
 #pouszanie się góra dół
 	if Input.is_action_pressed("ui_up"):
 		vel.y -= 1
