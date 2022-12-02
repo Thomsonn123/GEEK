@@ -46,7 +46,11 @@ func _process(_delta):
 		$PlayerAnimations.playing = true
 		vel.x += 1
 	else:
+		if $PlayerAnimations.frames == animRight:
+			$PlayerAnimations.frame = 12
 		$PlayerAnimations.playing = false
+		
+
 		
 #pouszanie się góra dół
 	if Input.is_action_pressed("ui_up"):
@@ -56,13 +60,9 @@ func _process(_delta):
 		if Input.is_action_pressed("ui_right"):
 			$PlayerAnimations.frames = animUpRight
 			$PlayerAnimations.flip_h = false
-		elif Input.is_action_just_released("ui_left"):
-			$PlayerAnimations.frame = 12
 		if Input.is_action_pressed("ui_left"):
 			$PlayerAnimations.frames = animUpRight
-			$PlayerAnimations.flip_h = true
-		elif Input.is_action_just_released("ui_left"):
-			$PlayerAnimations.frame = 12
+			$PlayerAnimations.flip_h = true		
 		$PlayerAnimations.playing = true
 	elif Input.is_action_pressed("ui_down"):
 		vel.y += 1
@@ -71,18 +71,19 @@ func _process(_delta):
 		$PlayerAnimations.flip_h = false
 		if Input.is_action_pressed("ui_right"):
 			$PlayerAnimations.frames = animDownRight
-			$PlayerAnimations.flip_h = false
-		elif Input.is_action_just_released("ui_right"):
-			$PlayerAnimations.frame = 12
 		if Input.is_action_pressed("ui_left"):
 			$PlayerAnimations.frames = animDownRight
 			$PlayerAnimations.flip_h = true
-		elif Input.is_action_just_released("ui_left"):
+	else:
+		if $PlayerAnimations.frames == animDown:
+			$PlayerAnimations.frame = 30
+		elif $PlayerAnimations.frames == animUp:
+			$PlayerAnimations.frame = 30
+		elif $PlayerAnimations.frames == animUpRight:
 			$PlayerAnimations.frame = 12
-	elif Input.is_action_just_released("ui_down"):
-		$PlayerAnimations.frame = 30
-	elif Input.is_action_just_released("ui_up"):
-		$PlayerAnimations.frame = 31
+		elif $PlayerAnimations.frames == animDownRight:
+			$PlayerAnimations.frame = 12
+
 	vel = vel.normalized() * speed
 	var _returrn = move_and_slide(vel)
 
