@@ -56,10 +56,13 @@ func _process(_delta):
 		if Input.is_action_pressed("ui_right"):
 			$PlayerAnimations.frames = animUpRight
 			$PlayerAnimations.flip_h = false
+		elif Input.is_action_just_released("ui_left"):
+			$PlayerAnimations.frame = 12
 		if Input.is_action_pressed("ui_left"):
 			$PlayerAnimations.frames = animUpRight
 			$PlayerAnimations.flip_h = true
-
+		elif Input.is_action_just_released("ui_left"):
+			$PlayerAnimations.frame = 12
 		$PlayerAnimations.playing = true
 	elif Input.is_action_pressed("ui_down"):
 		vel.y += 1
@@ -69,13 +72,17 @@ func _process(_delta):
 		if Input.is_action_pressed("ui_right"):
 			$PlayerAnimations.frames = animDownRight
 			$PlayerAnimations.flip_h = false
+		elif Input.is_action_just_released("ui_right"):
+			$PlayerAnimations.frame = 12
 		if Input.is_action_pressed("ui_left"):
 			$PlayerAnimations.frames = animDownRight
 			$PlayerAnimations.flip_h = true
-	
-	if Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
-		$PlayerAnimations.frame = 12
-		
+		elif Input.is_action_just_released("ui_left"):
+			$PlayerAnimations.frame = 12
+	elif Input.is_action_just_released("ui_down"):
+		$PlayerAnimations.frame = 30
+	elif Input.is_action_just_released("ui_up"):
+		$PlayerAnimations.frame = 31
 	vel = vel.normalized() * speed
 	var _returrn = move_and_slide(vel)
 
