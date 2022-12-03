@@ -77,3 +77,10 @@ custom_styles/normal = SubResource( 2 )
 enabled_focus_mode = 0
 keep_pressed_outside = true
 text = "Umiejętności budowania bronii"
+
+[node name="CombatSkills" type="Node2D" parent="."]
+
+[node name="WeaponSkills" type="Node2D" parent="."]
+
+[connection signal="pressed" from="Menu/CombatSkills" to="." method="_on_CombatSkills_pressed"]
+[connection signal="pressed" from="Menu/WeaponsSkills" to="." method="_on_WeaponsSkills_pressed"]
