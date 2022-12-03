@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/SpriteFrames/PlayerDown.tres" type="SpriteFrames" id=2]
 [ext_resource path="res://work/dymek.png" type="Texture" id=3]
+[ext_resource path="res://scenes/development_tree/development tree.tscn" type="PackedScene" id=4]
 [ext_resource path="res://fonts/RobotoSlab-Regular.ttf" type="DynamicFontData" id=204]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -68,6 +69,11 @@ align = 1
 valign = 1
 
 [node name="Timer" type="Timer" parent="Status"]
+
+[node name="DevTree" parent="." instance=ExtResource( 4 )]
+visible = false
+position = Vector2( -384, -216 )
+scale = Vector2( 0.6, 0.6 )
 
 [connection signal="timeout" from="Camera2D/Label/Timer" to="." method="_tutHelp_Timeout"]
 [connection signal="timeout" from="Status/Timer" to="." method="_on_Timer_timeout"]

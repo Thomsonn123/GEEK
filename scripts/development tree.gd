@@ -1,8 +1,9 @@
 extends Node2D
 
-export var curPage = 1
+var curPage = 0
+onready var MenuPage = get_node("Menu")
 
-onready var MenuPage = $Menu
-
-func _fixed_process(_delta):
-    $Label.text = str(curPage)
+func _process(_delta):
+	if curPage == 0:
+		$Page.text = " "
+		MenuPage.visible = true

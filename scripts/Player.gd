@@ -24,6 +24,9 @@ func _input(_event):
 		print("action")
 		if action != null:
 			action.sendAction()
+	if Input.is_action_just_pressed("DevTree"):
+		$DevTree.visible = !$DevTree.visible
+	
 
 func _process(_delta):
 	var vel = Vector2()
