@@ -26,6 +26,8 @@ func _input(_event):
 			action.sendAction()
 	if Input.is_action_just_pressed("DevTree"):
 		$DevTree.visible = !$DevTree.visible
+		if $DevTree.visible == false:
+			$DevTree.setPage(0)
 	
 
 func _process(_delta):

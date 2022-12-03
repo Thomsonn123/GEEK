@@ -6,21 +6,23 @@ onready var CombatPage = get_node("CombatSkills")
 onready var WeaponPage = get_node("WeaponSkills")
 
 func _process(_delta):
+	$MenuButton.visible = !MenuPage.visible
 	if curPage == 0:
-		$Page.text = " "
+		$Page.text = ""
 		MenuPage.visible = true
 	elif curPage == 1:
 		$Page.text = str(curPage)
-        MenuPage.visible = false
-        CombatPage.visible = true
+		MenuPage.visible = false
+		CombatPage.visible = true
 	elif curPage == 2:
 		$Page.text = str(curPage)
-        MenuPage.visible = false
-
-
+		MenuPage.visible = false
+	
+func setPage(page):
+	curPage = page
 func _on_CombatSkills_pressed():
 	curPage = 1
-
-
 func _on_WeaponsSkills_pressed():
 	curPage = 2
+func _on_MenuButton_pressed():
+	curPage = 0
