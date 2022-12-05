@@ -23,3 +23,5 @@ position = Vector2( -3006, 1152 )
 __meta__ = {
 "_edit_group_": true
 }
+walkingSpeed = 400
+sprintSpeed = 600
