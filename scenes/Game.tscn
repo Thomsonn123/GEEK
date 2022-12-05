@@ -19,9 +19,7 @@ position = Vector2( -2224, 1056 )
 position = Vector2( -1920, 920 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( -3006, 1152 )
+position = Vector2( -2980, 1153 )
 __meta__ = {
 "_edit_group_": true
 }
-walkingSpeed = 400
-sprintSpeed = 600
