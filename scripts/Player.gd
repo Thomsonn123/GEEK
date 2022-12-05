@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-export var walkingSpeed = 600
-export var sprintSpeed = 900
+export var walkingSpeed = 200
+export var sprintSpeed = 300
 
 onready var overWorld = get_node("..")
 
