@@ -48,6 +48,22 @@ enabled_focus_mode = 0
 keep_pressed_outside = true
 text = "Menu"
 
+[node name="MenuButton2" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 256.0
+margin_right = 192.0
+margin_bottom = 288.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+keep_pressed_outside = true
+
 [node name="Page" type="Label" parent="."]
 margin_left = 1152.0
 margin_top = 640.0
@@ -99,7 +115,9 @@ text = "Umiejętności budowania bronii"
 [node name="CombatSkills" type="Node2D" parent="."]
 
 [node name="WeaponSkills" type="Node2D" parent="."]
+visible = false
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="MenuButton2" to="." method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="Menu/CombatSkills" to="." method="_on_CombatSkills_pressed"]
 [connection signal="pressed" from="Menu/WeaponsSkills" to="." method="_on_WeaponsSkills_pressed"]
