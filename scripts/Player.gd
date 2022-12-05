@@ -12,6 +12,7 @@ var animUpRight = preload("res://Graphics/SpriteFrames/PlayerUpRight.tres")
 var animDownRight = preload("res://Graphics/SpriteFrames/PlayerDownRight.tres")
 var speed
 var action = null 
+var actionName = null
 
 #tutorials made
 var MonitTutorial = false
@@ -112,7 +113,8 @@ func _tutHelp_Timeout():
 	$Camera2D/Label.visible = false
 	$Camera2D/Label/Timer.stop()
 
-func walkedInMonitor(monitor):
+func walkedInMonitor(monitor, name):
 	if !MonitTutorial:
 		tutHelp("Naciśnij E aby skorzystać z monitorka")
 	action = get_node(monitor)
+	actionName = name
