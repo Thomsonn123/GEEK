@@ -13,6 +13,7 @@ var movePosition = place1
 var lastMove
 var lastPosition = null
 var reversion = false
+var isHacked = false
 
 onready var player = get_node("../Player")
 
@@ -20,7 +21,9 @@ func _ready():
 	walking = true
 
 func _process(delta):
-	if seePlayer:
+	if isHacked:
+		pass
+	elif seePlayer:
 		self.position = position.move_toward(player.position, delta * sprintSpeed)
 	else:
 		if lastPosition != null and reversion:
@@ -48,3 +51,6 @@ func _on_Area2D_body_exited(body:Node):
 	if body.name == "Player":
 		seePlayer = false
 		reversion = true
+
+func hacked():
+	isHacked = true

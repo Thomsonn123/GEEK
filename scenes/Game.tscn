@@ -16,7 +16,9 @@ scale = Vector2( 2, 2 )
 position = Vector2( -2224, 1056 )
 
 [node name="Robot1" parent="." instance=ExtResource( 2 )]
-position = Vector2( -1920, 920 )
+position = Vector2( -1920, 744 )
+place1 = Vector2( -1920, 744 )
+place2 = Vector2( -1920, 1496 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( -2980, 1153 )

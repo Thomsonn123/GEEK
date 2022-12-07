@@ -19,14 +19,14 @@ var MonitTutorial = false
 
 func _ready():
 	$DevTree.visible = false
-	$HackMenu.visible = false
+	$RobotHackGame.visible = false
 	tutHelp("Witaj w grze")
 
 func _input(_event):
 	if Input.is_action_pressed("action_key"):
 		print("action")
 		if action != null and "Monitor" in actionName:
-			$HackMenu.visible = !$HackMenu.visible
+			$RobotHackGame.visible = !$RobotHackGame.visible
 	if Input.is_action_just_pressed("DevTree"):
 		$DevTree.visible = !$DevTree.visible
 		if $DevTree.visible == false:
@@ -90,6 +90,7 @@ func _process(_delta):
 
 	vel = vel.normalized() * speed
 	var _returrn = move_and_slide(vel)
+	$FPS.text = str(Engine.get_frames_per_second())
 
 func _fixed_process():
 	#print(Engine.get_frames_per_second())
@@ -124,4 +125,4 @@ func walkedInMonitor(monitor, name):
 func bodyOut():
 	action = null 
 	actionName = null
-	$HackMenu.visible = false
+	$RobotHackGame.visible = false
