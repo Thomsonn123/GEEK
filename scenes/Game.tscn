@@ -14,6 +14,7 @@ scale = Vector2( 2, 2 )
 
 [node name="Monitor" parent="." instance=ExtResource( 3 )]
 position = Vector2( -2224, 1056 )
+Robot = NodePath("../Robot1")
 
 [node name="Robot1" parent="." instance=ExtResource( 2 )]
 position = Vector2( -1920, 744 )

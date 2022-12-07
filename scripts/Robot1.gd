@@ -53,4 +53,5 @@ func _on_Area2D_body_exited(body:Node):
 		reversion = true
 
 func hacked():
-	isHacked = true
+	#isHacked = true
+	self.queue_free()

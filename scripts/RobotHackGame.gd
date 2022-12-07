@@ -4,7 +4,7 @@ extends Node2D
 export var hackingTime = 8
 export var tilesShowTime = 1
 export var maxTiles = 4
-export(NodePath) var Robot = null
+var robot = null
 
 var showedTiles = 0
 var tileContainer = null
@@ -78,5 +78,5 @@ func setVisible(status):
 	self.visible = status
 
 func hackedGame():
-	if Robot != null:
-		Robot.hacked()
+	if robot != null:
+		robot.queue_free()

@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 export var walkingSpeed = 200
 export var sprintSpeed = 300
+var Robot1 = null
 
 onready var overWorld = get_node("..")
 
@@ -116,13 +117,17 @@ func _tutHelp_Timeout():
 	$Camera2D/Label.visible = false
 	$Camera2D/Label/Timer.stop()
 
-func walkedInMonitor(monitor, name):
+func walkedInMonitor(monitor, name, robotpath):
 	if !MonitTutorial:
 		tutHelp("Naciśnij E aby skorzystać z monitorka")
 	action = get_node(monitor)
 	actionName = name
+	Robot1 = robotpath
+	$RobotHackGame.robot = Robot1
 
 func bodyOut():
 	action = null 
 	actionName = null
+	Robot1 = null
 	$RobotHackGame.visible = false
+	$RobotHackGame.robot = null
