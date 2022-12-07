@@ -18,13 +18,15 @@ var actionName = null
 var MonitTutorial = false
 
 func _ready():
+	$DevTree.visible = false
+	$HackMenu.visible = false
 	tutHelp("Witaj w grze")
 
 func _input(_event):
 	if Input.is_action_pressed("action_key"):
 		print("action")
-		if action != null:
-			action.sendAction()
+		if action != null and "Monitor" in actionName:
+			$HackMenu.visible = !$HackMenu.visible
 	if Input.is_action_just_pressed("DevTree"):
 		$DevTree.visible = !$DevTree.visible
 		if $DevTree.visible == false:
@@ -118,3 +120,8 @@ func walkedInMonitor(monitor, name):
 		tutHelp("Naciśnij E aby skorzystać z monitorka")
 	action = get_node(monitor)
 	actionName = name
+
+func bodyOut():
+	action = null 
+	actionName = null
+	$HackMenu.visible = false

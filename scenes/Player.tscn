@@ -77,6 +77,9 @@ position = Vector2( -384, -216 )
 scale = Vector2( 0.6, 0.6 )
 
 [node name="HackMenu" parent="." instance=ExtResource( 5 )]
+visible = false
+position = Vector2( -384, -216 )
+scale = Vector2( 0.6, 0.6 )
 
 [connection signal="timeout" from="Camera2D/Label/Timer" to="." method="_tutHelp_Timeout"]
 [connection signal="timeout" from="Status/Timer" to="." method="_on_Timer_timeout"]

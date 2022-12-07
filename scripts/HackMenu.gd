@@ -1,20 +1,23 @@
 extends Node2D
 
-var Time = 2
+var Time = 6.0
 var progressStep = 10
 var curStep = 0
 
 func startHacking():
-	$HacingTimer.start()
-	var ProgressTimer = Time / 100
-	$HacingTimer.wait_time = ProgressTimer
+	$HackingTimer.start()
+	var ProgressTimer = Time / 10
+	$HackingTimer.wait_time = ProgressTimer
 	
 
-func update():
-	$ProgressBar.value = 10 * curStep
-
-func _on_HacingTimer_timeout():
+func _on_HackingTimer_timeout():
+	$ProgressBar.value += 10
 	curStep += 1
-	update()
+	if curStep < 10:
+		$HackingTimer.start()
+	else:
+		$Button.queue_free()
+		$HackingTimer.queue_free()
+		$ProgressBar.queue_free()
 
 	
