@@ -35,16 +35,15 @@ place1 = Vector2( -1352, 2096 )
 place2 = Vector2( -680, 1448 )
 
 [node name="Enemy3" type="Node2D" parent="."]
-position = Vector2( -352, 104 )
 
-[node name="Monitor" parent="Enemy3" instance=ExtResource( 3 )]
-position = Vector2( -1448, 1296 )
+[node name="Monitor2" parent="Enemy3" instance=ExtResource( 3 )]
+position = Vector2( -1704, 1480 )
 Robot = NodePath("../Robot3")
 
 [node name="Robot3" parent="Enemy3" instance=ExtResource( 2 )]
-position = Vector2( -1376, 1904 )
-place1 = Vector2( -1320, 2104 )
-place2 = Vector2( -680, 1448 )
+position = Vector2( -1728, 2952 )
+place1 = Vector2( -1728, 1656 )
+place2 = Vector2( -1728, 2952 )
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( -2980, 1153 )
