@@ -15,7 +15,7 @@ var lastPosition = null
 var reversion = false
 var isHacked = false
 
-onready var player = get_node("../Player")
+onready var player = get_node("../../Player")
 
 func _ready():
 	walking = true
@@ -53,5 +53,4 @@ func _on_Area2D_body_exited(body:Node):
 		reversion = true
 
 func hacked():
-	#isHacked = true
-	self.queue_free()
+	isHacked = true

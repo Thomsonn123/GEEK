@@ -230,9 +230,9 @@ value = 6.0
 
 [node name="Button" type="Button" parent="."]
 margin_left = 528.0
-margin_top = 240.0
+margin_top = 256.0
 margin_right = 736.0
-margin_bottom = 288.0
+margin_bottom = 304.0
 text = "Zacznij hackowac"
 
 [connection signal="pressed" from="Buttons/Button1" to="." method="unColor" binds= [ "Button1" ]]

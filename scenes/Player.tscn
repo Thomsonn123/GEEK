@@ -89,6 +89,7 @@ position = Vector2( -384, -216 )
 scale = Vector2( 0.6, 0.6 )
 
 [node name="RobotHackGame" parent="." instance=ExtResource( 5 )]
+visible = false
 position = Vector2( -632, -328 )
 
 [connection signal="timeout" from="Camera2D/Label/Timer" to="." method="_tutHelp_Timeout"]

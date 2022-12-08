@@ -25,13 +25,16 @@ func _ready():
 	tileContainerChildCount = tileContainer.get_child_count()
 	$GameTimer.wait_time = hackingTime
 
-func _process(_delta):
+func _physics_process(_delta):
 	if showedTiles >= maxTiles:
 		stopGame()
-	if $GameTimer.time_left > 0:
-		$ProgressBar.value = $GameTimer.time_left
-	
-func startHacking():
+	$ProgressBar.value = $GameTimer.time_left
+
+func start():
+	self.visible = true
+	$Button.visible = true
+
+func startHacking():	
 	$Button.visible = false
 	$Timer.start()
 	$GameTimer.start()
@@ -61,16 +64,21 @@ func restartGame():
 		var ButtonToColorize = tileContainer.get_child(i)
 		ButtonToColorize.add_stylebox_override("normal", themeNormal)
 		ButtonToColorize.add_stylebox_override("hover", themeNormal)
+	showedTiles = 0
+	$GameTimer.wait_time = hackingTime
+	$Timer.start()
 
 func finishHack():
 	hackedGame()
 	$GameTimer.stop()
+	$Timer.stop()
 	self.visible = false
 
 func stopGame():
 	showedTiles	= 0
 	self.visible = false
 	$GameTimer.stop()
+	$Timer.stop()
 	restartGame()
 	
 
@@ -79,4 +87,4 @@ func setVisible(status):
 
 func hackedGame():
 	if robot != null:
-		get_node(robot).queue_free()
+		get_node(robot).hacked()

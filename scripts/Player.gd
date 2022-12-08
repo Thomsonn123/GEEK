@@ -27,7 +27,7 @@ func _input(_event):
 	if Input.is_action_pressed("action_key"):
 		print("action")
 		if action != null and "Monitor" in actionName:
-			$RobotHackGame.visible = !$RobotHackGame.visible
+			$RobotHackGame.start()
 	if Input.is_action_just_pressed("DevTree"):
 		$DevTree.visible = !$DevTree.visible
 		if $DevTree.visible == false:
