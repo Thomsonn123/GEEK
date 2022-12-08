@@ -79,4 +79,4 @@ func setVisible(status):
 
 func hackedGame():
 	if robot != null:
-		robot.queue_free()
+		get_node(robot).queue_free()
