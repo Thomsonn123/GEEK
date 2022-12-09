@@ -19,9 +19,9 @@ position = Vector2( -1896, 568 )
 Robot = NodePath("../Robot1")
 
 [node name="Robot1" parent="Enemy1" instance=ExtResource( 2 )]
-position = Vector2( -1920, 744 )
+position = Vector2( -1880, 1496 )
 place1 = Vector2( -1920, 744 )
-place2 = Vector2( -1920, 1496 )
+place2 = Vector2( -1880, 1496 )
 
 [node name="Enemy2" type="Node2D" parent="."]
 

@@ -86,6 +86,7 @@ text = "BLABLABLA"
 visible = false
 position = Vector2( -384, -216 )
 scale = Vector2( 0.6, 0.6 )
+robotHacks = NodePath("../RobotHackGame")
 
 [node name="RobotHackGame" parent="." instance=ExtResource( 5 )]
 visible = false

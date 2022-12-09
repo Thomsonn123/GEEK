@@ -5,6 +5,7 @@ export var place1 = Vector2()
 export var place2 = Vector2()
 export var walkingSpeed = 100
 export var sprintSpeed = 200
+var hackingTimeDelay = 10
 
 export var seePlayer = false
 var walking = false
@@ -13,7 +14,7 @@ var movePosition = place1
 var lastMove
 var lastPosition = null
 var reversion = false
-var isHacked = false
+export var isHacked = false
 
 onready var player = get_node("../../Player")
 
@@ -54,3 +55,13 @@ func _on_Area2D_body_exited(body:Node):
 
 func hacked():
 	isHacked = true
+
+func timeHacked():
+	$HackingTimer.wait_time = hackingTimeDelay
+	$HackingTimer.start()
+	print("Timer started")
+	isHacked = true
+
+func hackingTimerTimeout():
+	isHacked = false
+	$HackingTimer.stop()

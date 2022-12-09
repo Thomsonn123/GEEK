@@ -25,7 +25,6 @@ func _ready():
 
 func _input(_event):
 	if Input.is_action_pressed("action_key"):
-		print("action")
 		if action != null and "Monitor" in actionName:
 			$RobotHackGame.start()
 	if Input.is_action_just_pressed("DevTree"):

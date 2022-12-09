@@ -78,6 +78,23 @@ valign = 1
 [node name="Menu" type="Node2D" parent="."]
 visible = false
 
+[node name="HackingSkills" type="Button" parent="Menu"]
+margin_left = 512.0
+margin_top = 96.0
+margin_right = 771.0
+margin_bottom = 128.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+keep_pressed_outside = true
+text = "Umiejętności bojowe"
+
 [node name="CombatSkills" type="Button" parent="Menu"]
 margin_left = 512.0
 margin_top = 96.0
@@ -112,12 +129,16 @@ enabled_focus_mode = 0
 keep_pressed_outside = true
 text = "Umiejętności budowania bronii"
 
+[node name="HackingSkills" type="Node2D" parent="."]
+
 [node name="CombatSkills" type="Node2D" parent="."]
+visible = false
 
 [node name="WeaponSkills" type="Node2D" parent="."]
 visible = false
 
 [connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="MenuButton2" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="Menu/HackingSkills" to="." method="_on_CombatSkills_pressed"]
 [connection signal="pressed" from="Menu/CombatSkills" to="." method="_on_CombatSkills_pressed"]
 [connection signal="pressed" from="Menu/WeaponsSkills" to="." method="_on_WeaponsSkills_pressed"]

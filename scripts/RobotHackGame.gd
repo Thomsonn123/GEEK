@@ -1,12 +1,13 @@
 extends Node2D
 
 
-export var hackingTime = 8
+export var hackingTime = 10
 export var tilesShowTime = 1
 export var maxTiles = 4
-var robot = null
-
 var showedTiles = 0
+export var attackType = 2
+
+var robot = null
 var tileContainer = null
 var tileContainerChildCount = null
 
@@ -21,6 +22,8 @@ func setMaxTiles(value):
 	maxTiles = value
 
 func _ready():
+	print(hackingTime)
+	$ProgressBar.max_value = hackingTime
 	tileContainer = get_node("Buttons")
 	tileContainerChildCount = tileContainer.get_child_count()
 	$GameTimer.wait_time = hackingTime
@@ -75,16 +78,18 @@ func finishHack():
 	self.visible = false
 
 func stopGame():
+	restartGame()
 	showedTiles	= 0
 	self.visible = false
 	$GameTimer.stop()
 	$Timer.stop()
-	restartGame()
-	
 
 func setVisible(status):
 	self.visible = status
 
 func hackedGame():
 	if robot != null:
-		get_node(robot).hacked()
+		if attackType == 1:
+			get_node(robot).hacked()
+		elif attackType == 2:
+			get_node(robot).timeHacked()
