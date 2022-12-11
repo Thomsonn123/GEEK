@@ -15,13 +15,13 @@ scale = Vector2( 2, 2 )
 [node name="Enemy1" type="Node2D" parent="."]
 
 [node name="Monitor" parent="Enemy1" instance=ExtResource( 3 )]
-position = Vector2( -1896, 568 )
+position = Vector2( -1920, 616 )
 Robot = NodePath("../Robot1")
 
 [node name="Robot1" parent="Enemy1" instance=ExtResource( 2 )]
-position = Vector2( -1880, 1496 )
-place1 = Vector2( -1920, 744 )
-place2 = Vector2( -1880, 1496 )
+position = Vector2( -1920, 1488 )
+place1 = Vector2( -1920, 736 )
+place2 = Vector2( -1920, 1488 )
 
 [node name="Enemy2" type="Node2D" parent="."]
 
