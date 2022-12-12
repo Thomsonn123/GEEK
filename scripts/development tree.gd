@@ -52,3 +52,6 @@ func hackingSkills(skills):
 		robotHacks.upgradeHackingTiles(1)
 	elif skills == "type":
 		robotHacks.setTypeOfAttack()
+
+func _on_HackingSkills_pressed():
+	pass # Replace with function body.

@@ -45,6 +45,50 @@ position = Vector2( -1728, 2952 )
 place1 = Vector2( -1728, 1656 )
 place2 = Vector2( -1728, 2952 )
 
+[node name="Enemy4" type="Node2D" parent="."]
+
+[node name="Monitor2" parent="Enemy4" instance=ExtResource( 3 )]
+position = Vector2( -2216, -72 )
+Robot = NodePath("../Robot4")
+
+[node name="Robot4" parent="Enemy4" instance=ExtResource( 2 )]
+position = Vector2( -1792, 560 )
+place1 = Vector2( -1784, -864 )
+place2 = Vector2( -1792, 560 )
+
+[node name="Enemy5" type="Node2D" parent="."]
+
+[node name="Monitor2" parent="Enemy5" instance=ExtResource( 3 )]
+position = Vector2( 2912, 3008 )
+Robot = NodePath("../Robot5")
+
+[node name="Robot5" parent="Enemy5" instance=ExtResource( 2 )]
+position = Vector2( 312, 3128 )
+place1 = Vector2( 2432, 3128 )
+place2 = Vector2( 312, 3128 )
+
+[node name="Enemy6" type="Node2D" parent="."]
+
+[node name="Monitor2" parent="Enemy6" instance=ExtResource( 3 )]
+position = Vector2( 3680, 384 )
+Robot = NodePath("../Robot5")
+
+[node name="Robot5" parent="Enemy6" instance=ExtResource( 2 )]
+position = Vector2( 3640, 528 )
+place1 = Vector2( 3648, 528 )
+place2 = Vector2( 3648, 2640 )
+
+[node name="Enemy7" type="Node2D" parent="."]
+
+[node name="Monitor2" parent="Enemy7" instance=ExtResource( 3 )]
+position = Vector2( 2080, -1032 )
+Robot = NodePath("../Robot5")
+
+[node name="Robot5" parent="Enemy7" instance=ExtResource( 2 )]
+position = Vector2( 2056, -896 )
+place1 = Vector2( 2056, -888 )
+place2 = Vector2( 3472, -888 )
+
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( -2980, 1153 )
 __meta__ = {

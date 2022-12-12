@@ -20,6 +20,7 @@ onready var player = get_node("../../Player")
 
 func _ready():
 	walking = true
+	self.position = place2
 
 func _process(delta):
 	if isHacked:
@@ -45,7 +46,8 @@ func _process(delta):
 func _on_Area2D_body_entered(body:Node):
 	if body.name == "Player":
 		lastPosition = Vector2(stepify(self.position.x, 0.01), stepify(self.position.y, 0.01))
-		lastMove = movePosition
+		if movePosition == place1 or movePosition == place2:
+			lastMove = movePosition
 		seePlayer = true
 
 func _on_Area2D_body_exited(body:Node):
