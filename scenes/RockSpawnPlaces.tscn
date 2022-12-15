@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/RockSpawnPlaces.gd" type="Script" id=1]
+
+[node name="RockSpawnPlaces" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Place1" type="Area2D" parent="."]
+position = Vector2( 584, 16 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Place1"]
+polygon = PoolVector2Array( -320, 40, -72, 112, 216, 120, 400, 32, 392, -40, 288, -88, 248, -136, -176, -136, -232, -80, -328, -16 )
+
+[node name="Place2" type="Area2D" parent="."]
+position = Vector2( 320, 1024 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Place2"]
+polygon = PoolVector2Array( -96, 72, -528, 32, -576, -48, -504, -136, -88, -288, -80, -104, 264, -104, 272, -280, 488, -264, 584, -168, 520, -72, 408, 0, 280, 56 )
+
+[node name="Place3" type="Area2D" parent="."]
+position = Vector2( 1824, 1976 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Place3"]
+polygon = PoolVector2Array( 32, -288, 208, -224, 272, -112, 200, -16, 16, 32, -120, -48, -176, -168, -160, -312 )

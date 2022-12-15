@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Robot1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/Monitor.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=4]
 [ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=5]
+[ext_resource path="res://light.png" type="Texture" id=6]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 4 )
@@ -89,8 +90,32 @@ position = Vector2( 2056, -896 )
 place1 = Vector2( 2056, -888 )
 place2 = Vector2( 3472, -888 )
 
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( -1172, 2638 )
+texture = ExtResource( 6 )
+texture_scale = 0.15
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 0.647059 )
+shadow_gradient_length = 4096.0
+shadow_filter_smooth = 2.3
+
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( -2980, 1153 )
 __meta__ = {
 "_edit_group_": true
 }
+
+[node name="DayNight" type="Node2D" parent="."]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="DayNight"]
+
+[node name="NightTimer" type="Timer" parent="DayNight"]
+
+[node name="DayTimer" type="Timer" parent="DayNight"]
+
+[node name="ChangeTimer" type="Timer" parent="DayNight"]
+one_shot = true
+
+[connection signal="timeout" from="DayNight/NightTimer" to="." method="NightAdd"]
+[connection signal="timeout" from="DayNight/DayTimer" to="." method="DayAdd"]
+[connection signal="timeout" from="DayNight/ChangeTimer" to="." method="change"]
