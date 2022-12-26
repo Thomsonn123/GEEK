@@ -2,7 +2,7 @@ extends Node2D
 
 var PlayerStartPosition = Vector2(-3008, 1152)
 
-onready var DayNightCycle = get_node("DayNight/CanvasModulate")
+#onready var DayNightCycle = get_node("DayNight/CanvasModulate")
 
 var nightColorA = 1.0
 var nightColorR = 0.30
@@ -23,11 +23,11 @@ export var isNight = false
 
 func _ready():
 	startGame()
-	$DayNight/ChangeTimer.start()
-	currentColorA = dayColorA
-	currentColorR = dayColorR
-	currentColorG = dayColorG
-	currentColorB = dayColorB
+	#$DayNight/ChangeTimer.start()
+	#currentColorA = dayColorA
+	#currentColorR = dayColorR
+	#currentColorG = dayColorG
+	#currentColorB = dayColorB
 
 func startGame():
 	$Player.position = PlayerStartPosition
@@ -40,7 +40,6 @@ func _physics_process(_delta):
 	pass
 
 func NightAdd():
-	print("makeNight")
 	if nightColorR < currentColorR:
 		currentColorR -= 0.05
 	if nightColorG < currentColorG:
@@ -53,7 +52,6 @@ func NightAdd():
 	updateDayCycle()
 
 func DayAdd():
-	print("makeDay")
 	if dayColorR > currentColorR:
 		currentColorR += 0.05
 	if dayColorG > currentColorG:
@@ -67,17 +65,15 @@ func DayAdd():
 
 func change():
 	$DayNight/ChangeTimer.stop()
-	print("work")
 	if isNight:
 		$DayNight/DayTimer.start()
 		isNight = false
-		print("setDay")
 	else:
 		$DayNight/NightTimer.start()
 		isNight = true
-		print("setNight")
 	
 
 func updateDayCycle():
-	var newColor = Color(currentColorR,currentColorG,currentColorB,nightColorA)
-	DayNightCycle.color = newColor
+	#var newColor = Color(currentColorR,currentColorG,currentColorB,nightColorA)
+	#DayNightCycle.color = newColor
+	pass

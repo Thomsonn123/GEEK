@@ -3,8 +3,11 @@ extends KinematicBody2D
 export var walkingSpeed = 200
 export var sprintSpeed = 300
 var Robot1 = null
+var hp = 100
 
 onready var overWorld = get_node("..")
+export(NodePath) var localLightPath
+export(NodePath) var sun
 
 var animUp = preload("res://Graphics/SpriteFrames/PlayerUp.tres") 
 var animDown = preload("res://Graphics/SpriteFrames/PlayerDown.tres")
@@ -14,14 +17,20 @@ var animDownRight = preload("res://Graphics/SpriteFrames/PlayerDownRight.tres")
 var speed
 var action = null 
 var actionName = null
+var localLight
+var isDay = true
 
 #tutorials made
 var MonitTutorial = false
+var startPosition:Vector2 = Vector2()
 
 func _ready():
+	$Shadow/ShadowAnimations.rotation_degrees = -90
+	localLight = get_node(sun)
 	$DevTree.visible = false
 	$RobotHackGame.visible = false
 	tutHelp("Witaj w grze")
+	startPosition = self.position
 
 func _input(_event):
 	if Input.is_action_pressed("action_key"):
@@ -32,8 +41,16 @@ func _input(_event):
 		if $DevTree.visible == false:
 			$DevTree.setPage(0)
 	
+	
 
 func _process(_delta):
+	
+	$Shadow/ShadowAnimations.frames = $PlayerAnimations.frames
+	$Shadow/ShadowAnimations.frame = $PlayerAnimations.frame
+	$Shadow/ShadowAnimations.speed_scale = $PlayerAnimations.speed_scale
+	$Shadow/ShadowAnimations.playing = $PlayerAnimations.playing
+	if localLight != null:
+		$Shadow.look_at(localLight.global_position)
 	var vel = Vector2()
 	if Input.is_action_pressed("ui_sprint"):
 		speed = sprintSpeed
@@ -45,11 +62,14 @@ func _process(_delta):
 	if Input.is_action_pressed("ui_left"):
 		vel.x -= 1
 		$PlayerAnimations.frames = animRight
+		$Shadow/ShadowAnimations.flip_h = true
+		$Shadow/ShadowAnimations.flip_h = false
 		$PlayerAnimations.flip_h = true
 		$PlayerAnimations.playing = true
 	elif Input.is_action_pressed("ui_right"):
 		$PlayerAnimations.frames = animRight
 		$PlayerAnimations.flip_h = false
+		$Shadow/ShadowAnimations.flip_h = true
 		$PlayerAnimations.playing = true
 		vel.x += 1
 	else:
@@ -61,23 +81,28 @@ func _process(_delta):
 		vel.y -= 1
 		$PlayerAnimations.frames = animUp
 		$PlayerAnimations.flip_h = false
+		$Shadow/ShadowAnimations.flip_h = true
 		if Input.is_action_pressed("ui_right"):
 			$PlayerAnimations.frames = animUpRight
 			$PlayerAnimations.flip_h = false
+			$Shadow/ShadowAnimations.flip_h = true
 		if Input.is_action_pressed("ui_left"):
 			$PlayerAnimations.frames = animUpRight
 			$PlayerAnimations.flip_h = true		
+			$Shadow/ShadowAnimations.flip_h = false
 		$PlayerAnimations.playing = true
 	elif Input.is_action_pressed("ui_down"):
 		vel.y += 1
 		$PlayerAnimations.frames = animDown
 		$PlayerAnimations.playing = true
 		$PlayerAnimations.flip_h = false
+		$Shadow/ShadowAnimations.flip_h = true
 		if Input.is_action_pressed("ui_right"):
 			$PlayerAnimations.frames = animDownRight
 		if Input.is_action_pressed("ui_left"):
 			$PlayerAnimations.frames = animDownRight
 			$PlayerAnimations.flip_h = true
+			$Shadow/ShadowAnimations.flip_h = false
 	else:
 		if $PlayerAnimations.frames == animDown:
 			$PlayerAnimations.frame = 30
@@ -94,6 +119,8 @@ func _process(_delta):
 
 func _fixed_process():
 	#print(Engine.get_frames_per_second())
+	if hp <= 0:
+		restartGame()
 	pass
 
 func changeStatus(text):
@@ -130,3 +157,10 @@ func bodyOut():
 	Robot1 = null
 	$RobotHackGame.visible = false
 	$RobotHackGame.robot = null
+
+func restartGame():
+	
+	pass
+
+func dealDamage(value):
+	hp -= value

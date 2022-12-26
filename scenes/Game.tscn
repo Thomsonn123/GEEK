@@ -11,6 +11,7 @@
 script = ExtResource( 4 )
 
 [node name="Map" parent="." instance=ExtResource( 1 )]
+position = Vector2( 19, 22 )
 scale = Vector2( 2, 2 )
 
 [node name="Enemy1" type="Node2D" parent="."]
@@ -23,6 +24,7 @@ Robot = NodePath("../Robot1")
 position = Vector2( -1920, 1488 )
 place1 = Vector2( -1920, 736 )
 place2 = Vector2( -1920, 1488 )
+sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Enemy2" type="Node2D" parent="."]
 
@@ -34,6 +36,7 @@ Robot = NodePath("../Robot2")
 position = Vector2( -1352, 2096 )
 place1 = Vector2( -1352, 2096 )
 place2 = Vector2( -680, 1448 )
+sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Enemy3" type="Node2D" parent="."]
 
@@ -45,6 +48,7 @@ Robot = NodePath("../Robot3")
 position = Vector2( -1728, 2952 )
 place1 = Vector2( -1728, 1656 )
 place2 = Vector2( -1728, 2952 )
+sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Enemy4" type="Node2D" parent="."]
 
@@ -56,6 +60,7 @@ Robot = NodePath("../Robot4")
 position = Vector2( -1792, 560 )
 place1 = Vector2( -1784, -864 )
 place2 = Vector2( -1792, 560 )
+sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Enemy5" type="Node2D" parent="."]
 
@@ -67,6 +72,7 @@ Robot = NodePath("../Robot5")
 position = Vector2( 312, 3128 )
 place1 = Vector2( 2432, 3128 )
 place2 = Vector2( 312, 3128 )
+sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Enemy6" type="Node2D" parent="."]
 
@@ -78,6 +84,7 @@ Robot = NodePath("../Robot5")
 position = Vector2( 3640, 528 )
 place1 = Vector2( 3648, 528 )
 place2 = Vector2( 3648, 2640 )
+sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Enemy7" type="Node2D" parent="."]
 
@@ -89,33 +96,24 @@ Robot = NodePath("../Robot5")
 position = Vector2( 2056, -896 )
 place1 = Vector2( 2056, -888 )
 place2 = Vector2( 3472, -888 )
-
-[node name="Light2D" type="Light2D" parent="."]
-position = Vector2( -1172, 2638 )
-texture = ExtResource( 6 )
-texture_scale = 0.15
-shadow_enabled = true
-shadow_color = Color( 0, 0, 0, 0.647059 )
-shadow_gradient_length = 4096.0
-shadow_filter_smooth = 2.3
+sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( -2980, 1153 )
 __meta__ = {
 "_edit_group_": true
 }
+localLightPath = NodePath("../Lights/SunCenter/Sun")
+sun = NodePath("../Lights/SunCenter/Sun")
 
-[node name="DayNight" type="Node2D" parent="."]
+[node name="Lights" type="Node2D" parent="."]
 
-[node name="CanvasModulate" type="CanvasModulate" parent="DayNight"]
+[node name="SunCenter" type="Node2D" parent="Lights"]
+rotation = 1.96
 
-[node name="NightTimer" type="Timer" parent="DayNight"]
-
-[node name="DayTimer" type="Timer" parent="DayNight"]
-
-[node name="ChangeTimer" type="Timer" parent="DayNight"]
-one_shot = true
-
-[connection signal="timeout" from="DayNight/NightTimer" to="." method="NightAdd"]
-[connection signal="timeout" from="DayNight/DayTimer" to="." method="DayAdd"]
-[connection signal="timeout" from="DayNight/ChangeTimer" to="." method="change"]
+[node name="Sun" type="Light2D" parent="Lights/SunCenter"]
+position = Vector2( -4102, 1251 )
+rotation = 5.6793
+texture = ExtResource( 6 )
+texture_scale = 10.0
+energy = 0.5

@@ -6,23 +6,31 @@ export var place2 = Vector2()
 export var walkingSpeed = 100
 export var sprintSpeed = 200
 var hackingTimeDelay = 10
-
+var damage = 10
+var PlayerInCollision
 export var seePlayer = false
 var walking = false
-
 var movePosition = place1
 var lastMove
 var lastPosition = null
 var reversion = false
-export var isHacked = false
+var isDay = true
+var localLight
 
+
+export var isHacked = false
+export(NodePath) var sun
 onready var player = get_node("../../Player")
 
 func _ready():
+	$Shadow.rotation_degrees = -90
 	walking = true
 	self.position = place2
 
+
 func _process(delta):
+	if isDay:
+		localLight = get_node(sun)
 	if isHacked:
 		pass
 	elif seePlayer:
@@ -32,7 +40,6 @@ func _process(delta):
 			movePosition = lastPosition
 			reversion = false
 		elif lastPosition != null and self.position == lastPosition:
-			print("work")
 			movePosition = lastMove
 			lastPosition = null
 			lastMove = null
@@ -41,6 +48,7 @@ func _process(delta):
 		elif self.position == place2:
 			movePosition = place1
 		self.position = position.move_toward(movePosition, delta * walkingSpeed)
+	$Shadow.look_at(localLight.global_position)
 	
 
 func _on_Area2D_body_entered(body:Node):
@@ -61,9 +69,10 @@ func hacked():
 func timeHacked():
 	$HackingTimer.wait_time = hackingTimeDelay
 	$HackingTimer.start()
-	print("Timer started")
 	isHacked = true
 
 func hackingTimerTimeout():
 	isHacked = false
 	$HackingTimer.stop()
+
+		
