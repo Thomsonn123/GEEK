@@ -5,7 +5,11 @@ export var hackingTime = 10
 export var tilesShowTime = 1
 export var maxTiles = 4
 var showedTiles = 0
+var morePointsSkills = 0.3
+var changeSpeed = 0.1
 export var attackType = 2
+export var experiencePointsAfterHacking = 100
+export(NodePath) var player
 
 var robot = null
 var tileContainer = null
@@ -72,6 +76,7 @@ func restartGame():
 	$Timer.start()
 
 func finishHack():
+	get_node(player).experience += experiencePointsAfterHacking
 	hackedGame()
 	$GameTimer.stop()
 	$Timer.stop()
@@ -93,3 +98,23 @@ func hackedGame():
 			get_node(robot).hacked()
 		elif attackType == 2:
 			get_node(robot).timeHacked()
+
+func upgradeHackingSpeed(value):
+	hackingTime -= value
+
+func upgradeHackingTiles(value):
+	tilesShowTime += value
+
+func setTypeOfAttack():
+	if attackType == 1:
+		attackType = 2
+	else:
+		attackType = 1
+
+func changeSpeedAtHacking():
+	robot.walkingSpeed -= robot.walkingSpeed * changeSpeed
+
+func morePointsPerHacking():
+	experiencePointsAfterHacking += int(experiencePointsAfterHacking * morePointsSkills)
+	print(experiencePointsAfterHacking)
+

@@ -1,16 +1,15 @@
 extends StaticBody2D
 
-export(NodePath) var lightPosition = null
-
-var textureImage = Image.new()
-var textureBitmap = BitMap.new()
-
+export(NodePath) var light
+export var shadow_start_color = Color.black
+export var shadow_end_color = Color(0, 0, 0, 0)
+var localLight
 func _ready():
-	textureImage = $Sprite.texture.get_data()
-	textureBitmap.create_from_image_alpha(textureImage)
-	var rect = Rect2(position.x, position.y, textureImage.get_width(), textureImage.get_height())
-	var polygonsArray = textureBitmap.opaque_to_polygons(rect)
-	var my_polygon = OccluderPolygon2D.new()
-	my_polygon.set_polygon(polygonsArray)
-	$LightOccluder2D.occluder = my_polygon
+	if localLight == null:
+		localLight = get_node(light)
+
+func _process(_delta):
+	$Shadow.look_at(localLight.global_position)
+
+	
 

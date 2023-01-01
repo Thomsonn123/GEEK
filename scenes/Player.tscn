@@ -21,7 +21,7 @@ extents = Vector2( 32, 48 )
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 7 )
-shader_param/modulate = null
+shader_param/modulate = Color( 0, 0, 0, 0.521569 )
 
 [sub_resource type="DynamicFont" id=4]
 font_data = ExtResource( 204 )
@@ -65,11 +65,11 @@ wait_time = 2.0
 shape = SubResource( 3 )
 
 [node name="Shadow" type="Node2D" parent="."]
-position = Vector2( 0, 27 )
+position = Vector2( 0, 32 )
 
 [node name="ShadowAnimations" type="AnimatedSprite" parent="Shadow"]
 material = SubResource( 7 )
-position = Vector2( -48, 2 )
+position = Vector2( -51, -11 )
 rotation = -1.5708
 scale = Vector2( 0.143245, 0.133 )
 frames = ExtResource( 2 )
@@ -107,6 +107,7 @@ robotHacks = NodePath("../RobotHackGame")
 [node name="RobotHackGame" parent="." instance=ExtResource( 5 )]
 visible = false
 position = Vector2( -632, -328 )
+player = NodePath("..")
 
 [connection signal="timeout" from="Camera2D/Label/Timer" to="." method="_tutHelp_Timeout"]
 [connection signal="timeout" from="Status/Timer" to="." method="_on_Timer_timeout"]

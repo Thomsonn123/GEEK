@@ -4,6 +4,13 @@ export var walkingSpeed = 200
 export var sprintSpeed = 300
 var Robot1 = null
 var hp = 100
+var experiencePoints = 0
+
+#inventory
+export var herbs = [0,0]
+export var chemistry = []
+
+
 
 onready var overWorld = get_node("..")
 export(NodePath) var localLightPath
@@ -40,6 +47,7 @@ func _input(_event):
 		$DevTree.visible = !$DevTree.visible
 		if $DevTree.visible == false:
 			$DevTree.setPage(0)
+			$DevTree.experiencePoints = experiencePoints
 	
 	
 

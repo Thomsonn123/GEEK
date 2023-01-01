@@ -8,11 +8,13 @@
 [ext_resource path="res://light.png" type="Texture" id=6]
 
 [node name="Game" type="Node2D"]
+position = Vector2( 1, 0 )
 script = ExtResource( 4 )
 
 [node name="Map" parent="." instance=ExtResource( 1 )]
 position = Vector2( 19, 22 )
 scale = Vector2( 2, 2 )
+sun = NodePath("../Lights/SunCenter/Sun")
 
 [node name="Enemy1" type="Node2D" parent="."]
 
@@ -57,9 +59,9 @@ position = Vector2( -2216, -72 )
 Robot = NodePath("../Robot4")
 
 [node name="Robot4" parent="Enemy4" instance=ExtResource( 2 )]
-position = Vector2( -1792, 560 )
+position = Vector2( -1772, 434 )
 place1 = Vector2( -1784, -864 )
-place2 = Vector2( -1792, 560 )
+place2 = Vector2( -1792, 434 )
 sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Enemy5" type="Node2D" parent="."]
@@ -99,7 +101,7 @@ place2 = Vector2( 3472, -888 )
 sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( -2980, 1153 )
+position = Vector2( -1181, 2337 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -112,6 +114,7 @@ sun = NodePath("../Lights/SunCenter/Sun")
 rotation = 1.96
 
 [node name="Sun" type="Light2D" parent="Lights/SunCenter"]
+visible = false
 position = Vector2( -4102, 1251 )
 rotation = 5.6793
 texture = ExtResource( 6 )

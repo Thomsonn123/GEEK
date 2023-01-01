@@ -16,6 +16,7 @@ var lastPosition = null
 var reversion = false
 var isDay = true
 var localLight
+var attack = false
 
 
 export var isHacked = false
@@ -33,6 +34,8 @@ func _process(delta):
 		localLight = get_node(sun)
 	if isHacked:
 		pass
+	if attack:
+		self.position = self.position
 	elif seePlayer:
 		self.position = position.move_toward(player.position, delta * sprintSpeed)
 	else:
@@ -75,4 +78,10 @@ func hackingTimerTimeout():
 	isHacked = false
 	$HackingTimer.stop()
 
+func walkInPlayerAttack(body:Node):
+	if body.name == "Player":
+		attack = true
+func walkOutPlayerAttack(body:Node):
+	if body.name == "Player":
+		attack = false
 		

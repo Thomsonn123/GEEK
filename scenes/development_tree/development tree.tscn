@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Graphics/devTree/background.png" type="Texture" id=1]
 [ext_resource path="res://fonts/Aclonica Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://scripts/development tree.gd" type="Script" id=3]
+[ext_resource path="res://fonts/RobotoSlab-Regular.ttf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 23
@@ -21,6 +22,10 @@ font_data = ExtResource( 2 )
 [sub_resource type="DynamicFont" id=3]
 size = 36
 font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 21
+font_data = ExtResource( 4 )
 
 [node name="DevTree" type="Node2D"]
 script = ExtResource( 3 )
@@ -129,91 +134,105 @@ keep_pressed_outside = true
 text = "Umiejętności hackowania"
 
 [node name="HackingSkills" type="Node2D" parent="."]
-visible = false
 
 [node name="base" type="Button" parent="HackingSkills"]
 margin_left = 96.0
 margin_top = 352.0
 margin_right = 192.0
 margin_bottom = 416.0
+text = "Start"
 
-[node name="speed5" type="Node2D" parent="HackingSkills"]
+[node name="Speed" type="Node2D" parent="HackingSkills"]
 
-[node name="speed" type="Button" parent="HackingSkills/speed5"]
+[node name="speed" type="Button" parent="HackingSkills/Speed"]
 margin_left = 352.0
 margin_top = 192.0
 margin_right = 448.0
 margin_bottom = 256.0
+disabled = true
 
-[node name="speed2" type="Button" parent="HackingSkills/speed5"]
+[node name="speed2" type="Button" parent="HackingSkills/Speed"]
 margin_left = 544.0
 margin_top = 192.0
 margin_right = 640.0
 margin_bottom = 256.0
+disabled = true
 
-[node name="speed3" type="Button" parent="HackingSkills/speed5"]
+[node name="speed3" type="Button" parent="HackingSkills/Speed"]
 margin_left = 736.0
 margin_top = 192.0
 margin_right = 832.0
 margin_bottom = 256.0
+disabled = true
 
-[node name="speed4" type="Button" parent="HackingSkills/speed5"]
+[node name="speed4" type="Button" parent="HackingSkills/Speed"]
 margin_left = 928.0
 margin_top = 192.0
 margin_right = 1024.0
 margin_bottom = 256.0
+disabled = true
 
 [node name="Combat" type="Node2D" parent="HackingSkills"]
 
-[node name="base2" type="Button" parent="HackingSkills/Combat"]
+[node name="base" type="Button" parent="HackingSkills/Combat"]
 margin_left = 352.0
 margin_top = 352.0
 margin_right = 448.0
 margin_bottom = 416.0
+disabled = true
 
 [node name="base3" type="Button" parent="HackingSkills/Combat"]
 margin_left = 544.0
 margin_top = 352.0
 margin_right = 640.0
 margin_bottom = 416.0
+disabled = true
 
 [node name="base4" type="Button" parent="HackingSkills/Combat"]
 margin_left = 736.0
 margin_top = 352.0
 margin_right = 832.0
 margin_bottom = 416.0
+disabled = true
 
 [node name="base5" type="Button" parent="HackingSkills/Combat"]
 margin_left = 928.0
 margin_top = 352.0
 margin_right = 1024.0
 margin_bottom = 416.0
+disabled = true
 
-[node name="Combat2" type="Node2D" parent="HackingSkills"]
+[node name="HackingType" type="Node2D" parent="HackingSkills"]
 
-[node name="base2" type="Button" parent="HackingSkills/Combat2"]
+[node name="base2" type="Button" parent="HackingSkills/HackingType"]
 margin_left = 352.0
 margin_top = 512.0
 margin_right = 448.0
 margin_bottom = 576.0
+disabled = true
+text = "change speed"
 
-[node name="base3" type="Button" parent="HackingSkills/Combat2"]
+[node name="base3" type="Button" parent="HackingSkills/HackingType"]
 margin_left = 544.0
 margin_top = 512.0
 margin_right = 640.0
 margin_bottom = 576.0
+disabled = true
+text = "more points"
 
-[node name="base4" type="Button" parent="HackingSkills/Combat2"]
+[node name="base4" type="Button" parent="HackingSkills/HackingType"]
 margin_left = 736.0
 margin_top = 512.0
 margin_right = 832.0
 margin_bottom = 576.0
+disabled = true
 
-[node name="base5" type="Button" parent="HackingSkills/Combat2"]
+[node name="base5" type="Button" parent="HackingSkills/HackingType"]
 margin_left = 928.0
 margin_top = 512.0
 margin_right = 1024.0
 margin_bottom = 576.0
+disabled = true
 
 [node name="CombatSkills" type="Node2D" parent="."]
 visible = false
@@ -221,8 +240,18 @@ visible = false
 [node name="WeaponSkills" type="Node2D" parent="."]
 visible = false
 
+[node name="Label" type="Label" parent="."]
+margin_left = 928.0
+margin_top = 64.0
+margin_right = 1137.0
+margin_bottom = 96.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "Punkty"
+
 [connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="MenuButton2" to="." method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="Menu/CombatSkills" to="." method="_on_CombatSkills_pressed"]
 [connection signal="pressed" from="Menu/WeaponsSkills" to="." method="_on_WeaponsSkills_pressed"]
 [connection signal="pressed" from="Menu/HackingSkills" to="." method="_on_HackingSkills_pressed"]
+[connection signal="pressed" from="HackingSkills/base" to="." method="clicked" binds= [ "Base", 0 ]]
