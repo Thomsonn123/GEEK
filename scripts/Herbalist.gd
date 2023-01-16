@@ -1,7 +1,8 @@
 extends Node2D
 
 export var quests = {
-	"first quest": ["hallo"]
+	"1 quest": ["Bring 1 rock", 1],
+	"2 quest": ["n", 0]
 }
 
 func get_action():

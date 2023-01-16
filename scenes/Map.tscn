@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Graphics/Map1/tilemapONGROUND.png" type="Texture" id=1]
 [ext_resource path="res://Graphics/Map1/tilemapsGround.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/Bench.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Pine.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Graphics/Map1/light.png" type="Texture" id=8]
+[ext_resource path="res://scenes/Melisa.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/DarkWoodenHouse.tscn" type="PackedScene" id=54]
 
 [sub_resource type="TileSet" id=4]
@@ -179,7 +180,7 @@ script = ExtResource( 3 )
 position = Vector2( -204.5, -171.75 )
 scale = Vector2( 1.85192, 1.11005 )
 frames = ExtResource( 4 )
-frame = 77
+frame = 45
 speed_scale = 2.0
 playing = true
 
@@ -193,7 +194,7 @@ polygon = PoolVector2Array( -217.882, 270.033, -148.765, 270.033, -148.765, 241.
 position = Vector2( -660.5, 626.875 )
 scale = Vector2( 0.73345, 1.17548 )
 frames = ExtResource( 4 )
-frame = 77
+frame = 45
 speed_scale = 2.0
 playing = true
 
@@ -207,7 +208,7 @@ polygon = PoolVector2Array( 246.097, 38.3885, 289.727, 38.3885, 289.727, 92.8344
 position = Vector2( 1265.5, -180.5 )
 scale = Vector2( 1.0993, 0.639515 )
 frames = ExtResource( 4 )
-frame = 77
+frame = 45
 speed_scale = 2.0
 playing = true
 
@@ -256,7 +257,7 @@ energy = 1.68
 shadow_enabled = true
 
 [node name="Bench" parent="." instance=ExtResource( 6 )]
-position = Vector2( 47, -65 )
+position = Vector2( 12, -67 )
 
 [node name="Woods" type="Node2D" parent="."]
 
@@ -314,3 +315,49 @@ scale = Vector2( 0.1, 0.1 )
 light = NodePath("../../../HouseRev2/Light2D")
 
 [node name="Lights" type="Node2D" parent="."]
+
+[node name="Melisa" type="Node2D" parent="."]
+
+[node name="Melisa" parent="Melisa" instance=ExtResource( 9 )]
+position = Vector2( -910, 696 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Melisa7" parent="Melisa" instance=ExtResource( 9 )]
+position = Vector2( 177, 67.0001 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Melisa8" parent="Melisa" instance=ExtResource( 9 )]
+position = Vector2( 1107, 29 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Melisa9" parent="Melisa" instance=ExtResource( 9 )]
+position = Vector2( 1669, -511 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Melisa10" parent="Melisa" instance=ExtResource( 9 )]
+position = Vector2( 624, -608 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Melisa11" parent="Melisa" instance=ExtResource( 9 )]
+position = Vector2( -825, -379 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Melisa2" parent="Melisa" instance=ExtResource( 9 )]
+position = Vector2( -402, 1231 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Melisa3" parent="Melisa" instance=ExtResource( 9 )]
+position = Vector2( 249, 1512 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Melisa4" parent="Melisa" instance=ExtResource( 9 )]
+position = Vector2( 1630, 1111 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Melisa6" parent="Melisa" instance=ExtResource( 9 )]
+position = Vector2( 1960, 1853 )
+scale = Vector2( 0.4, 0.4 )
+
+[node name="Melisa5" parent="Melisa" instance=ExtResource( 9 )]
+position = Vector2( 1148, 1239 )
+scale = Vector2( 0.4, 0.4 )

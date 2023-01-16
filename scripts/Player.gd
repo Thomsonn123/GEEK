@@ -8,8 +8,8 @@ var experiencePoints = 0
 
 #inventory
 export var herbs = [0,0]
-export var chemistry = []
-
+export var chemistry = [0, 0]
+export var mixtures = [0, 0]
 
 
 onready var overWorld = get_node("..")
@@ -48,8 +48,6 @@ func _input(_event):
 		if $DevTree.visible == false:
 			$DevTree.setPage(0)
 			$DevTree.experiencePoints = experiencePoints
-	
-	
 
 func _process(_delta):
 	
@@ -84,6 +82,7 @@ func _process(_delta):
 		if $PlayerAnimations.frames == animRight:
 			$PlayerAnimations.frame = 12
 		$PlayerAnimations.playing = false
+
 #pouszanie się góra dół
 	if Input.is_action_pressed("ui_up"):
 		vel.y -= 1
