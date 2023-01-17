@@ -1,2 +1,5 @@
 herbalist quests
 "first quest": [title, description, award, requirements]
+
+Player:
+herbs: 0 - melisa, dandelion

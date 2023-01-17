@@ -7,18 +7,18 @@ func collect():
 	if collected == false:
 		collected = true
 		$Timer.start()
-		get_node(Player).add("Melisa")
+		get_node(Player).add("Dandelion")
 		self.visible = false
 
 func timerFinish():
 	collected = false
 	self.visible = true
 
-func _on_Melisa_body_entered(body:Node):
+func _on_Dandelion_body_entered(body:Node):
 	if body.name == "Player":
 		body.entity = self.get_path()
 
 
-func _on_Melisa_body_exited(body:Node):
+func _on_Dandelion_body_exited(body:Node):
 	if body.name == "Player":
 		body.entity = null

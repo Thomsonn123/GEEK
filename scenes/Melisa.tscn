@@ -19,3 +19,7 @@ polygon = PoolVector2Array( -190.5, -301.3, -190.5, -299.5, -182.5, -293.5, -179
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
+
+[connection signal="body_entered" from="." to="." method="_on_Melisa_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_Melisa_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="timerFinish"]

@@ -5,9 +5,10 @@ export var sprintSpeed = 300
 var Robot1 = null
 var hp = 100
 var experiencePoints = 0
+var entity = null
 
 #inventory
-export var herbs = [0,0]
+export var herbs = [0,0,0]
 export var chemistry = [0, 0]
 export var mixtures = [0, 0]
 
@@ -43,6 +44,9 @@ func _input(_event):
 	if Input.is_action_pressed("action_key"):
 		if action != null and "Monitor" in actionName:
 			$RobotHackGame.start()
+		elif entity != null:
+			var collect = get_node(entity)
+			collect.collect()
 	if Input.is_action_just_pressed("DevTree"):
 		$DevTree.visible = !$DevTree.visible
 		if $DevTree.visible == false:
@@ -164,6 +168,15 @@ func bodyOut():
 	Robot1 = null
 	$RobotHackGame.visible = false
 	$RobotHackGame.robot = null
+func add(value):
+	if value == "Melisa":
+		herbs[0] += 1
+	elif value == "Dandelion":
+		herbs[1] += 1
+	elif value == "Poppy":
+		herbs[2] += 1
+	print(herbs)
+
 
 func restartGame():
 	
