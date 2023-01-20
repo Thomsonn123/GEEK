@@ -108,7 +108,7 @@ place2 = Vector2( 3472, -888 )
 sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Herbalist" parent="." instance=ExtResource( 7 )]
-position = Vector2( 754, 1831 )
+position = Vector2( 747, 1841 )
 
 [node name="Melisa" type="Node2D" parent="."]
 
@@ -349,16 +349,44 @@ position = Vector2( -1606, 1648 )
 Player = NodePath("../../Player")
 
 [node name="Poppy4" parent="Poppy" instance=ExtResource( 10 )]
-position = Vector2( -2625, 1277 )
+position = Vector2( -560, 3311 )
 Player = NodePath("../../Player")
 
-[node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( -2870, 1171 )
-__meta__ = {
-"_edit_group_": true
-}
-localLightPath = NodePath("../Lights/SunCenter/Sun")
-sun = NodePath("../Lights/SunCenter/Sun")
+[node name="Poppy5" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -174, 3387 )
+Player = NodePath("../../Player")
+
+[node name="Poppy6" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 630, 3005 )
+Player = NodePath("../../Player")
+
+[node name="Poppy7" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 1286, 3014 )
+Player = NodePath("../../Player")
+
+[node name="Poppy8" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 1820, 3018 )
+Player = NodePath("../../Player")
+
+[node name="Poppy9" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 2664, 2781 )
+Player = NodePath("../../Player")
+
+[node name="Poppy10" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 2669, 2489 )
+Player = NodePath("../../Player")
+
+[node name="Poppy11" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 2949, 2534 )
+Player = NodePath("../../Player")
+
+[node name="Poppy12" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 2987, 2728 )
+Player = NodePath("../../Player")
+
+[node name="Poppy13" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 3128, 2471 )
+Player = NodePath("../../Player")
 
 [node name="Lights" type="Node2D" parent="."]
 
@@ -373,5 +401,11 @@ texture = ExtResource( 6 )
 texture_scale = 10.0
 energy = 0.5
 
-[node name="cutscenes" type="Node2D" parent="."]
-position = Vector2( -168, 614 )
+[node name="Player" parent="." instance=ExtResource( 5 )]
+position = Vector2( -2870, 1171 )
+__meta__ = {
+"_edit_group_": true
+}
+localLightPath = NodePath("../Lights/SunCenter/Sun")
+sun = NodePath("../Lights/SunCenter/Sun")
+map = NodePath("../Map")

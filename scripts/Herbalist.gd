@@ -1,9 +1,14 @@
-extends Node2D
+extends KinematicBody2D
 
-export var quests = {
-	"1 quest": ["Bring 1 rock", 1],
-	"2 quest": ["n", 0]
-}
+export(NodePath) var Player
 
-func get_action():
-	pass
+func body_entered(body:Node):
+	print(body)
+	if body.name == "Player":
+		body.actionName = "Herbalist"
+		body.action = "Herbalist"
+
+func body_exited(body:Node):
+	if body.name == "Player":
+		body.actionName = null
+		body.action = null

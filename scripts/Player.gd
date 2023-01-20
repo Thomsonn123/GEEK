@@ -16,6 +16,7 @@ export var mixtures = [0, 0]
 onready var overWorld = get_node("..")
 export(NodePath) var localLightPath
 export(NodePath) var sun
+export(NodePath) var map
 
 var animUp = preload("res://Graphics/SpriteFrames/PlayerUp.tres") 
 var animDown = preload("res://Graphics/SpriteFrames/PlayerDown.tres")
@@ -44,6 +45,9 @@ func _input(_event):
 	if Input.is_action_pressed("action_key"):
 		if action != null and "Monitor" in actionName:
 			$RobotHackGame.start()
+		elif action != null and "Herbalist" in actionName:
+			$HerbalistGUI.visible = !$HerbalistGUI.visible
+			get_node(map).houseRev2Light(!$HerbalistGUI.visible)
 		elif entity != null:
 			var collect = get_node(entity)
 			collect.collect()
@@ -52,6 +56,9 @@ func _input(_event):
 		if $DevTree.visible == false:
 			$DevTree.setPage(0)
 			$DevTree.experiencePoints = experiencePoints
+	if $HerbalistGUI.visible and action == null:
+		$HerbalistGUI.visible = false
+		get_node(map).houseRev2Light(!$HerbalistGUI.visible)
 
 func _process(_delta):
 	
@@ -168,6 +175,7 @@ func bodyOut():
 	Robot1 = null
 	$RobotHackGame.visible = false
 	$RobotHackGame.robot = null
+
 func add(value):
 	if value == "Melisa":
 		herbs[0] += 1
@@ -176,8 +184,7 @@ func add(value):
 	elif value == "Poppy":
 		herbs[2] += 1
 	print(herbs)
-
-
+ 
 func restartGame():
 	
 	pass
