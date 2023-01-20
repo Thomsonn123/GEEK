@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/SpriteFrames/PlayerDown.tres" type="SpriteFrames" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://fonts/ZenDots-Regular.ttf" type="DynamicFontData" id=6]
 [ext_resource path="res://silouette.shader" type="Shader" id=7]
 [ext_resource path="res://scenes/HerbalistGUI.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Graphics/devTree/coin.png" type="Texture" id=9]
 [ext_resource path="res://fonts/RobotoSlab-Regular.ttf" type="DynamicFontData" id=204]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -32,7 +33,7 @@ font_data = ExtResource( 6 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
-herbs = [ 10, 10, 10 ]
+herbs = [ 30, 30, 30 ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 40 )
@@ -95,10 +96,23 @@ valign = 1
 [node name="FPS" type="Label" parent="."]
 margin_left = 104.0
 margin_top = -176.0
-margin_right = 233.0
-margin_bottom = -128.0
+margin_right = 172.0
+margin_bottom = -149.0
 custom_fonts/font = SubResource( 6 )
-text = "BLABLABLA"
+text = "FPS"
+
+[node name="Money" type="Label" parent="."]
+margin_left = 304.0
+margin_top = -193.0
+margin_right = 373.0
+margin_bottom = -173.0
+custom_fonts/font = SubResource( 6 )
+text = "money"
+
+[node name="Sprite" type="Sprite" parent="Money"]
+position = Vector2( -39, 11 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 9 )
 
 [node name="DevTree" parent="." instance=ExtResource( 4 )]
 visible = false

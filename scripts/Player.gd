@@ -53,6 +53,8 @@ func _input(_event):
 		elif entity != null:
 			var collect = get_node(entity)
 			collect.collect()
+		else:
+			self.position = Vector2(390, 2222)
 	if Input.is_action_just_pressed("DevTree"):
 		if !$HerbalistGUI.visible:
 			$DevTree.visible = !$DevTree.visible
@@ -64,7 +66,7 @@ func _input(_event):
 		get_node(map).houseRev2Light(!$HerbalistGUI.visible)
 
 func _process(_delta):
-	
+	$Money.text = str(money)
 	$Shadow/ShadowAnimations.frames = $PlayerAnimations.frames
 	$Shadow/ShadowAnimations.frame = $PlayerAnimations.frame
 	$Shadow/ShadowAnimations.speed_scale = $PlayerAnimations.speed_scale

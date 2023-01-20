@@ -2,6 +2,11 @@ extends Area2D
 
 var collected = false
 export(NodePath) var Player = null
+var time = 20
+
+func _ready():
+	$Timer.wait_time = time
+
 
 func collect():
 	if collected == false:

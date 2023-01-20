@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Graphics/devTree/background.png" type="Texture" id=1]
 [ext_resource path="res://fonts/Aclonica Regular.ttf" type="DynamicFontData" id=2]
@@ -12,10 +12,17 @@
 size = 50
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=3]
+size = 20
+font_data = ExtResource( 2 )
+
 [sub_resource type="StyleBoxTexture" id=2]
 
 [node name="HerbalistGUI" type="Node2D"]
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [  ]
+}
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 640.337, 358.817 )
@@ -32,15 +39,68 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Zielarz"
 
+[node name="Page" type="Button" parent="."]
+margin_left = 1021.0
+margin_top = 61.0
+margin_right = 1152.0
+margin_bottom = 126.0
+custom_fonts/font = SubResource( 3 )
+text = "ss"
+
+[node name="EQ" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="EQ"]
+margin_left = 149.0
+margin_top = 70.0
+margin_right = 189.0
+margin_bottom = 103.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "0"
+
+[node name="Melisa" type="Sprite" parent="EQ/Label"]
+position = Vector2( -49, 9 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+
+[node name="Label2" type="Label" parent="EQ"]
+margin_left = 278.0
+margin_top = 70.0
+margin_right = 318.0
+margin_bottom = 103.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "0"
+
+[node name="Dandelion" type="Sprite" parent="EQ/Label2"]
+position = Vector2( -50, 9 )
+scale = Vector2( 0.256, 0.256 )
+texture = ExtResource( 6 )
+
+[node name="Label3" type="Label" parent="EQ"]
+margin_left = 427.0
+margin_top = 70.0
+margin_right = 467.0
+margin_bottom = 103.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "0"
+
+[node name="Poppy" type="Sprite" parent="EQ/Label3"]
+position = Vector2( -59, 9 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 7 )
+
 [node name="Quests" type="Node2D" parent="."]
+visible = false
 
 [node name="Quest1" type="Node2D" parent="Quests"]
 
 [node name="Label" type="Label" parent="Quests/Quest1"]
-margin_left = 100.0
-margin_top = 190.0
-margin_right = 322.0
-margin_bottom = 223.0
+margin_left = 66.0
+margin_top = 189.0
+margin_right = 288.0
+margin_bottom = 222.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Zerwij 5 melis"
@@ -84,10 +144,10 @@ text = "Zadanie zakończone"
 position = Vector2( 0, 80 )
 
 [node name="Label" type="Label" parent="Quests/Quest2"]
-margin_left = 100.0
-margin_top = 190.0
-margin_right = 362.0
-margin_bottom = 223.0
+margin_left = 66.0
+margin_top = 189.0
+margin_right = 328.0
+margin_bottom = 222.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Zerwij 1 mniszek"
@@ -131,10 +191,10 @@ text = "Zadanie zakończone"
 position = Vector2( 0, 160 )
 
 [node name="Label" type="Label" parent="Quests/Quest3"]
-margin_left = 100.0
-margin_top = 190.0
-margin_right = 349.0
-margin_bottom = 223.0
+margin_left = 66.0
+margin_top = 189.0
+margin_right = 315.0
+margin_bottom = 222.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Zerwij 7 maków"
@@ -175,13 +235,13 @@ custom_fonts/font = ExtResource( 4 )
 text = "Zadanie zakończone"
 
 [node name="Quest4" type="Node2D" parent="Quests"]
-position = Vector2( 0, 237 )
+position = Vector2( 0, 240 )
 
 [node name="Label" type="Label" parent="Quests/Quest4"]
-margin_left = 100.0
-margin_top = 190.0
-margin_right = 507.0
-margin_bottom = 259.0
+margin_left = 66.0
+margin_top = 189.0
+margin_right = 473.0
+margin_bottom = 258.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Zerwij 4 melisy i 7 maków
@@ -239,7 +299,76 @@ custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_fonts/font = ExtResource( 4 )
 text = "Zadanie zakończone"
 
+[node name="Quest5" type="Node2D" parent="Quests"]
+position = Vector2( 0, 320 )
+
+[node name="Label" type="Label" parent="Quests/Quest5"]
+margin_left = 66.0
+margin_top = 189.0
+margin_right = 513.0
+margin_bottom = 258.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Zerwij 5 mniszkówi 2 melisy
+"
+
+[node name="Label2" type="Label" parent="Quests/Quest5"]
+margin_left = 550.0
+margin_top = 190.0
+margin_right = 772.0
+margin_bottom = 223.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "5 x"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Quests/Quest5/Label2"]
+position = Vector2( 96, 13 )
+scale = Vector2( 0.256, 0.256 )
+texture = ExtResource( 6 )
+
+[node name="Label2" type="Label" parent="Quests/Quest5/Label2"]
+margin_left = 144.0
+margin_top = 2.0
+margin_right = 366.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "2 x"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Quests/Quest5/Label2/Label2"]
+position = Vector2( 96, 13 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+
+[node name="Button" type="Button" parent="Quests/Quest5"]
+margin_left = 995.0
+margin_top = 186.0
+margin_right = 1109.0
+margin_bottom = 220.0
+custom_styles/disabled = SubResource( 2 )
+text = "Odbierz"
+
+[node name="Label3" type="Label" parent="Quests/Quest5"]
+margin_left = 859.0
+margin_top = 206.0
+margin_right = 1196.0
+margin_bottom = 239.0
+rect_rotation = -6.60478
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Zadanie zakończone"
+
+[node name="Shop" type="Node2D" parent="."]
+
+[connection signal="pressed" from="Page" to="." method="changePage"]
 [connection signal="pressed" from="Quests/Quest1/Button" to="." method="GetWin" binds= [ "quest1" ]]
 [connection signal="pressed" from="Quests/Quest2/Button" to="." method="GetWin" binds= [ "quest2" ]]
 [connection signal="pressed" from="Quests/Quest3/Button" to="." method="GetWin" binds= [ "quest3" ]]
 [connection signal="pressed" from="Quests/Quest4/Button" to="." method="GetWin" binds= [ "quest4" ]]
+[connection signal="pressed" from="Quests/Quest5/Button" to="." method="GetWin" binds= [ "quest5" ]]

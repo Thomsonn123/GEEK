@@ -402,10 +402,11 @@ texture_scale = 10.0
 energy = 0.5
 
 [node name="Player" parent="." instance=ExtResource( 5 )]
-position = Vector2( -397, 2428 )
+position = Vector2( -2974, 1175 )
 __meta__ = {
 "_edit_group_": true
 }
+herbs = [ 0, 0, 0 ]
 localLightPath = NodePath("../Lights/SunCenter/Sun")
 sun = NodePath("../Lights/SunCenter/Sun")
 map = NodePath("../Map")
