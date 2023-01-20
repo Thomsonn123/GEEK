@@ -32,6 +32,7 @@ font_data = ExtResource( 6 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+herbs = [ 10, 10, 10 ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 40 )
@@ -115,6 +116,7 @@ player = NodePath("..")
 visible = false
 position = Vector2( -384, -218 )
 scale = Vector2( 0.6, 0.6 )
+Player = NodePath("..")
 
 [connection signal="timeout" from="Camera2D/Label/Timer" to="." method="_tutHelp_Timeout"]
 [connection signal="timeout" from="Status/Timer" to="." method="_on_Timer_timeout"]

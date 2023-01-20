@@ -6,6 +6,7 @@ var Robot1 = null
 var hp = 100
 var experiencePoints = 0
 var entity = null
+var money = 0
 
 #inventory
 export var herbs = [0,0,0]
@@ -42,20 +43,22 @@ func _ready():
 	startPosition = self.position
 
 func _input(_event):
-	if Input.is_action_pressed("action_key"):
+	if Input.is_action_just_pressed("action_key"):
 		if action != null and "Monitor" in actionName:
 			$RobotHackGame.start()
 		elif action != null and "Herbalist" in actionName:
 			$HerbalistGUI.visible = !$HerbalistGUI.visible
+			$HerbalistGUI.open()
 			get_node(map).houseRev2Light(!$HerbalistGUI.visible)
 		elif entity != null:
 			var collect = get_node(entity)
 			collect.collect()
 	if Input.is_action_just_pressed("DevTree"):
-		$DevTree.visible = !$DevTree.visible
-		if $DevTree.visible == false:
-			$DevTree.setPage(0)
-			$DevTree.experiencePoints = experiencePoints
+		if !$HerbalistGUI.visible:
+			$DevTree.visible = !$DevTree.visible
+			if $DevTree.visible == false:
+				$DevTree.setPage(0)
+				$DevTree.experiencePoints = experiencePoints
 	if $HerbalistGUI.visible and action == null:
 		$HerbalistGUI.visible = false
 		get_node(map).houseRev2Light(!$HerbalistGUI.visible)

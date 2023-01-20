@@ -1,13 +1,21 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Graphics/devTree/background.png" type="Texture" id=1]
 [ext_resource path="res://fonts/Aclonica Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/HerbalistGUI.gd" type="Script" id=3]
+[ext_resource path="res://fonts/development tree.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Graphics/Herbalist/Melisa/melisa.png" type="Texture" id=5]
+[ext_resource path="res://Graphics/Herbalist/dandelion.png" type="Texture" id=6]
+[ext_resource path="res://Graphics/Herbalist/poppy.png" type="Texture" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
 font_data = ExtResource( 2 )
 
+[sub_resource type="StyleBoxTexture" id=2]
+
 [node name="HerbalistGUI" type="Node2D"]
+script = ExtResource( 3 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 640.337, 358.817 )
@@ -24,4 +32,214 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Zielarz"
 
-[node name="Quest1" type="Node2D" parent="."]
+[node name="Quests" type="Node2D" parent="."]
+
+[node name="Quest1" type="Node2D" parent="Quests"]
+
+[node name="Label" type="Label" parent="Quests/Quest1"]
+margin_left = 100.0
+margin_top = 190.0
+margin_right = 322.0
+margin_bottom = 223.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Zerwij 5 melis"
+
+[node name="Label2" type="Label" parent="Quests/Quest1"]
+margin_left = 550.0
+margin_top = 190.0
+margin_right = 772.0
+margin_bottom = 223.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "5 x"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Quests/Quest1/Label2"]
+position = Vector2( 96, 16 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+
+[node name="Button" type="Button" parent="Quests/Quest1"]
+margin_left = 995.0
+margin_top = 186.0
+margin_right = 1109.0
+margin_bottom = 220.0
+custom_styles/disabled = SubResource( 2 )
+text = "Odbierz"
+
+[node name="Label3" type="Label" parent="Quests/Quest1"]
+margin_left = 859.0
+margin_top = 206.0
+margin_right = 1196.0
+margin_bottom = 239.0
+rect_rotation = -6.60478
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Zadanie zakończone"
+
+[node name="Quest2" type="Node2D" parent="Quests"]
+position = Vector2( 0, 80 )
+
+[node name="Label" type="Label" parent="Quests/Quest2"]
+margin_left = 100.0
+margin_top = 190.0
+margin_right = 362.0
+margin_bottom = 223.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Zerwij 1 mniszek"
+
+[node name="Label2" type="Label" parent="Quests/Quest2"]
+margin_left = 550.0
+margin_top = 190.0
+margin_right = 772.0
+margin_bottom = 223.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "1 x"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Quests/Quest2/Label2"]
+position = Vector2( 96, 13 )
+scale = Vector2( 0.256, 0.256 )
+texture = ExtResource( 6 )
+
+[node name="Button" type="Button" parent="Quests/Quest2"]
+margin_left = 995.0
+margin_top = 186.0
+margin_right = 1109.0
+margin_bottom = 220.0
+custom_styles/disabled = SubResource( 2 )
+text = "Odbierz"
+
+[node name="Label3" type="Label" parent="Quests/Quest2"]
+margin_left = 859.0
+margin_top = 206.0
+margin_right = 1196.0
+margin_bottom = 239.0
+rect_rotation = -6.60478
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Zadanie zakończone"
+
+[node name="Quest3" type="Node2D" parent="Quests"]
+position = Vector2( 0, 160 )
+
+[node name="Label" type="Label" parent="Quests/Quest3"]
+margin_left = 100.0
+margin_top = 190.0
+margin_right = 349.0
+margin_bottom = 223.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Zerwij 7 maków"
+
+[node name="Label2" type="Label" parent="Quests/Quest3"]
+margin_left = 550.0
+margin_top = 190.0
+margin_right = 772.0
+margin_bottom = 223.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "7 x"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Quests/Quest3/Label2"]
+position = Vector2( 96, 13 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 7 )
+
+[node name="Button" type="Button" parent="Quests/Quest3"]
+margin_left = 995.0
+margin_top = 186.0
+margin_right = 1109.0
+margin_bottom = 220.0
+custom_styles/disabled = SubResource( 2 )
+text = "Odbierz"
+
+[node name="Label3" type="Label" parent="Quests/Quest3"]
+margin_left = 859.0
+margin_top = 206.0
+margin_right = 1196.0
+margin_bottom = 239.0
+rect_rotation = -6.60478
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Zadanie zakończone"
+
+[node name="Quest4" type="Node2D" parent="Quests"]
+position = Vector2( 0, 237 )
+
+[node name="Label" type="Label" parent="Quests/Quest4"]
+margin_left = 100.0
+margin_top = 190.0
+margin_right = 507.0
+margin_bottom = 259.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Zerwij 4 melisy i 7 maków
+"
+
+[node name="Label2" type="Label" parent="Quests/Quest4"]
+margin_left = 550.0
+margin_top = 190.0
+margin_right = 772.0
+margin_bottom = 223.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "4 x"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Quests/Quest4/Label2"]
+position = Vector2( 96, 13 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+
+[node name="Label2" type="Label" parent="Quests/Quest4/Label2"]
+margin_left = 144.0
+margin_top = 2.0
+margin_right = 366.0
+margin_bottom = 35.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "7 x"
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Quests/Quest4/Label2/Label2"]
+position = Vector2( 96, 13 )
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 7 )
+
+[node name="Button" type="Button" parent="Quests/Quest4"]
+margin_left = 995.0
+margin_top = 186.0
+margin_right = 1109.0
+margin_bottom = 220.0
+custom_styles/disabled = SubResource( 2 )
+text = "Odbierz"
+
+[node name="Label3" type="Label" parent="Quests/Quest4"]
+margin_left = 859.0
+margin_top = 206.0
+margin_right = 1196.0
+margin_bottom = 239.0
+rect_rotation = -6.60478
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_fonts/font = ExtResource( 4 )
+text = "Zadanie zakończone"
+
+[connection signal="pressed" from="Quests/Quest1/Button" to="." method="GetWin" binds= [ "quest1" ]]
+[connection signal="pressed" from="Quests/Quest2/Button" to="." method="GetWin" binds= [ "quest2" ]]
+[connection signal="pressed" from="Quests/Quest3/Button" to="." method="GetWin" binds= [ "quest3" ]]
+[connection signal="pressed" from="Quests/Quest4/Button" to="." method="GetWin" binds= [ "quest4" ]]

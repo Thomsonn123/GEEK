@@ -1,5 +1,6 @@
 herbalist quests
-"first quest": [title, description, award, requirements]
+"first quest": [melisa, dandelion, poppy, getWinMoney]
 
 Player:
-herbs: 0 - melisa, dandelion
+herbs: 0 - melisa, dandelion, Poppy
+
