@@ -406,7 +406,6 @@ position = Vector2( -2974, 1175 )
 __meta__ = {
 "_edit_group_": true
 }
-herbs = [ 0, 0, 0 ]
 localLightPath = NodePath("../Lights/SunCenter/Sun")
 sun = NodePath("../Lights/SunCenter/Sun")
 map = NodePath("../Map")

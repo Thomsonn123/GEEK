@@ -3,6 +3,14 @@ extends Node2D
 export(NodePath) var Player
 var herbs
 var shop = false
+var melisaValue = 0
+var dandelionValue = 0
+var poppyValue = 0
+
+#prices
+var melisaPrice = [70, 50]
+var dandelionPrice = [100, 80]
+var poppyPrice = [50, 30]
 
 #quest1
 var quest1 = [5, 0, 0, 50]
@@ -42,16 +50,24 @@ func changePage():
 	shop = !shop
 	refresh()
 
+func valueChanged(value, name):
+	if name == "melisa":
+		melisaValue = value
+	elif name == "dandelion":
+		dandelionValue = value
+	elif name == "poppy":
+		poppyValue = value
+	refresh()
+
 func refresh():
+	#GUI update
 	$EQ/Label.text = str(herbs[0])
 	$EQ/Label2.text = str(herbs[1])
 	$EQ/Label3.text = str(herbs[2])
-
 	if !quest1status && !quest2status && !quest3status && !quest4status && !quest5status:
 		$Page.disabled = false
 	else:
 		$Page.disabled = true
-
 	if shop:
 		$Quests.visible = false
 		$Shop.visible = true
@@ -60,7 +76,6 @@ func refresh():
 		$Quests.visible = true
 		$Shop.visible = false
 		$Page.text = "Otwórz sklep"
-
 	finishedLabelQuest1.visible = !quest1status
 	finishedLabelQuest2.visible = !quest2status
 	finishedLabelQuest3.visible = !quest3status
@@ -71,7 +86,6 @@ func refresh():
 	buttonQuest3.disabled = quest3status
 	buttonQuest4.disabled = quest4status
 	buttonQuest5.disabled = quest5status
-
 	#quest1
 	if herbs[0] >= quest1[0] and herbs[1] >= quest1[1] and herbs[2] >= quest1[2] and quest1status:
 		buttonQuest1.disabled = false
@@ -97,8 +111,44 @@ func refresh():
 		buttonQuest5.disabled = false
 	else:
 		buttonQuest5.disabled = true
+	#shop
+	#buy
+	var playerMoney = get_node(Player).money
+	if melisaValue * melisaPrice[0] > playerMoney:
+		$Shop/MelisaBuy.disabled = true
+	else:
+		$Shop/MelisaBuy.disabled = false
+	if dandelionValue * dandelionPrice[0] > playerMoney:
+		$Shop/DandelionBuy.disabled = true
+	else:
+		$Shop/DandelionBuy.disabled = false
+	if poppyValue * poppyPrice[0] > playerMoney:
+		$Shop/PoppyBuy2.disabled = true
+	else:
+		$Shop/PoppyBuy2.disabled = false
+	
+	#sell
+	if melisaValue <= herbs[0]:
+		$Shop/MelisaBuy/Melisasell.disabled = false
+	else:
+		$Shop/MelisaBuy/Melisasell.disabled = true
+	if dandelionValue <= herbs[1]:
+		$Shop/DandelionBuy/Dandelionsell.disabled = false
+	else:
+		$Shop/DandelionBuy/Dandelionsell.disabled = true
+	if poppyValue <= herbs[2]:
+		$Shop/PoppyBuy2/Poppysell.disabled = false
+	else:
+		$Shop/PoppyBuy2/Poppysell.disabled = true
+	
+	$Shop/MelisaBuy/MelisasellAll.disabled = $Shop/MelisaBuy/Melisasell.disabled
+	$Shop/DandelionBuy/DandelionsellAll.disabled = $Shop/DandelionBuy/Dandelionsell.disabled
+	$Shop/PoppyBuy2/PoppysellAll.disabled = $Shop/PoppyBuy2/Poppysell.disabled
+
+	
 
 func GetWin(value):
+	#quests
 	if value == "quest1":
 		get_node(Player).money += quest1[3]
 		herbs[0] -= quest1[0]
@@ -131,7 +181,50 @@ func GetWin(value):
 		quest5status = false
 	refresh()
 	get_node(Player).herbs = herbs
-	
+
+func buy(name):
+	if name == "melisa":
+		herbs[0] += melisaValue
+		price(melisaValue * melisaPrice[0] * -1)
+	if name == "dandelion":
+		herbs[1] += dandelionValue
+		price(dandelionValue * dandelionPrice[0] * -1)
+	elif name == "poppy":
+		herbs[2] += poppyValue
+		price(poppyValue * poppyPrice[0] * -1)
+	print(herbs)
+	refresh()
 
 
+func sell(name):
+	if name == "melisa":
+		herbs[0] -= melisaValue
+		price(melisaValue * melisaPrice[1])
+	if name == "dandelion":
+		herbs[1] -= dandelionValue
+		price(dandelionValue * dandelionPrice[1])
+	elif name == "poppy":
+		herbs[2] -= poppyValue
+		price(poppyValue * poppyPrice[1])
+	print(herbs)
+	refresh()
+
+func sellAll(name):
+	if name == "melisa":
+		melisaValue = herbs[0]
+	elif name == "dandelion":
+		dandelionValue = herbs[1]
+	elif name == "poppy":
+		poppyValue = herbs[2]
+	sell(name)
+
+func price(priceValue):
+	get_node(Player).money += priceValue
+	refresh()
+	$Shop/MelisaValue/SpinBox.set_value(0)
+	$Shop/DandelionValue2/SpinBox.set_value(0)
+	$Shop/PoppyValue2/SpinBox.set_value(0)
+	melisaValue = $Shop/MelisaValue/SpinBox.get_value()
+	dandelionValue = $Shop/DandelionValue2/SpinBox.get_value()
+	poppyValue = $Shop/PoppyValue2/SpinBox.get_value()
 
