@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Graphics/devTree/background.png" type="Texture" id=1]
 [ext_resource path="res://fonts/Aclonica Regular.ttf" type="DynamicFontData" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Graphics/Herbalist/Melisa/melisa.png" type="Texture" id=6]
 [ext_resource path="res://Graphics/Herbalist/dandelion.png" type="Texture" id=7]
 [ext_resource path="res://Graphics/Herbalist/poppy.png" type="Texture" id=8]
+[ext_resource path="res://Graphics/Herbalist/hammer.png" type="Texture" id=9]
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
@@ -320,6 +321,22 @@ text = "Ekwipunek
 position = Vector2( -82.125, 13.875 )
 scale = Vector2( 0.140014, 0.140014 )
 texture = ExtResource( 8 )
+
+[node name="Hammer" type="Label" parent="Eq"]
+margin_left = 256.0
+margin_top = 513.0
+margin_right = 429.0
+margin_bottom = 582.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Ekwipunek
+"
+
+[node name="hammer" type="Sprite" parent="Eq/Hammer"]
+position = Vector2( -82.125, 13.875 )
+rotation = -0.436332
+scale = Vector2( 0.07, 0.07 )
+texture = ExtResource( 9 )
 
 [node name="Label" type="Label" parent="."]
 margin_left = 928.0

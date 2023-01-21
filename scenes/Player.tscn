@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/SpriteFrames/PlayerDown.tres" type="SpriteFrames" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://silouette.shader" type="Shader" id=7]
 [ext_resource path="res://scenes/HerbalistGUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Graphics/devTree/coin.png" type="Texture" id=9]
+[ext_resource path="res://scenes/AlchemistGUI.tscn" type="PackedScene" id=10]
 [ext_resource path="res://fonts/RobotoSlab-Regular.ttf" type="DynamicFontData" id=204]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -131,6 +132,11 @@ visible = false
 position = Vector2( -384, -218 )
 scale = Vector2( 0.6, 0.6 )
 Player = NodePath("..")
+
+[node name="AlchemistGUI" parent="." instance=ExtResource( 10 )]
+visible = false
+position = Vector2( -381, -215 )
+scale = Vector2( 0.6, 0.6 )
 
 [connection signal="timeout" from="Camera2D/Label/Timer" to="." method="_tutHelp_Timeout"]
 [connection signal="timeout" from="Status/Timer" to="." method="_on_Timer_timeout"]

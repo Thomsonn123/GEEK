@@ -13,8 +13,9 @@ onready var Eq = get_node("Eq")
 
 func _ready():
 	rHack = get_node(robotHacks)
+	update()
 
-func _process(_delta):
+func update():
 	$MenuButton.visible = !MenuPage.visible
 	if curPage == 0:
 		$Page.text = ""
@@ -30,7 +31,6 @@ func _process(_delta):
 		CombatPage.visible = false
 		WeaponPage.visible = false
 		Eq.visible = false
-
 	elif curPage == 2:
 		$Page.text = str(curPage)
 		MenuPage.visible = false
@@ -38,7 +38,6 @@ func _process(_delta):
 		CombatPage.visible = true
 		WeaponPage.visible = false
 		Eq.visible = false
-
 	elif curPage == 3:
 		$Page.text = str(curPage)
 		MenuPage.visible = false
@@ -46,7 +45,6 @@ func _process(_delta):
 		CombatPage.visible = false
 		WeaponPage.visible = true
 		Eq.visible = false
-	
 	elif curPage == 4:
 		$Page.text = str(curPage)
 		MenuPage.visible = false
@@ -57,6 +55,7 @@ func _process(_delta):
 		$Eq/Melisa.text = "Melisa: " + str(get_node(Player).herbs[0])
 		$Eq/Dandelion.text = "Mniszek lekarski: " + str(get_node(Player).herbs[1])
 		$Eq/Poppy.text = "Mak: " + str(get_node(Player).herbs[2])
+		$Eq/Hammer.text = "Młotek " + str(get_node(Player).tools[0])
 
 func clicked(name, value):
 	if experiencePoints >= value:
@@ -65,15 +64,21 @@ func clicked(name, value):
 			$HackingSkills/Speed/speed.disabled = false
 			$HackingSkills/Combat/base.disabled = false
 			$HackingSkills/HackingType/base2.disabled = false
+	update()
 		
 	
 func setPage(page):
 	curPage = page
+	update()
 func _on_CombatSkills_pressed():
 	curPage = 1
+	update()
 func _on_WeaponsSkills_pressed():
 	curPage = 2
+	update()
 func _on_MenuButton_pressed():
 	curPage = 0
+	update()
 func _on_HackingSkills_pressed():
 	curPage = 4
+	update()

@@ -3,6 +3,7 @@ extends Node2D
 var PlayerStartPosition = Vector2(-3008, 1152)
 
 #onready var DayNightCycle = get_node("DayNight/CanvasModulate")
+var flowers = 0
 
 var nightColorA = 1.0
 var nightColorR = 0.30
@@ -22,6 +23,8 @@ var currentColorB
 export var isNight = false
 
 func _ready():
+	flowers +=$Melisa.get_child_count() + $Dandelion.get_child_count() + $Poppy.get_child_count()
+	print(flowers)
 	startGame()
 	#$DayNight/ChangeTimer.start()
 	#currentColorA = dayColorA

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Robot1.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/Melisa.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/Dandelion.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Poppy.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/AlchemistTable.tscn" type="PackedScene" id=11]
 
 [node name="Game" type="Node2D"]
 position = Vector2( 1, 0 )
@@ -113,27 +114,151 @@ position = Vector2( 747, 1841 )
 [node name="Melisa" type="Node2D" parent="."]
 
 [node name="Melisa" parent="Melisa" instance=ExtResource( 8 )]
-position = Vector2( -1858, 1869 )
+position = Vector2( -1847, 1781 )
 Player = NodePath("../../Player")
 
 [node name="Melisa2" parent="Melisa" instance=ExtResource( 8 )]
-position = Vector2( -1576, 2634 )
+position = Vector2( -1854, 2076 )
 Player = NodePath("../../Player")
 
 [node name="Melisa3" parent="Melisa" instance=ExtResource( 8 )]
-position = Vector2( -1828, 2710 )
+position = Vector2( -1849, 2453 )
 Player = NodePath("../../Player")
 
-[node name="Melisa4" parent="Melisa" instance=ExtResource( 8 )]
-position = Vector2( 2532, 2694 )
+[node name="Melisa27" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( -1555, 2468 )
+Player = NodePath("../../Player")
+
+[node name="Melisa21" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( -1341, 2427 )
+Player = NodePath("../../Player")
+
+[node name="Melisa26" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( -1214, 2252 )
+Player = NodePath("../../Player")
+
+[node name="Melisa22" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( -1036, 2427 )
+Player = NodePath("../../Player")
+
+[node name="Melisa23" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( -777, 2380 )
+Player = NodePath("../../Player")
+
+[node name="Melisa29" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( -797, 2682 )
+Player = NodePath("../../Player")
+
+[node name="Melisa30" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( -548, 2678 )
+Player = NodePath("../../Player")
+
+[node name="Melisa31" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 74, 2552 )
+Player = NodePath("../../Player")
+
+[node name="Melisa32" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 353, 2553 )
+Player = NodePath("../../Player")
+
+[node name="Melisa33" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 643, 2548 )
+Player = NodePath("../../Player")
+
+[node name="Melisa34" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 938, 2552 )
+Player = NodePath("../../Player")
+
+[node name="Melisa35" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1756, 1612 )
+Player = NodePath("../../Player")
+
+[node name="Melisa36" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1747, 1719 )
+Player = NodePath("../../Player")
+
+[node name="Melisa43" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1731, 1893 )
+Player = NodePath("../../Player")
+
+[node name="Melisa44" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1635, 1916 )
+Player = NodePath("../../Player")
+
+[node name="Melisa45" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1584, 1812 )
+Player = NodePath("../../Player")
+
+[node name="Melisa46" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1526, 1902 )
+Player = NodePath("../../Player")
+
+[node name="Melisa47" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1454, 1846 )
+Player = NodePath("../../Player")
+
+[node name="Melisa48" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1402, 1897 )
+Player = NodePath("../../Player")
+
+[node name="Melisa49" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1332, 1842 )
+Player = NodePath("../../Player")
+
+[node name="Melisa50" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1294, 1919 )
+Player = NodePath("../../Player")
+
+[node name="Melisa40" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1675, 1804 )
+Player = NodePath("../../Player")
+
+[node name="Melisa41" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1811, 1828 )
+Player = NodePath("../../Player")
+
+[node name="Melisa42" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1829, 1694 )
+Player = NodePath("../../Player")
+
+[node name="Melisa37" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1488, 1540 )
+Player = NodePath("../../Player")
+
+[node name="Melisa38" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1486, 1654 )
+Player = NodePath("../../Player")
+
+[node name="Melisa39" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 1491, 1773 )
+Player = NodePath("../../Player")
+
+[node name="Melisa28" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( -516, 2345 )
+Player = NodePath("../../Player")
+
+[node name="Melisa24" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( -1032, 2125 )
+Player = NodePath("../../Player")
+
+[node name="Melisa25" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( -840, 1989 )
 Player = NodePath("../../Player")
 
 [node name="Melisa5" parent="Melisa" instance=ExtResource( 8 )]
-position = Vector2( 3116, 2622 )
+position = Vector2( 3347, 2085 )
 Player = NodePath("../../Player")
 
 [node name="Melisa6" parent="Melisa" instance=ExtResource( 8 )]
-position = Vector2( 2808, 2426 )
+position = Vector2( 3185, 2039 )
+Player = NodePath("../../Player")
+
+[node name="Melisa51" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 3279, 2179 )
+Player = NodePath("../../Player")
+
+[node name="Melisa52" parent="Melisa" instance=ExtResource( 8 )]
+position = Vector2( 3145, 2251 )
 Player = NodePath("../../Player")
 
 [node name="Melisa7" parent="Melisa" instance=ExtResource( 8 )]
@@ -195,27 +320,115 @@ Player = NodePath("../../Player")
 [node name="Dandelion" type="Node2D" parent="."]
 
 [node name="Dandelion1" parent="Dandelion" instance=ExtResource( 9 )]
-position = Vector2( -1527, 2467 )
+position = Vector2( -1845, 1980 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion46" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -1846, 2236 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion47" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -1842, 2762 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion48" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -1425, 2526 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion37" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -1159, 2367 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion38" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -945, 2330 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion39" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -770, 2271 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion40" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -608, 2218 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion41" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -676, 2067 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion42" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -795, 2088 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion43" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -936, 2168 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion44" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -1070, 2254 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion45" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -708, 1901 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion2" parent="Dandelion" instance=ExtResource( 9 )]
-position = Vector2( 233, 2198 )
+position = Vector2( 193, 2187 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion3" parent="Dandelion" instance=ExtResource( 9 )]
-position = Vector2( 388, 2210 )
+position = Vector2( 364, 2197 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion55" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( 148, 1600 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion56" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( 145, 1724 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion57" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( 147, 1834 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion4" parent="Dandelion" instance=ExtResource( 9 )]
-position = Vector2( 956, 2197 )
+position = Vector2( 159, 2069 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion58" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( 361, 2075 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion5" parent="Dandelion" instance=ExtResource( 9 )]
-position = Vector2( 379, 2565 )
+position = Vector2( 224, 2552 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion50" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -262, 2617 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion51" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -674, 2681 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion52" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -1030, 2749 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion53" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -1260, 2877 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion54" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( -1517, 2876 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion49" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( 1276, 2555 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion6" parent="Dandelion" instance=ExtResource( 9 )]
-position = Vector2( 899, 2565 )
+position = Vector2( 792, 2552 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion7" parent="Dandelion" instance=ExtResource( 9 )]
@@ -251,15 +464,19 @@ position = Vector2( 3215, 3700 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion15" parent="Dandelion" instance=ExtResource( 9 )]
-position = Vector2( 3014, 2400 )
+position = Vector2( 3364, 2012 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion16" parent="Dandelion" instance=ExtResource( 9 )]
-position = Vector2( 2875, 2791 )
+position = Vector2( 3262, 2086 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion17" parent="Dandelion" instance=ExtResource( 9 )]
-position = Vector2( 2510, 2529 )
+position = Vector2( 3358, 2161 )
+Player = NodePath("../../Player")
+
+[node name="Dandelion59" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( 3249, 2248 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion18" parent="Dandelion" instance=ExtResource( 9 )]
@@ -326,6 +543,10 @@ Player = NodePath("../../Player")
 position = Vector2( 1507, -8 )
 Player = NodePath("../../Player")
 
+[node name="Dandelion36" parent="Dandelion" instance=ExtResource( 9 )]
+position = Vector2( 1682, -91 )
+Player = NodePath("../../Player")
+
 [node name="Dandelion34" parent="Dandelion" instance=ExtResource( 9 )]
 position = Vector2( 1139, 51 )
 Player = NodePath("../../Player")
@@ -340,8 +561,104 @@ Player = NodePath("../../Player")
 position = Vector2( -1310, 2571 )
 Player = NodePath("../../Player")
 
+[node name="Poppy33" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -1388, 2876 )
+Player = NodePath("../../Player")
+
+[node name="Poppy34" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -1156, 2818 )
+Player = NodePath("../../Player")
+
+[node name="Poppy35" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -904, 2686 )
+Player = NodePath("../../Player")
+
+[node name="Poppy36" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -446, 2612 )
+Player = NodePath("../../Player")
+
+[node name="Poppy37" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -58, 2547 )
+Player = NodePath("../../Player")
+
+[node name="Poppy38" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 507, 2555 )
+Player = NodePath("../../Player")
+
+[node name="Poppy42" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -494, 1940 )
+Player = NodePath("../../Player")
+
+[node name="Poppy43" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -386, 1939 )
+Player = NodePath("../../Player")
+
+[node name="Poppy44" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -261, 1943 )
+Player = NodePath("../../Player")
+
+[node name="Poppy45" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -156, 1947 )
+Player = NodePath("../../Player")
+
+[node name="Poppy46" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -35, 1943 )
+Player = NodePath("../../Player")
+
+[node name="Poppy39" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 1078, 2550 )
+Player = NodePath("../../Player")
+
+[node name="Poppy40" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 1413, 2487 )
+Player = NodePath("../../Player")
+
+[node name="Poppy23" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -1153, 2472 )
+Player = NodePath("../../Player")
+
+[node name="Poppy24" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -889, 2455 )
+Player = NodePath("../../Player")
+
+[node name="Poppy25" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -640, 2372 )
+Player = NodePath("../../Player")
+
+[node name="Poppy41" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -358, 2351 )
+Player = NodePath("../../Player")
+
+[node name="Poppy26" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -790, 1882 )
+Player = NodePath("../../Player")
+
+[node name="Poppy27" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -964, 2046 )
+Player = NodePath("../../Player")
+
+[node name="Poppy28" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -1151, 2197 )
+Player = NodePath("../../Player")
+
+[node name="Poppy29" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -1322, 2259 )
+Player = NodePath("../../Player")
+
 [node name="Poppy2" parent="Poppy" instance=ExtResource( 10 )]
-position = Vector2( -1835, 2142 )
+position = Vector2( -1843, 1883 )
+Player = NodePath("../../Player")
+
+[node name="Poppy30" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -1848, 2151 )
+Player = NodePath("../../Player")
+
+[node name="Poppy31" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -1841, 2617 )
+Player = NodePath("../../Player")
+
+[node name="Poppy32" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( -1526, 2640 )
 Player = NodePath("../../Player")
 
 [node name="Poppy3" parent="Poppy" instance=ExtResource( 10 )]
@@ -368,24 +685,52 @@ Player = NodePath("../../Player")
 position = Vector2( 1820, 3018 )
 Player = NodePath("../../Player")
 
-[node name="Poppy9" parent="Poppy" instance=ExtResource( 10 )]
-position = Vector2( 2664, 2781 )
-Player = NodePath("../../Player")
-
-[node name="Poppy10" parent="Poppy" instance=ExtResource( 10 )]
-position = Vector2( 2669, 2489 )
-Player = NodePath("../../Player")
-
-[node name="Poppy11" parent="Poppy" instance=ExtResource( 10 )]
-position = Vector2( 2949, 2534 )
-Player = NodePath("../../Player")
-
 [node name="Poppy12" parent="Poppy" instance=ExtResource( 10 )]
-position = Vector2( 2987, 2728 )
+position = Vector2( 3273, 2010 )
 Player = NodePath("../../Player")
 
 [node name="Poppy13" parent="Poppy" instance=ExtResource( 10 )]
-position = Vector2( 3128, 2471 )
+position = Vector2( 3197, 2145 )
+Player = NodePath("../../Player")
+
+[node name="Poppy47" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 3344, 2243 )
+Player = NodePath("../../Player")
+
+[node name="Poppy14" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 612, 41 )
+Player = NodePath("../../Player")
+
+[node name="Poppy15" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 1027, 259 )
+Player = NodePath("../../Player")
+
+[node name="Poppy16" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 1476, 225 )
+Player = NodePath("../../Player")
+
+[node name="Poppy17" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 1617, 63 )
+Player = NodePath("../../Player")
+
+[node name="Poppy18" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 1307, 45 )
+Player = NodePath("../../Player")
+
+[node name="Poppy19" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 950, 41 )
+Player = NodePath("../../Player")
+
+[node name="Poppy20" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 851, -127 )
+Player = NodePath("../../Player")
+
+[node name="Poppy21" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 1093, -154 )
+Player = NodePath("../../Player")
+
+[node name="Poppy22" parent="Poppy" instance=ExtResource( 10 )]
+position = Vector2( 1463, -149 )
 Player = NodePath("../../Player")
 
 [node name="Lights" type="Node2D" parent="."]
@@ -401,11 +746,18 @@ texture = ExtResource( 6 )
 texture_scale = 10.0
 energy = 0.5
 
+[node name="AlchemistTable" parent="." instance=ExtResource( 11 )]
+position = Vector2( 2381, 2549 )
+
 [node name="Player" parent="." instance=ExtResource( 5 )]
 position = Vector2( -2974, 1175 )
 __meta__ = {
 "_edit_group_": true
 }
+teleport = NodePath("../teleport")
 localLightPath = NodePath("../Lights/SunCenter/Sun")
 sun = NodePath("../Lights/SunCenter/Sun")
 map = NodePath("../Map")
+
+[node name="teleport" type="Node2D" parent="."]
+position = Vector2( 2529, 2834 )

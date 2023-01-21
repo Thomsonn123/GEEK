@@ -6,6 +6,7 @@ var shop = false
 var melisaValue = 0
 var dandelionValue = 0
 var poppyValue = 0
+var firstOpen = true
 
 #prices
 var melisaPrice = [70, 50]
@@ -43,6 +44,9 @@ onready var buttonQuest5 = $Quests/Quest5/Button
 onready var finishedLabelQuest5 = $Quests/Quest5/Label3
 
 func open():
+	if firstOpen:
+		#Play lector
+		firstOpen = false
 	herbs = get_node(Player).herbs
 	refresh()
 
@@ -144,9 +148,7 @@ func refresh():
 	$Shop/MelisaBuy/MelisasellAll.disabled = $Shop/MelisaBuy/Melisasell.disabled
 	$Shop/DandelionBuy/DandelionsellAll.disabled = $Shop/DandelionBuy/Dandelionsell.disabled
 	$Shop/PoppyBuy2/PoppysellAll.disabled = $Shop/PoppyBuy2/Poppysell.disabled
-
 	
-
 func GetWin(value):
 	#quests
 	if value == "quest1":
@@ -194,7 +196,6 @@ func buy(name):
 		price(poppyValue * poppyPrice[0] * -1)
 	print(herbs)
 	refresh()
-
 
 func sell(name):
 	if name == "melisa":

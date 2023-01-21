@@ -2,7 +2,7 @@ extends Area2D
 
 var collected = false
 export(NodePath) var Player = null
-var time = 20
+var time = 40
 
 func _ready():
 	$Timer.wait_time = time
@@ -14,6 +14,7 @@ func collect():
 		$Timer.start()
 		get_node(Player).add("Dandelion")
 		self.visible = false
+		get_node(Player).entity = null
 
 func timerFinish():
 	collected = false

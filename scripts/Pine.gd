@@ -8,7 +8,7 @@ func _ready():
 	if localLight == null:
 		localLight = get_node(light)
 
-func _process(_delta):
+func _physics_process(_delta):
 	$Shadow.look_at(localLight.global_position)
 
 	

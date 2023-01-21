@@ -2,5 +2,6 @@ herbalist quests
 "first quest": [melisa, dandelion, poppy, getWinMoney]
 
 Player:
-herbs: 0 - melisa, dandelion, Poppy
+herbs: 0 - melisa,1 -  dandelion,2 - Poppy
+tools: 0 - hammer
 

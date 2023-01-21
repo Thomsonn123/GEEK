@@ -10,8 +10,10 @@ var money = 0
 
 #inventory
 export var herbs = [0,0,0]
-export var chemistry = [0, 0]
-export var mixtures = [0, 0]
+export var tools = [0]
+
+#teleport
+export(NodePath) var teleport
 
 
 onready var overWorld = get_node("..")
@@ -43,6 +45,8 @@ func _ready():
 	startPosition = self.position
 
 func _input(_event):
+	if Input.is_action_just_pressed("teleport"):
+		self.position = get_node(teleport).position
 	if Input.is_action_just_pressed("action_key"):
 		if action != null and "Monitor" in actionName:
 			$RobotHackGame.start()
@@ -50,11 +54,12 @@ func _input(_event):
 			$HerbalistGUI.visible = !$HerbalistGUI.visible
 			$HerbalistGUI.open()
 			get_node(map).houseRev2Light(!$HerbalistGUI.visible)
+		elif action != null and "Alchemist" in actionName:
+			$AlchemistGUI.visible = !$AlchemistGUI.visible
 		elif entity != null:
 			var collect = get_node(entity)
 			collect.collect()
-		else:
-			self.position = Vector2(390, 2222)
+	
 	if Input.is_action_just_pressed("DevTree"):
 		if !$HerbalistGUI.visible:
 			$DevTree.visible = !$DevTree.visible
@@ -65,7 +70,7 @@ func _input(_event):
 		$HerbalistGUI.visible = false
 		get_node(map).houseRev2Light(!$HerbalistGUI.visible)
 
-func _process(_delta):
+func _physics_process(_delta):
 	$Money.text = str(money)
 	$Shadow/ShadowAnimations.frames = $PlayerAnimations.frames
 	$Shadow/ShadowAnimations.frame = $PlayerAnimations.frame
@@ -140,11 +145,6 @@ func _process(_delta):
 	var _returrn = move_and_slide(vel)
 	$FPS.text = str(Engine.get_frames_per_second())
 
-func _fixed_process():
-	#print(Engine.get_frames_per_second())
-	if hp <= 0:
-		restartGame()
-	pass
 
 func changeStatus(text):
 	$Status.text = text
