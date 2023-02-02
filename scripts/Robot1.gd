@@ -79,9 +79,9 @@ func hackingTimerTimeout():
 	$HackingTimer.stop()
 
 func walkInPlayerAttack(body:Node):
-	if body.name == "Player":
+	if body.name == "Player" and player.invisible == false:
 		attack = true
 func walkOutPlayerAttack(body:Node):
-	if body.name == "Player":
+	if body.name == "Player" or player.invisible == true:
 		attack = false
 		

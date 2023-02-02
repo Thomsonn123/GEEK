@@ -20,7 +20,7 @@ size = 11
 font_data = ExtResource( 204 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 32, 48 )
+extents = Vector2( 35.5, 50 )
 
 [sub_resource type="ShaderMaterial" id=7]
 shader = ExtResource( 7 )
@@ -66,6 +66,7 @@ wait_time = 2.0
 [node name="Collider" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+position = Vector2( -1.5, 0 )
 shape = SubResource( 3 )
 
 [node name="Shadow" type="Node2D" parent="."]
@@ -139,4 +140,5 @@ position = Vector2( -381, -215 )
 scale = Vector2( 0.6, 0.6 )
 
 [connection signal="timeout" from="Camera2D/Label/Timer" to="." method="_tutHelp_Timeout"]
+[connection signal="body_entered" from="Collider" to="." method="body_enter"]
 [connection signal="timeout" from="Status/Timer" to="." method="_on_Timer_timeout"]

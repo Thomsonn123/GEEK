@@ -31,6 +31,7 @@ var action = null
 var actionName = null
 var localLight
 var isDay = true
+var invisible = false
 
 #tutorials made
 var MonitTutorial = false
@@ -196,3 +197,7 @@ func restartGame():
 
 func dealDamage(value):
 	hp -= value
+
+func body_enter(body:Node):
+	if "Water" in body.name:
+		print(body.name)
