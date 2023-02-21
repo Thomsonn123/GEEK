@@ -76,7 +76,7 @@ func restartGame():
 	$Timer.start()
 
 func finishHack():
-	get_node(player).experience += experiencePointsAfterHacking
+	get_node(player).experiencePoints += experiencePointsAfterHacking
 	hackedGame()
 	$GameTimer.stop()
 	$Timer.stop()

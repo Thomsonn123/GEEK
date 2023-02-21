@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Robot1.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://scenes/Dandelion.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/Poppy.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/AlchemistTable.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/AppleTree.tscn" type="PackedScene" id=12]
 
 [node name="Game" type="Node2D"]
 position = Vector2( 1, 0 )
@@ -110,6 +111,12 @@ sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Herbalist" parent="." instance=ExtResource( 7 )]
 position = Vector2( 747, 1841 )
+
+[node name="AppleTrees" type="Node2D" parent="."]
+
+[node name="AppleTree" parent="AppleTrees" instance=ExtResource( 12 )]
+position = Vector2( 414, 1630 )
+Player = NodePath("../../Player")
 
 [node name="Melisa" type="Node2D" parent="."]
 
@@ -376,7 +383,7 @@ position = Vector2( 193, 2187 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion3" parent="Dandelion" instance=ExtResource( 9 )]
-position = Vector2( 364, 2197 )
+position = Vector2( 363, 2188 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion55" parent="Dandelion" instance=ExtResource( 9 )]
@@ -396,7 +403,7 @@ position = Vector2( 159, 2069 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion58" parent="Dandelion" instance=ExtResource( 9 )]
-position = Vector2( 361, 2075 )
+position = Vector2( 361, 2067 )
 Player = NodePath("../../Player")
 
 [node name="Dandelion5" parent="Dandelion" instance=ExtResource( 9 )]
@@ -754,11 +761,10 @@ position = Vector2( -2974, 1175 )
 __meta__ = {
 "_edit_group_": true
 }
-herbs = [ 0, 0, 0 ]
 teleport = NodePath("../teleport")
 localLightPath = NodePath("../Lights/SunCenter/Sun")
 sun = NodePath("../Lights/SunCenter/Sun")
 map = NodePath("../Map")
 
 [node name="teleport" type="Node2D" parent="."]
-position = Vector2( 2529, 2834 )
+position = Vector2( 575, 2116 )

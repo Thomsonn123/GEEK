@@ -138,6 +138,7 @@ Player = NodePath("..")
 visible = false
 position = Vector2( -381, -215 )
 scale = Vector2( 0.6, 0.6 )
+Player = NodePath("..")
 
 [connection signal="timeout" from="Camera2D/Label/Timer" to="." method="_tutHelp_Timeout"]
 [connection signal="body_entered" from="Collider" to="." method="body_enter"]

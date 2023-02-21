@@ -10,6 +10,7 @@ var money = 0
 
 #inventory
 export var herbs = [0,0,0]
+export var potions = [0,0,0,0]
 export var tools = [0]
 
 #teleport
@@ -57,6 +58,9 @@ func _input(_event):
 			get_node(map).houseRev2Light(!$HerbalistGUI.visible)
 		elif action != null and "Alchemist" in actionName:
 			$AlchemistGUI.visible = !$AlchemistGUI.visible
+			if $AlchemistGUI.visible == true:
+				$AlchemistGUI.open()
+				print("true")
 		elif entity != null:
 			var collect = get_node(entity)
 			collect.collect()
