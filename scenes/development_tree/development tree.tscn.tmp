@@ -1,0 +1,357 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://Graphics/devTree/background.png" type="Texture" id=1]
+[ext_resource path="res://fonts/Aclonica Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://scripts/development tree.gd" type="Script" id=3]
+[ext_resource path="res://fonts/RobotoSlab-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://fonts/development tree.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Graphics/Herbalist/Melisa/melisa.png" type="Texture" id=6]
+[ext_resource path="res://Graphics/Herbalist/dandelion.png" type="Texture" id=7]
+[ext_resource path="res://Graphics/Herbalist/poppy.png" type="Texture" id=8]
+[ext_resource path="res://Graphics/Alchemist/Potions/vinegar.png" type="Texture" id=9]
+[ext_resource path="res://Graphics/Alchemist/Potions/health.png" type="Texture" id=10]
+[ext_resource path="res://Graphics/Alchemist/Potions/melisaPotion.png" type="Texture" id=11]
+[ext_resource path="res://Graphics/Alchemist/Potions/invisible.png" type="Texture" id=12]
+[ext_resource path="res://Graphics/Herbalist/apple.png" type="Texture" id=13]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="StyleBoxEmpty" id=9]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="DynamicFont" id=3]
+size = 36
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 30
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 21
+font_data = ExtResource( 4 )
+
+[node name="DevTree" type="Node2D"]
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 256.0, 352.0, 448.0, 544.0 ]
+}
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 640.755, 360.34 )
+rotation = -1.5708
+scale = Vector2( 0.69169, 0.799484 )
+texture = ExtResource( 1 )
+
+[node name="MenuButton" type="Button" parent="."]
+margin_left = 32.0
+margin_top = 45.0
+margin_right = 160.0
+margin_bottom = 77.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+keep_pressed_outside = true
+text = "Menu"
+
+[node name="MenuButton2" type="Button" parent="."]
+margin_left = 64.0
+margin_top = 256.0
+margin_right = 192.0
+margin_bottom = 288.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+keep_pressed_outside = true
+
+[node name="Page" type="Label" parent="."]
+margin_left = 1152.0
+margin_top = 640.0
+margin_right = 1216.0
+margin_bottom = 688.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "1"
+align = 1
+valign = 1
+
+[node name="Menu" type="Node2D" parent="."]
+visible = false
+
+[node name="CombatSkills" type="Button" parent="Menu"]
+margin_left = 512.0
+margin_top = 160.0
+margin_right = 768.0
+margin_bottom = 193.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+keep_pressed_outside = true
+text = "Umiejętności"
+
+[node name="Eq" type="Button" parent="Menu"]
+margin_left = 512.0
+margin_top = 96.0
+margin_right = 768.0
+margin_bottom = 129.0
+focus_mode = 0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 5 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/focus = SubResource( 6 )
+custom_styles/disabled = SubResource( 7 )
+custom_styles/normal = SubResource( 2 )
+enabled_focus_mode = 0
+keep_pressed_outside = true
+text = "Ekwipunek"
+
+[node name="HackingSkills" type="Node2D" parent="."]
+
+[node name="base" type="Button" parent="HackingSkills"]
+margin_left = 96.0
+margin_top = 352.0
+margin_right = 192.0
+margin_bottom = 416.0
+custom_fonts/font = SubResource( 12 )
+text = "Odblokuj"
+
+[node name="ManualSkills" type="Node2D" parent="HackingSkills"]
+
+[node name="AutoCollect" type="Button" parent="HackingSkills/ManualSkills"]
+margin_left = 352.0
+margin_top = 192.0
+margin_right = 448.0
+margin_bottom = 256.0
+custom_fonts/font = SubResource( 13 )
+disabled = true
+text = "Auto-zbieranie"
+
+[node name="TreeAutoCollect" type="Button" parent="HackingSkills/ManualSkills"]
+margin_left = 733.0
+margin_top = 192.0
+margin_right = 829.0
+margin_bottom = 256.0
+custom_fonts/font = SubResource( 14 )
+disabled = true
+text = "Auto-zbieranie drzew"
+
+[node name="Combat" type="Node2D" parent="HackingSkills"]
+
+[node name="base" type="Button" parent="HackingSkills/Combat"]
+margin_left = 352.0
+margin_top = 352.0
+margin_right = 448.0
+margin_bottom = 416.0
+disabled = true
+
+[node name="base3" type="Button" parent="HackingSkills/Combat"]
+margin_left = 733.0
+margin_top = 352.0
+margin_right = 829.0
+margin_bottom = 416.0
+disabled = true
+
+[node name="HackingType" type="Node2D" parent="HackingSkills"]
+
+[node name="base2" type="Button" parent="HackingSkills/HackingType"]
+margin_left = 352.0
+margin_top = 512.0
+margin_right = 448.0
+margin_bottom = 576.0
+disabled = true
+text = "change speed"
+
+[node name="base3" type="Button" parent="HackingSkills/HackingType"]
+margin_left = 733.0
+margin_top = 512.0
+margin_right = 829.0
+margin_bottom = 576.0
+disabled = true
+text = "more points"
+
+[node name="Eq" type="Node2D" parent="."]
+visible = false
+
+[node name="Label" type="Label" parent="Eq"]
+margin_left = 576.0
+margin_top = 96.0
+margin_right = 709.0
+margin_bottom = 149.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Ekwipunek
+"
+
+[node name="Melisa" type="Label" parent="Eq"]
+margin_left = 256.0
+margin_top = 229.0
+margin_right = 429.0
+margin_bottom = 298.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Ekwipunek
+"
+
+[node name="Melisa" type="Sprite" parent="Eq/Melisa"]
+position = Vector2( -82.125, 13.875 )
+scale = Vector2( 0.138276, 0.138276 )
+texture = ExtResource( 6 )
+
+[node name="Dandelion" type="Label" parent="Eq"]
+margin_left = 256.0
+margin_top = 323.0
+margin_right = 429.0
+margin_bottom = 392.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Ekwipunek
+"
+
+[node name="Dandelion" type="Sprite" parent="Eq/Dandelion"]
+position = Vector2( -82.125, 13.875 )
+scale = Vector2( 0.401, 0.401 )
+texture = ExtResource( 7 )
+
+[node name="Poppy" type="Label" parent="Eq"]
+margin_left = 256.0
+margin_top = 422.0
+margin_right = 429.0
+margin_bottom = 491.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Ekwipunek
+"
+
+[node name="Poppy" type="Sprite" parent="Eq/Poppy"]
+position = Vector2( -82.125, 14.875 )
+scale = Vector2( 0.140014, 0.140014 )
+texture = ExtResource( 8 )
+
+[node name="Apple" type="Label" parent="Eq"]
+margin_left = 256.0
+margin_top = 519.0
+margin_right = 429.0
+margin_bottom = 588.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Ekwipunek
+"
+
+[node name="Apple" type="Sprite" parent="Eq/Apple"]
+position = Vector2( -82.125, 14.875 )
+scale = Vector2( 0.45, 0.45 )
+texture = ExtResource( 13 )
+
+[node name="Health" type="Label" parent="Eq"]
+margin_left = 800.0
+margin_top = 326.0
+margin_right = 973.0
+margin_bottom = 395.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Ekwipunek
+"
+
+[node name="Health" type="Sprite" parent="Eq/Health"]
+position = Vector2( -64, 0 )
+scale = Vector2( 0.550403, 0.318408 )
+texture = ExtResource( 10 )
+
+[node name="Melisa2" type="Label" parent="Eq"]
+margin_left = 800.0
+margin_top = 227.0
+margin_right = 973.0
+margin_bottom = 296.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Ekwipunek
+"
+
+[node name="Melisa2" type="Sprite" parent="Eq/Melisa2"]
+position = Vector2( -64, 0 )
+scale = Vector2( 0.550403, 0.318408 )
+texture = ExtResource( 11 )
+
+[node name="Vinegar" type="Label" parent="Eq"]
+margin_left = 800.0
+margin_top = 518.0
+margin_right = 973.0
+margin_bottom = 587.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Ekwipunek
+"
+
+[node name="Vinegar" type="Sprite" parent="Eq/Vinegar"]
+position = Vector2( -64, 0 )
+scale = Vector2( 0.550403, 0.318408 )
+texture = ExtResource( 9 )
+
+[node name="Invisible" type="Label" parent="Eq"]
+margin_left = 800.0
+margin_top = 422.0
+margin_right = 973.0
+margin_bottom = 491.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Ekwipunek
+"
+
+[node name="Vinegar" type="Sprite" parent="Eq/Invisible"]
+position = Vector2( -64, 0 )
+scale = Vector2( 0.550403, 0.318408 )
+texture = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 928.0
+margin_top = 64.0
+margin_right = 1137.0
+margin_bottom = 96.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "Punkty"
+
+[connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="MenuButton2" to="." method="_on_MenuButton_pressed"]
+[connection signal="pressed" from="Menu/CombatSkills" to="." method="_on_CombatSkills_pressed"]
+[connection signal="pressed" from="Menu/Eq" to="." method="_on_HackingSkills_pressed"]
+[connection signal="pressed" from="HackingSkills/base" to="." method="clicked" binds= [ "Base" ]]
+[connection signal="pressed" from="HackingSkills/ManualSkills/AutoCollect" to="." method="clicked" binds= [ "autoCollect" ]]
+[connection signal="pressed" from="HackingSkills/ManualSkills/TreeAutoCollect" to="." method="clicked" binds= [ "treeAutoCollect" ]]

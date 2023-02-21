@@ -35,6 +35,7 @@ var isDay = true
 var invisible = false
 var autocollect = false
 var treeAutocollect = false
+var isOnGrass = false
 
 #tutorials made
 var MonitTutorial = false
@@ -111,7 +112,6 @@ func _physics_process(_delta):
 		if $PlayerAnimations.frames == animRight:
 			$PlayerAnimations.frame = 12
 		$PlayerAnimations.playing = false
-
 #pouszanie się góra dół
 	if Input.is_action_pressed("ui_up"):
 		vel.y -= 1
@@ -148,7 +148,11 @@ func _physics_process(_delta):
 			$PlayerAnimations.frame = 12
 		elif $PlayerAnimations.frames == animDownRight:
 			$PlayerAnimations.frame = 12
-
+	if $PlayerAnimations.playing and $Grass.playing == false:
+		print("playing")
+		$Grass.playing = true
+	if Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
+		$Grass.playing = false
 	vel = vel.normalized() * speed
 	var _returrn = move_and_slide(vel)
 	$FPS.text = str(Engine.get_frames_per_second())
