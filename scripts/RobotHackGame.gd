@@ -7,7 +7,7 @@ export var maxTiles = 4
 var showedTiles = 0
 var morePointsSkills = 0.3
 var changeSpeed = 0.1
-export var attackType = 2
+export var attackType = 1
 export var experiencePointsAfterHacking = 100
 export(NodePath) var player
 
@@ -94,10 +94,7 @@ func setVisible(status):
 
 func hackedGame():
 	if robot != null:
-		if attackType == 1:
-			get_node(robot).hacked()
-		elif attackType == 2:
-			get_node(robot).timeHacked()
+		get_node(robot).hacked()
 
 func upgradeHackingSpeed(value):
 	hackingTime -= value

@@ -118,6 +118,26 @@ position = Vector2( 747, 1841 )
 position = Vector2( 414, 1630 )
 Player = NodePath("../../Player")
 
+[node name="AppleTree2" parent="AppleTrees" instance=ExtResource( 12 )]
+position = Vector2( 2163, 1635 )
+Player = NodePath("../../Player")
+
+[node name="AppleTree5" parent="AppleTrees" instance=ExtResource( 12 )]
+position = Vector2( -49, 3163 )
+Player = NodePath("../../Player")
+
+[node name="AppleTree6" parent="AppleTrees" instance=ExtResource( 12 )]
+position = Vector2( -587, 3244 )
+Player = NodePath("../../Player")
+
+[node name="AppleTree3" parent="AppleTrees" instance=ExtResource( 12 )]
+position = Vector2( 2692, 1738 )
+Player = NodePath("../../Player")
+
+[node name="AppleTree4" parent="AppleTrees" instance=ExtResource( 12 )]
+position = Vector2( 2389, 1936 )
+Player = NodePath("../../Player")
+
 [node name="Melisa" type="Node2D" parent="."]
 
 [node name="Melisa" parent="Melisa" instance=ExtResource( 8 )]
@@ -673,7 +693,7 @@ position = Vector2( -1606, 1648 )
 Player = NodePath("../../Player")
 
 [node name="Poppy4" parent="Poppy" instance=ExtResource( 10 )]
-position = Vector2( -560, 3311 )
+position = Vector2( -948, 3296 )
 Player = NodePath("../../Player")
 
 [node name="Poppy5" parent="Poppy" instance=ExtResource( 10 )]
@@ -761,10 +781,11 @@ position = Vector2( -2974, 1175 )
 __meta__ = {
 "_edit_group_": true
 }
+herbs = [ 30, 30, 30, 30 ]
 teleport = NodePath("../teleport")
 localLightPath = NodePath("../Lights/SunCenter/Sun")
 sun = NodePath("../Lights/SunCenter/Sun")
 map = NodePath("../Map")
 
 [node name="teleport" type="Node2D" parent="."]
-position = Vector2( 575, 2116 )
+position = Vector2( 593, 1981 )

@@ -34,7 +34,7 @@ func _process(delta):
 		localLight = get_node(sun)
 	if isHacked:
 		pass
-	if attack:
+	elif attack:
 		self.position = self.position
 	elif seePlayer:
 		self.position = position.move_toward(player.position, delta * sprintSpeed)
@@ -68,15 +68,6 @@ func _on_Area2D_body_exited(body:Node):
 
 func hacked():
 	isHacked = true
-
-func timeHacked():
-	$HackingTimer.wait_time = hackingTimeDelay
-	$HackingTimer.start()
-	isHacked = true
-
-func hackingTimerTimeout():
-	isHacked = false
-	$HackingTimer.stop()
 
 func walkInPlayerAttack(body:Node):
 	if body.name == "Player" and player.invisible == false:

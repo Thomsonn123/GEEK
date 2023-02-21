@@ -30,7 +30,6 @@ func _ready():
 func open():
 	if choosen == null:
 		reset()
-	pass
 
 func button_pressed(name):
 	var multipler = 0
@@ -72,6 +71,7 @@ func reset():
 	melisa = get_node(Player).herbs[0]
 	dandelion = get_node(Player).herbs[1]
 	poppy = get_node(Player).herbs[2]
+	apple = get_node(Player).herbs[3]
 	box.disabled = true
 	box.visible = false
 	if neededIngridents[0] <= apple:
@@ -98,10 +98,12 @@ func potionReady():
 
 func GUIButtons(value):
 	if value == "start":
-		var choosenHerbs = [0,0,0]
+		var choosenHerbs = [0,0,0,0]
 		$Timer.start()
 		if choosen == "melisa":
 			choosenHerbs[0] = int(neededIngridents[1] * $Box/SpinBox.value)
+		elif choosen == "vinegar":
+			choosenHerbs[3] = int(neededIngridents[0] * $Box/SpinBox.value)
 		elif choosen == "health":
 			choosenHerbs[1] = int(neededIngridents[2] * $Box/SpinBox.value)
 		elif choosen == "water":
@@ -109,6 +111,7 @@ func GUIButtons(value):
 		get_node(Player).herbs[0] -= choosenHerbs[0]
 		get_node(Player).herbs[1] -= choosenHerbs[1]
 		get_node(Player).herbs[2] -= choosenHerbs[2]
+		get_node(Player).herbs[3] -= choosenHerbs[3]
 		$Start.disabled = true
 		valuee = $Box/SpinBox.value
 		vinegarButton.disabled = true

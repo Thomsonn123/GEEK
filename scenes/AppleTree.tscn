@@ -80,6 +80,7 @@ polygon = PoolVector2Array( -95, -355.8, -95, -354.4, -80, -338.3, -80, -332.4, 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2( 0, -1 )
 shape = SubResource( 1 )
 

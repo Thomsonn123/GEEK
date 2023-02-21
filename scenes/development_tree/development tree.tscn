@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Graphics/devTree/background.png" type="Texture" id=1]
 [ext_resource path="res://fonts/Aclonica Regular.ttf" type="DynamicFontData" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Graphics/Alchemist/Potions/health.png" type="Texture" id=10]
 [ext_resource path="res://Graphics/Alchemist/Potions/melisaPotion.png" type="Texture" id=11]
 [ext_resource path="res://Graphics/Alchemist/Potions/invisible.png" type="Texture" id=12]
+[ext_resource path="res://Graphics/Herbalist/apple.png" type="Texture" id=13]
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
@@ -25,6 +26,18 @@
 
 [sub_resource type="DynamicFont" id=3]
 size = 36
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 25
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=11]
@@ -93,6 +106,7 @@ align = 1
 valign = 1
 
 [node name="Menu" type="Node2D" parent="."]
+visible = false
 
 [node name="CombatSkills" type="Button" parent="Menu"]
 margin_left = 512.0
@@ -129,14 +143,14 @@ keep_pressed_outside = true
 text = "Ekwipunek"
 
 [node name="HackingSkills" type="Node2D" parent="."]
-visible = false
 
 [node name="base" type="Button" parent="HackingSkills"]
 margin_left = 96.0
 margin_top = 352.0
 margin_right = 192.0
 margin_bottom = 416.0
-text = "Start"
+custom_fonts/font = SubResource( 12 )
+text = "Odblokuj"
 
 [node name="ManualSkills" type="Node2D" parent="HackingSkills"]
 
@@ -145,28 +159,18 @@ margin_left = 352.0
 margin_top = 192.0
 margin_right = 448.0
 margin_bottom = 256.0
+custom_fonts/font = SubResource( 13 )
 disabled = true
+text = "Auto-zbieranie"
 
-[node name="speed2" type="Button" parent="HackingSkills/ManualSkills"]
-margin_left = 544.0
+[node name="TreeAutoCollect" type="Button" parent="HackingSkills/ManualSkills"]
+margin_left = 733.0
 margin_top = 192.0
-margin_right = 640.0
+margin_right = 829.0
 margin_bottom = 256.0
+custom_fonts/font = SubResource( 14 )
 disabled = true
-
-[node name="speed3" type="Button" parent="HackingSkills/ManualSkills"]
-margin_left = 736.0
-margin_top = 192.0
-margin_right = 832.0
-margin_bottom = 256.0
-disabled = true
-
-[node name="speed4" type="Button" parent="HackingSkills/ManualSkills"]
-margin_left = 928.0
-margin_top = 192.0
-margin_right = 1024.0
-margin_bottom = 256.0
-disabled = true
+text = "Auto-zbieranie drzew"
 
 [node name="Combat" type="Node2D" parent="HackingSkills"]
 
@@ -178,23 +182,9 @@ margin_bottom = 416.0
 disabled = true
 
 [node name="base3" type="Button" parent="HackingSkills/Combat"]
-margin_left = 544.0
+margin_left = 733.0
 margin_top = 352.0
-margin_right = 640.0
-margin_bottom = 416.0
-disabled = true
-
-[node name="base4" type="Button" parent="HackingSkills/Combat"]
-margin_left = 736.0
-margin_top = 352.0
-margin_right = 832.0
-margin_bottom = 416.0
-disabled = true
-
-[node name="base5" type="Button" parent="HackingSkills/Combat"]
-margin_left = 928.0
-margin_top = 352.0
-margin_right = 1024.0
+margin_right = 829.0
 margin_bottom = 416.0
 disabled = true
 
@@ -209,26 +199,12 @@ disabled = true
 text = "change speed"
 
 [node name="base3" type="Button" parent="HackingSkills/HackingType"]
-margin_left = 544.0
+margin_left = 733.0
 margin_top = 512.0
-margin_right = 640.0
+margin_right = 829.0
 margin_bottom = 576.0
 disabled = true
 text = "more points"
-
-[node name="base4" type="Button" parent="HackingSkills/HackingType"]
-margin_left = 736.0
-margin_top = 512.0
-margin_right = 832.0
-margin_bottom = 576.0
-disabled = true
-
-[node name="base5" type="Button" parent="HackingSkills/HackingType"]
-margin_left = 928.0
-margin_top = 512.0
-margin_right = 1024.0
-margin_bottom = 576.0
-disabled = true
 
 [node name="Eq" type="Node2D" parent="."]
 visible = false
@@ -287,6 +263,21 @@ text = "Ekwipunek
 position = Vector2( -82.125, 14.875 )
 scale = Vector2( 0.140014, 0.140014 )
 texture = ExtResource( 8 )
+
+[node name="Apple" type="Label" parent="Eq"]
+margin_left = 256.0
+margin_top = 519.0
+margin_right = 429.0
+margin_bottom = 588.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Ekwipunek
+"
+
+[node name="Apple" type="Sprite" parent="Eq/Apple"]
+position = Vector2( -82.125, 14.875 )
+scale = Vector2( 0.45, 0.45 )
+texture = ExtResource( 13 )
 
 [node name="Health" type="Label" parent="Eq"]
 margin_left = 800.0
@@ -361,4 +352,6 @@ text = "Punkty"
 [connection signal="pressed" from="MenuButton2" to="." method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="Menu/CombatSkills" to="." method="_on_CombatSkills_pressed"]
 [connection signal="pressed" from="Menu/Eq" to="." method="_on_HackingSkills_pressed"]
-[connection signal="pressed" from="HackingSkills/base" to="." method="clicked" binds= [ "Base", 0 ]]
+[connection signal="pressed" from="HackingSkills/base" to="." method="clicked" binds= [ "Base" ]]
+[connection signal="pressed" from="HackingSkills/ManualSkills/AutoCollect" to="." method="clicked" binds= [ "autoCollect" ]]
+[connection signal="pressed" from="HackingSkills/ManualSkills/TreeAutoCollect" to="." method="clicked" binds= [ "treeAutoCollect" ]]

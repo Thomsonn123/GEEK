@@ -9,7 +9,7 @@ var entity = null
 var money = 0
 
 #inventory
-export var herbs = [0,0,0]
+export var herbs = [0,0,0,0]
 export var potions = [0,0,0,0]
 export var tools = [0]
 
@@ -33,6 +33,8 @@ var actionName = null
 var localLight
 var isDay = true
 var invisible = false
+var autocollect = false
+var treeAutocollect = false
 
 #tutorials made
 var MonitTutorial = false
@@ -68,6 +70,7 @@ func _input(_event):
 	if Input.is_action_just_pressed("DevTree"):
 		if !$HerbalistGUI.visible:
 			$DevTree.visible = !$DevTree.visible
+			get_node(map).houseRev2Light(!$DevTree.visible)
 			if $DevTree.visible == false:
 				$DevTree.setPage(0)
 				$DevTree.experiencePoints = experiencePoints
@@ -193,6 +196,8 @@ func add(value):
 		herbs[1] += 1
 	elif value == "Poppy":
 		herbs[2] += 1
+	elif value == "Apple":
+		herbs[3] += 1
 	print(herbs)
  
 func restartGame():

@@ -23,7 +23,10 @@ func timerFinish():
 
 func _on_Melisa_body_entered(body:Node):
 	if body.name == "Player":
-		body.entity = self.get_path()
+		if body.autocollect == true:
+			collect()
+		else:
+			body.entity = self.get_path()
 
 func _on_Melisa_body_exited(body:Node):
 	if body.name == "Player":

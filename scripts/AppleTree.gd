@@ -12,17 +12,20 @@ func _ready():
 
 func collect():
 	rng.randomize()
-	print(rng.randi_range(0, applesCount))
-	var i = rng.randi_range(0, applesCount)
-	print(i)
-	i = i + 1
+	var i = rng.randi_range(1, applesCount)
 	if i in visibleTurnedOff:
-		collect()
+		if visibleTurnedOff.size() < applesCount:
+			collect()
 	else:
 		get_node(applesPath + str(i)).visible = false
 		visibleTurnedOff.append(i)
 		get_node(applesPath + str(i) + "/Timer").start()
 		print("Collect ", i)
+		get_node(Player).add("Apple")
+
+func collectAll():
+	for _i in range(0,applesCount):
+		collect()
 
 func unCollectApple(value):
 	print("unCollect ", value)
@@ -33,7 +36,10 @@ func unCollectApple(value):
 
 func playerEnter(body:Node):
 	if body.name == "Player":
-		body.entity = self.get_path()
+		if body.treeAutocollect == true:
+			collectAll()
+		else:
+			body.entity = self.get_path()
 
 func playerExit(body:Node):
 	if body.name == "Player":
