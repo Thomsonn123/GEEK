@@ -35,13 +35,25 @@ var isDay = true
 var invisible = false
 var autocollect = false
 var treeAutocollect = false
-var isOnGrass = false
+
+
+#sounds
+var normalSoundSpeed = 1.0
+var sprintSoundSpeed = 1.2
+var grassWalking = preload("res://sounds/Grass.mp3")
+var isOnGrass = true
+
+#eq
+var slots = 0
+var currentSlot = 1
 
 #tutorials made
 var MonitTutorial = false
 var startPosition:Vector2 = Vector2()
 
 func _ready():
+	slots = $DevTree/EqBar.get_child_count()
+	$SoundPlayer.stream = grassWalking
 	$Shadow/ShadowAnimations.rotation_degrees = -90
 	localLight = get_node(sun)
 	$DevTree.visible = false
@@ -51,7 +63,22 @@ func _ready():
 
 func _input(_event):
 	if Input.is_action_just_pressed("teleport"):
-		self.position = get_node(teleport).position
+		dealDamage(10)
+		#self.position = get_node(teleport).position
+		pass
+
+	if Input.is_action_just_pressed("WHEEL_UP"):
+		if currentSlot < 8:
+			currentSlot += 1
+		else:
+			currentSlot = 1
+		changeCurrentSlot(currentSlot)
+	if Input.is_action_just_pressed("WHEEL_DOWN"):
+		if currentSlot > 1:
+			currentSlot -= 1
+		else:
+			currentSlot = 8
+		changeCurrentSlot(currentSlot)
 	if Input.is_action_just_pressed("action_key"):
 		if action != null and "Monitor" in actionName:
 			$RobotHackGame.start()
@@ -90,9 +117,11 @@ func _physics_process(_delta):
 	var vel = Vector2()
 	if Input.is_action_pressed("ui_sprint"):
 		speed = sprintSpeed
+		$SoundPlayer.pitch_scale = sprintSoundSpeed
 		$PlayerAnimations.speed_scale = 2
 	else:
 		speed = walkingSpeed
+		$SoundPlayer.pitch_scale = normalSoundSpeed
 		$PlayerAnimations.speed_scale = 1.5
 	#poruszanie się lewo prawo
 	if Input.is_action_pressed("ui_left"):
@@ -148,11 +177,10 @@ func _physics_process(_delta):
 			$PlayerAnimations.frame = 12
 		elif $PlayerAnimations.frames == animDownRight:
 			$PlayerAnimations.frame = 12
-	if $PlayerAnimations.playing and $Grass.playing == false:
-		print("playing")
-		$Grass.playing = true
+	if $PlayerAnimations.playing and $SoundPlayer.playing == false:
+		$SoundPlayer.playing = true
 	if Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
-		$Grass.playing = false
+		$SoundPlayer.playing = false
 	vel = vel.normalized() * speed
 	var _returrn = move_and_slide(vel)
 	$FPS.text = str(Engine.get_frames_per_second())
@@ -166,6 +194,7 @@ func changeStatus(text):
 func _on_Timer_timeout():
 	$Status.text = ""
 	$Status/Timer.stop()
+	dealDamage(0)
 
 func tutHelp(content):
 	$Camera2D/Dymek.visible = true
@@ -205,12 +234,26 @@ func add(value):
 	print(herbs)
  
 func restartGame():
-	
+	self.position = startPosition
+	hp = 100
+	dealDamage(0)
 	pass
 
 func dealDamage(value):
-	hp -= value
+	if (hp - value) < 0:
+		restartGame()
+	else:
+		hp -= value
+	$Camera2D/hp.text = str(hp)
 
 func body_enter(body:Node):
 	if "Water" in body.name:
 		print(body.name)
+
+func changeCurrentSlot(number):
+	var position = get_node("Camera2D/EqBar/"+str(number)).position
+	$Camera2D/EqBar/Actual.position = position
+
+func eqChanged(numberOfSlot, texture, scale):
+	get_node("Camera2D/EqBar/"+str(numberOfSlot)).texture = texture
+	get_node("Camera2D/EqBar/"+str(numberOfSlot)).scale = scale

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Graphics/devTree/background.png" type="Texture" id=1]
 [ext_resource path="res://fonts/Aclonica Regular.ttf" type="DynamicFontData" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Graphics/Alchemist/Potions/melisaPotion.png" type="Texture" id=11]
 [ext_resource path="res://Graphics/Alchemist/Potions/invisible.png" type="Texture" id=12]
 [ext_resource path="res://Graphics/Herbalist/apple.png" type="Texture" id=13]
+[ext_resource path="res://Graphics/devTree/EqBar.png" type="Texture" id=14]
 
 [sub_resource type="StyleBoxEmpty" id=8]
 
@@ -45,15 +46,18 @@ size = 30
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
+[sub_resource type="RectangleShape2D" id=15]
+extents = Vector2( 48, 40 )
+
 [sub_resource type="DynamicFont" id=10]
 size = 21
 font_data = ExtResource( 4 )
 
+[sub_resource type="RectangleShape2D" id=16]
+extents = Vector2( 39.832, 39.832 )
+
 [node name="DevTree" type="Node2D"]
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_horizontal_guides_": [ 256.0, 352.0, 448.0, 544.0 ]
-}
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 640.755, 360.34 )
@@ -143,6 +147,7 @@ keep_pressed_outside = true
 text = "Ekwipunek"
 
 [node name="HackingSkills" type="Node2D" parent="."]
+visible = false
 
 [node name="base" type="Button" parent="HackingSkills"]
 margin_left = 96.0
@@ -207,13 +212,12 @@ disabled = true
 text = "more points"
 
 [node name="Eq" type="Node2D" parent="."]
-visible = false
 
 [node name="Label" type="Label" parent="Eq"]
-margin_left = 576.0
+margin_left = 556.0
 margin_top = 96.0
-margin_right = 709.0
-margin_bottom = 149.0
+margin_right = 729.0
+margin_bottom = 165.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
 text = "Ekwipunek
@@ -279,21 +283,6 @@ position = Vector2( -82.125, 14.875 )
 scale = Vector2( 0.45, 0.45 )
 texture = ExtResource( 13 )
 
-[node name="Health" type="Label" parent="Eq"]
-margin_left = 800.0
-margin_top = 326.0
-margin_right = 973.0
-margin_bottom = 395.0
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 11 )
-text = "Ekwipunek
-"
-
-[node name="Health" type="Sprite" parent="Eq/Health"]
-position = Vector2( -64, 0 )
-scale = Vector2( 0.550403, 0.318408 )
-texture = ExtResource( 10 )
-
 [node name="Melisa2" type="Label" parent="Eq"]
 margin_left = 800.0
 margin_top = 227.0
@@ -309,20 +298,32 @@ position = Vector2( -64, 0 )
 scale = Vector2( 0.550403, 0.318408 )
 texture = ExtResource( 11 )
 
-[node name="Vinegar" type="Label" parent="Eq"]
+[node name="Collision" type="Area2D" parent="Eq/Melisa2"]
+position = Vector2( -64, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eq/Melisa2/Collision"]
+shape = SubResource( 15 )
+
+[node name="Health" type="Label" parent="Eq"]
 margin_left = 800.0
-margin_top = 518.0
+margin_top = 326.0
 margin_right = 973.0
-margin_bottom = 587.0
+margin_bottom = 395.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 11 )
 text = "Ekwipunek
 "
 
-[node name="Vinegar" type="Sprite" parent="Eq/Vinegar"]
+[node name="Health" type="Sprite" parent="Eq/Health"]
 position = Vector2( -64, 0 )
 scale = Vector2( 0.550403, 0.318408 )
-texture = ExtResource( 9 )
+texture = ExtResource( 10 )
+
+[node name="Collision" type="Area2D" parent="Eq/Health"]
+position = Vector2( -64, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eq/Health/Collision"]
+shape = SubResource( 15 )
 
 [node name="Invisible" type="Label" parent="Eq"]
 margin_left = 800.0
@@ -339,6 +340,34 @@ position = Vector2( -64, 0 )
 scale = Vector2( 0.550403, 0.318408 )
 texture = ExtResource( 12 )
 
+[node name="Collision" type="Area2D" parent="Eq/Invisible"]
+position = Vector2( -64, -6 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eq/Invisible/Collision"]
+shape = SubResource( 15 )
+
+[node name="Vinegar" type="Label" parent="Eq"]
+margin_left = 800.0
+margin_top = 518.0
+margin_right = 973.0
+margin_bottom = 587.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "Ekwipunek
+"
+
+[node name="Vinegar" type="Sprite" parent="Eq/Vinegar"]
+position = Vector2( -64, 0 )
+scale = Vector2( 0.550403, 0.318408 )
+texture = ExtResource( 9 )
+
+[node name="Collision" type="Area2D" parent="Eq/Vinegar"]
+position = Vector2( -64, 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Eq/Vinegar/Collision"]
+position = Vector2( 0, -3 )
+shape = SubResource( 15 )
+
 [node name="Label" type="Label" parent="."]
 margin_left = 928.0
 margin_top = 64.0
@@ -348,6 +377,75 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 10 )
 text = "Punkty"
 
+[node name="EqBar" type="Sprite" parent="."]
+position = Vector2( 640, 640 )
+scale = Vector2( 0.646465, 0.646465 )
+texture = ExtResource( 14 )
+
+[node name="Slot1" type="Area2D" parent="EqBar"]
+position = Vector2( -315.563, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EqBar/Slot1"]
+shape = SubResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="EqBar/Slot1"]
+
+[node name="Slot2" type="Area2D" parent="EqBar"]
+position = Vector2( -224.297, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EqBar/Slot2"]
+shape = SubResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="EqBar/Slot2"]
+
+[node name="Slot3" type="Area2D" parent="EqBar"]
+position = Vector2( -134.578, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EqBar/Slot3"]
+shape = SubResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="EqBar/Slot3"]
+
+[node name="Slot4" type="Area2D" parent="EqBar"]
+position = Vector2( -44.8594, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EqBar/Slot4"]
+shape = SubResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="EqBar/Slot4"]
+
+[node name="Slot5" type="Area2D" parent="EqBar"]
+position = Vector2( 44.8594, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EqBar/Slot5"]
+shape = SubResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="EqBar/Slot5"]
+
+[node name="Slot6" type="Area2D" parent="EqBar"]
+position = Vector2( 134.578, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EqBar/Slot6"]
+shape = SubResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="EqBar/Slot6"]
+
+[node name="Slot7" type="Area2D" parent="EqBar"]
+position = Vector2( 224.297, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EqBar/Slot7"]
+shape = SubResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="EqBar/Slot7"]
+
+[node name="Slot8" type="Area2D" parent="EqBar"]
+position = Vector2( 315.563, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EqBar/Slot8"]
+shape = SubResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="EqBar/Slot8"]
+
 [connection signal="pressed" from="MenuButton" to="." method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="MenuButton2" to="." method="_on_MenuButton_pressed"]
 [connection signal="pressed" from="Menu/CombatSkills" to="." method="_on_CombatSkills_pressed"]
@@ -355,3 +453,27 @@ text = "Punkty"
 [connection signal="pressed" from="HackingSkills/base" to="." method="clicked" binds= [ "Base" ]]
 [connection signal="pressed" from="HackingSkills/ManualSkills/AutoCollect" to="." method="clicked" binds= [ "autoCollect" ]]
 [connection signal="pressed" from="HackingSkills/ManualSkills/TreeAutoCollect" to="." method="clicked" binds= [ "treeAutoCollect" ]]
+[connection signal="mouse_entered" from="Eq/Melisa2/Collision" to="." method="changeItem" binds= [ 2 ]]
+[connection signal="mouse_exited" from="Eq/Melisa2/Collision" to="." method="changeItem"]
+[connection signal="mouse_entered" from="Eq/Health/Collision" to="." method="changeItem" binds= [ 3 ]]
+[connection signal="mouse_exited" from="Eq/Health/Collision" to="." method="changeItem"]
+[connection signal="mouse_entered" from="Eq/Invisible/Collision" to="." method="changeItem" binds= [ 4 ]]
+[connection signal="mouse_exited" from="Eq/Invisible/Collision" to="." method="changeItem"]
+[connection signal="mouse_entered" from="Eq/Vinegar/Collision" to="." method="changeItem" binds= [ 1 ]]
+[connection signal="mouse_exited" from="Eq/Vinegar/Collision" to="." method="changeItem"]
+[connection signal="mouse_entered" from="EqBar/Slot1" to="." method="changeSlot" binds= [ 1 ]]
+[connection signal="mouse_exited" from="EqBar/Slot1" to="." method="changeSlot" binds= [ 0 ]]
+[connection signal="mouse_entered" from="EqBar/Slot2" to="." method="changeSlot" binds= [ 2 ]]
+[connection signal="mouse_exited" from="EqBar/Slot2" to="." method="changeSlot" binds= [ 0 ]]
+[connection signal="mouse_entered" from="EqBar/Slot3" to="." method="changeSlot" binds= [ 3 ]]
+[connection signal="mouse_exited" from="EqBar/Slot3" to="." method="changeSlot" binds= [ 0 ]]
+[connection signal="mouse_entered" from="EqBar/Slot4" to="." method="changeSlot" binds= [ 4 ]]
+[connection signal="mouse_exited" from="EqBar/Slot4" to="." method="changeSlot" binds= [ 0 ]]
+[connection signal="mouse_entered" from="EqBar/Slot5" to="." method="changeSlot" binds= [ 5 ]]
+[connection signal="mouse_exited" from="EqBar/Slot5" to="." method="changeSlot" binds= [ 0 ]]
+[connection signal="mouse_entered" from="EqBar/Slot6" to="." method="changeSlot" binds= [ 6 ]]
+[connection signal="mouse_exited" from="EqBar/Slot6" to="." method="changeSlot" binds= [ 0 ]]
+[connection signal="mouse_entered" from="EqBar/Slot7" to="." method="changeSlot" binds= [ 7 ]]
+[connection signal="mouse_exited" from="EqBar/Slot7" to="." method="changeSlot" binds= [ 0 ]]
+[connection signal="mouse_entered" from="EqBar/Slot8" to="." method="changeSlot" binds= [ 8 ]]
+[connection signal="mouse_exited" from="EqBar/Slot8" to="." method="changeSlot" binds= [ 0 ]]

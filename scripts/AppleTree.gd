@@ -16,6 +16,8 @@ func collect():
 	if i in visibleTurnedOff:
 		if visibleTurnedOff.size() < applesCount:
 			collect()
+		elif !$CollectTimer.is_stopped():
+			$CollectTimer.stop()
 	else:
 		get_node(applesPath + str(i)).visible = false
 		visibleTurnedOff.append(i)
@@ -24,8 +26,7 @@ func collect():
 		get_node(Player).add("Apple")
 
 func collectAll():
-	for _i in range(0,applesCount):
-		collect()
+	$CollectTimer.start()
 
 func unCollectApple(value):
 	print("unCollect ", value)

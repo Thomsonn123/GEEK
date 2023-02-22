@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/SpriteFrames/PlayerDown.tres" type="SpriteFrames" id=2]
@@ -10,12 +10,18 @@
 [ext_resource path="res://scenes/HerbalistGUI.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Graphics/devTree/coin.png" type="Texture" id=9]
 [ext_resource path="res://scenes/AlchemistGUI.tscn" type="PackedScene" id=10]
-[ext_resource path="res://sounds/Footsteps_on_Grass_Sound_Effect___Walking_Sounds.mp3" type="AudioStream" id=11]
-[ext_resource path="res://sounds/Walk_SOUND_EFFECT.mp3" type="AudioStream" id=12]
+[ext_resource path="res://fonts/Aclonica Regular.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://Graphics/devTree/red-heart.png" type="Texture" id=12]
+[ext_resource path="res://Graphics/devTree/EqBar.png" type="Texture" id=13]
+[ext_resource path="res://Graphics/devTree/actual.png" type="Texture" id=14]
 [ext_resource path="res://fonts/RobotoSlab-Regular.ttf" type="DynamicFontData" id=204]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 8 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 30
+font_data = ExtResource( 11 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 11
@@ -36,6 +42,9 @@ font_data = ExtResource( 6 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_horizontal_guides_": [ 182.0 ]
+}
 herbs = [ 30, 30, 30 ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -45,6 +54,52 @@ shape = SubResource( 1 )
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 zoom = Vector2( 0.6, 0.6 )
+
+[node name="EqBar" type="Sprite" parent="Camera2D"]
+position = Vector2( -0.999939, 182 )
+scale = Vector2( 0.30303, 0.30303 )
+texture = ExtResource( 13 )
+
+[node name="Actual" type="Sprite" parent="Camera2D/EqBar"]
+position = Vector2( -316.8, 6.10352e-05 )
+texture = ExtResource( 14 )
+
+[node name="1" type="Sprite" parent="Camera2D/EqBar"]
+position = Vector2( -316, 0 )
+
+[node name="2" type="Sprite" parent="Camera2D/EqBar"]
+position = Vector2( -225.5, 0 )
+
+[node name="3" type="Sprite" parent="Camera2D/EqBar"]
+position = Vector2( -135.7, 0 )
+
+[node name="4" type="Sprite" parent="Camera2D/EqBar"]
+position = Vector2( -44.5, 0 )
+
+[node name="5" type="Sprite" parent="Camera2D/EqBar"]
+position = Vector2( 45, 0 )
+
+[node name="6" type="Sprite" parent="Camera2D/EqBar"]
+position = Vector2( 135.3, 0 )
+
+[node name="7" type="Sprite" parent="Camera2D/EqBar"]
+position = Vector2( 224.3, 0 )
+
+[node name="8" type="Sprite" parent="Camera2D/EqBar"]
+position = Vector2( 315.7, 0 )
+
+[node name="hp" type="Label" parent="Camera2D"]
+margin_left = -291.0
+margin_top = -192.0
+margin_right = -229.0
+margin_bottom = -159.0
+custom_fonts/font = SubResource( 8 )
+text = "100"
+
+[node name="Sprite" type="Sprite" parent="Camera2D/hp"]
+position = Vector2( -38, 15 )
+scale = Vector2( 0.118421, 0.118421 )
+texture = ExtResource( 12 )
 
 [node name="Dymek" type="Sprite" parent="Camera2D"]
 position = Vector2( -288, -170 )
@@ -107,9 +162,9 @@ text = "FPS"
 
 [node name="Money" type="Label" parent="."]
 margin_left = 304.0
-margin_top = -193.0
+margin_top = -187.0
 margin_right = 373.0
-margin_bottom = -173.0
+margin_bottom = -167.0
 custom_fonts/font = SubResource( 6 )
 text = "money"
 
@@ -142,12 +197,7 @@ position = Vector2( -381, -215 )
 scale = Vector2( 0.6, 0.6 )
 Player = NodePath("..")
 
-[node name="Concrete" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 12 )
-
-[node name="Grass" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 11 )
-pitch_scale = 2.0
+[node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="timeout" from="Camera2D/Label/Timer" to="." method="_tutHelp_Timeout"]
 [connection signal="body_entered" from="Collider" to="." method="body_enter"]

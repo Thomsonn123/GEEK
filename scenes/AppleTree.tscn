@@ -5,7 +5,7 @@
 [ext_resource path="res://scripts/AppleTree.gd" type="Script" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 226, 212 )
+extents = Vector2( 159, 170 )
 
 [node name="AppleTree" type="StaticBody2D"]
 script = ExtResource( 3 )
@@ -80,9 +80,10 @@ polygon = PoolVector2Array( -95, -355.8, -95, -354.4, -80, -338.3, -80, -332.4, 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2( 0, -1 )
 shape = SubResource( 1 )
+
+[node name="CollectTimer" type="Timer" parent="."]
 
 [connection signal="timeout" from="Apples/1/Timer" to="." method="unCollectApple" binds= [ 1 ]]
 [connection signal="timeout" from="Apples/2/Timer" to="." method="unCollectApple" binds= [ 2 ]]
@@ -93,3 +94,4 @@ shape = SubResource( 1 )
 [connection signal="timeout" from="Apples/7/Timer" to="." method="unCollectApple" binds= [ 7 ]]
 [connection signal="body_entered" from="Area2D" to="." method="playerEnter"]
 [connection signal="body_exited" from="Area2D" to="." method="playerExit"]
+[connection signal="timeout" from="CollectTimer" to="." method="collect"]

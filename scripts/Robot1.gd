@@ -36,6 +36,7 @@ func _process(delta):
 		pass
 	elif attack:
 		self.position = self.position
+		player.dealDamage(10)
 	elif seePlayer:
 		self.position = position.move_toward(player.position, delta * sprintSpeed)
 	else:

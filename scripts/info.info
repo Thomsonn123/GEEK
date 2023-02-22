@@ -6,3 +6,14 @@ herbs: 0 - melisa,1 -  dandelion,2 - Poppy, 3 - apple
 potions: 0 - vinegar, 1 - melisa, 2 - dandelion, 3 - poppys
 tools: 0 - hammer
 
+Eq bar
+0 - null
+1 - Ocet
+2 - melisa
+3 - Health
+4 - Trucizna
+
+Alerts
+0 - herbalist
+1 - Alchemist
+2 - village

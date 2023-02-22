@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Robot1.tscn" type="PackedScene" id=2]
@@ -13,6 +13,13 @@
 [ext_resource path="res://scenes/AlchemistTable.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/AppleTree.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Graphics/Map1/concrete.png" type="Texture" id=13]
+[ext_resource path="res://scripts/Alerts.gd" type="Script" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 324.764, 31 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 161, 32 )
 
 [node name="Game" type="Node2D"]
 position = Vector2( 1, 0 )
@@ -783,6 +790,7 @@ __meta__ = {
 "_edit_group_": true
 }
 herbs = [ 30, 30, 30, 30 ]
+potions = [ 10, 10, 10, 10 ]
 teleport = NodePath("../teleport")
 localLightPath = NodePath("../Lights/SunCenter/Sun")
 sun = NodePath("../Lights/SunCenter/Sun")
@@ -796,3 +804,32 @@ visible = false
 position = Vector2( 1391, 1269.5 )
 scale = Vector2( 11.8825, 11.7648 )
 texture = ExtResource( 13 )
+
+[node name="Alerts" type="Node2D" parent="."]
+script = ExtResource( 14 )
+Player = NodePath("../Player")
+
+[node name="Herbalist" type="Area2D" parent="Alerts"]
+position = Vector2( 702, 2298 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alerts/Herbalist"]
+position = Vector2( -11, -4 )
+shape = SubResource( 1 )
+
+[node name="Village" type="Area2D" parent="Alerts"]
+position = Vector2( 3426, 3259 )
+rotation = -0.561792
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alerts/Village"]
+position = Vector2( -11.0001, -4 )
+shape = SubResource( 1 )
+
+[node name="Alchemist" type="Area2D" parent="Alerts"]
+position = Vector2( 2803, 3063 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Alerts/Alchemist"]
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="Alerts/Herbalist" to="Alerts" method="walkedIn" binds= [ "Herbalist" ]]
+[connection signal="body_entered" from="Alerts/Village" to="Alerts" method="walkedIn" binds= [ "Village" ]]
+[connection signal="body_entered" from="Alerts/Alchemist" to="Alerts" method="walkedIn" binds= [ "Alchemist" ]]
