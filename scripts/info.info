@@ -2,7 +2,7 @@ herbalist quests
 "first quest": [melisa, dandelion, poppy, getWinMoney]
 
 Player:
-herbs: 0 - melisa,1 -  dandelion,2 - Poppy, 3 - apple
+herbs: 0 - melisa,1 -  dandelion,2 - Poppy, 3 - apple, 4 - water, 5 - empty
 potions: 0 - vinegar, 1 - melisa, 2 - dandelion, 3 - poppys
 tools: 0 - hammer
 
@@ -12,6 +12,8 @@ Eq bar
 2 - melisa
 3 - Health
 4 - Trucizna
+5 - woda
+6 - pusta buteleczka
 
 Alerts
 0 - herbalist

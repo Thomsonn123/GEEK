@@ -789,8 +789,7 @@ position = Vector2( -2974, 1175 )
 __meta__ = {
 "_edit_group_": true
 }
-herbs = [ 30, 30, 30, 30 ]
-potions = [ 10, 10, 10, 10 ]
+potions = [ 10, 10, 10, 10, 10, 10 ]
 teleport = NodePath("../teleport")
 localLightPath = NodePath("../Lights/SunCenter/Sun")
 sun = NodePath("../Lights/SunCenter/Sun")

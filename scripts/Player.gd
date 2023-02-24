@@ -10,12 +10,11 @@ var money = 0
 
 #inventory
 export var herbs = [0,0,0,0]
-export var potions = [0,0,0,0]
+export var potions = [0,0,0,0,0,0,]
 export var tools = [0]
 
 #teleport
 export(NodePath) var teleport
-
 
 onready var overWorld = get_node("..")
 export(NodePath) var localLightPath
@@ -35,6 +34,7 @@ var isDay = true
 var invisible = false
 var autocollect = false
 var treeAutocollect = false
+var isNearWater = false
 
 
 #sounds
@@ -46,12 +46,18 @@ var isOnGrass = true
 #eq
 var slots = 0
 var currentSlot = 1
+var canUse = true
+var eq = [0,0,0,0,0,0,0,0]
+
+#potions
+var healthToAdd = 50
 
 #tutorials made
 var MonitTutorial = false
 var startPosition:Vector2 = Vector2()
 
 func _ready():
+	print(potions.size())
 	slots = $DevTree/EqBar.get_child_count()
 	$SoundPlayer.stream = grassWalking
 	$Shadow/ShadowAnimations.rotation_degrees = -90
@@ -61,11 +67,21 @@ func _ready():
 	tutHelp("Witaj w grze")
 	startPosition = self.position
 
-func _input(_event):
+func _input(event):
 	if Input.is_action_just_pressed("teleport"):
 		dealDamage(10)
 		#self.position = get_node(teleport).position
 		pass
+	
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed() and canUse:
+		if eq[currentSlot-1] == 6 and isNearWater:
+			potions[5] -= 1
+			potions[4] += 1
+		elif eq[currentSlot-1] == 3:
+			potions[2] -= 1
+			hp += healthToAdd
+			dealDamage(0)
+		print("using")
 
 	if Input.is_action_just_pressed("WHEEL_UP"):
 		if currentSlot < 8:
@@ -73,12 +89,16 @@ func _input(_event):
 		else:
 			currentSlot = 1
 		changeCurrentSlot(currentSlot)
+	
 	if Input.is_action_just_pressed("WHEEL_DOWN"):
 		if currentSlot > 1:
 			currentSlot -= 1
 		else:
 			currentSlot = 8
 		changeCurrentSlot(currentSlot)
+	if Input.is_action_just_pressed("ui_menu"):
+		$Menu.visible = !$Menu.visible
+		
 	if Input.is_action_just_pressed("action_key"):
 		if action != null and "Monitor" in actionName:
 			$RobotHackGame.start()
@@ -90,7 +110,6 @@ func _input(_event):
 			$AlchemistGUI.visible = !$AlchemistGUI.visible
 			if $AlchemistGUI.visible == true:
 				$AlchemistGUI.open()
-				print("true")
 		elif entity != null:
 			var collect = get_node(entity)
 			collect.collect()
@@ -102,11 +121,18 @@ func _input(_event):
 			if $DevTree.visible == false:
 				$DevTree.setPage(0)
 				$DevTree.experiencePoints = experiencePoints
+	
+	if $DevTree.visible == true or $RobotHackGame.visible == true or $HerbalistGUI.visible == true or $AlchemistGUI.visible == true:
+		canUse = false
+	else:
+		canUse = true
+	
 	if $HerbalistGUI.visible and action == null:
 		$HerbalistGUI.visible = false
 		get_node(map).houseRev2Light(!$HerbalistGUI.visible)
 
 func _physics_process(_delta):
+	
 	$Money.text = str(money)
 	$Shadow/ShadowAnimations.frames = $PlayerAnimations.frames
 	$Shadow/ShadowAnimations.frame = $PlayerAnimations.frame
@@ -231,7 +257,6 @@ func add(value):
 		herbs[2] += 1
 	elif value == "Apple":
 		herbs[3] += 1
-	print(herbs)
  
 func restartGame():
 	self.position = startPosition
@@ -240,7 +265,9 @@ func restartGame():
 	pass
 
 func dealDamage(value):
-	if (hp - value) < 0:
+	if hp > 100:
+		hp = 100
+	elif (hp - value) < 0:
 		restartGame()
 	else:
 		hp -= value
@@ -248,12 +275,17 @@ func dealDamage(value):
 
 func body_enter(body:Node):
 	if "Water" in body.name:
-		print(body.name)
+		isNearWater = true
+
+func body_exit(body:Node):
+	if "Water" in body.name:
+		isNearWater = false
 
 func changeCurrentSlot(number):
 	var position = get_node("Camera2D/EqBar/"+str(number)).position
 	$Camera2D/EqBar/Actual.position = position
 
-func eqChanged(numberOfSlot, texture, scale):
+func eqChanged(numberOfSlot, texture, scale, hand):
+	eq[numberOfSlot-1] = hand
 	get_node("Camera2D/EqBar/"+str(numberOfSlot)).texture = texture
 	get_node("Camera2D/EqBar/"+str(numberOfSlot)).scale = scale

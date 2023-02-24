@@ -1,3 +1,4 @@
 extends Node2D
 
-#menu script
+func close():
+    get_tree().quit()

@@ -9,9 +9,9 @@ var poppyValue = 0
 var firstOpen = true
 
 #prices
-var melisaPrice = [70, 50]
-var dandelionPrice = [100, 80]
-var poppyPrice = [50, 30]
+var melisaPrice = [7, 5]
+var dandelionPrice = [10, 8]
+var poppyPrice = [5, 3]
 
 #quest1
 var quest1 = [5, 0, 0, 50]

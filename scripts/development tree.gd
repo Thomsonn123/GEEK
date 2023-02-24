@@ -8,6 +8,7 @@ var experiencePoints = 0
 onready var MenuPage = get_node("Menu")
 onready var HackingSkills = get_node("HackingSkills")
 onready var Eq = get_node("Eq")
+onready var Map = get_node("Map")
 var buttonsPrice = [100, 500, 100]
 var clickedButtons = [false, false, false]
 
@@ -17,7 +18,11 @@ var eq = [0,0,0,0,0,0,0,0,0]
 var item = 0
 var hand = 0
 var slot = 0
-var images = ["vinegar.png", "melisaPotion.png", "health.png", "invisible.png"]
+var images = ["vinegar.png", "melisaPotion.png", "health.png", "invisible.png", "water.png", "empty.png"]
+
+#map
+var pressed = false
+var active_line = null
 
 func _ready():
 	rHack = get_node(robotHacks)
@@ -36,7 +41,6 @@ func _input(event):
 			eqChanged(slot, hand)
 		elif hand != 0 and item == 0:
 			hand = 0
-		print(eq)
 
 func eqChanged(slotToChange, handToChange):
 	var texture = ImageTexture.new()
@@ -54,7 +58,7 @@ func eqChanged(slotToChange, handToChange):
 		texture = null
 	get_node("EqBar/Slot"+str(slotToChange)+"/Sprite").scale = scale
 	get_node("EqBar/Slot"+str(slotToChange)+"/Sprite").texture = texture
-	get_node(Player).eqChanged(slotToChange, texture, scale)
+	get_node(Player).eqChanged(slotToChange, texture, scale, handToChange)
 
 
 func update():
@@ -70,24 +74,28 @@ func update():
 		$HackingSkills/ManualSkills/TreeAutoCollect.disabled = clickedButtons[2]
 	else:
 		$HackingSkills/ManualSkills/TreeAutoCollect.disabled = true
+	
 	if curPage == 0:
 		$MenuButton.visible = false
 		$Page.text = ""
 		HackingSkills.visible = false
 		Eq.visible = false
 		MenuPage.visible = true
+		Map.visible = false
 	elif curPage == 1:
 		$MenuButton.visible = true
 		$Page.text = str(curPage)
 		MenuPage.visible = false
 		HackingSkills.visible = true
 		Eq.visible = false
+		Map.visible = false
 	elif curPage == 2:
 		$MenuButton.visible = true
 		$Page.text = str(curPage)
 		MenuPage.visible = false
 		HackingSkills.visible = false
 		Eq.visible = true
+		Map.visible = false
 		$Eq/Melisa.text = "Melisa: " + str(get_node(Player).herbs[0])
 		$Eq/Dandelion.text = "Mniszek lekarski: " + str(get_node(Player).herbs[1])
 		$Eq/Poppy.text = "Mak: " + str(get_node(Player).herbs[2])
@@ -96,7 +104,17 @@ func update():
 		$Eq/Invisible.text = "Trucizna: " + str(get_node(Player).potions[3])
 		$Eq/Melisa2.text = "Melisa: " + str(get_node(Player).potions[1])
 		$Eq/Vinegar.text = "Ocet: " + str(get_node(Player).potions[0])
-
+		$Eq/Water.text = "Woda: " + str(get_node(Player).potions[4])
+		$Eq/Empty.text = "Pusta butelka: " + str(get_node(Player).potions[5])
+		$EqBar.visible = $Eq.visible
+	elif curPage == 3:
+		$MenuButton.visible = true
+		$Page.text = str(curPage)
+		MenuPage.visible = false
+		HackingSkills.visible = false
+		Eq.visible = false
+		Map.visible = true
+		
 
 func clicked(name):
 	if name == "Base":
@@ -111,20 +129,25 @@ func clicked(name):
 		clickedButtons[2] = true
 		get_node(Player).treeAutocollect = true
 	update()
-	
-		
-	
+
 func setPage(page):
 	curPage = page
 	update()
+
 func _on_CombatSkills_pressed():
 	curPage = 1
 	update()
+
 func _on_MenuButton_pressed():
 	curPage = 0
 	update()
+
 func _on_HackingSkills_pressed():
 	curPage = 2
+	update()
+
+func _on_Map_pressed():
+	curPage = 3
 	update()
 
 func changeItem(value=0):
@@ -132,3 +155,23 @@ func changeItem(value=0):
 
 func changeSlot(value):
 	slot = value
+
+func MapDrawing(_viewport:Node, event:InputEvent, _shape_idx:int):
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
+		if event.pressed:
+			pressed = true
+			active_line = Line2D.new()
+			active_line.default_color = Color("#453938")
+			active_line.width = 5.0
+			get_node("Map/lines").add_child(active_line)
+		else:
+			pressed = false
+	if event is InputEventMouseMotion:
+		if pressed:
+			active_line.add_point(event.position)
+
+func deleteLastLine():
+	var childs = get_node("Map/lines").get_children()
+	if childs.size() != 0:
+		var last = childs.pop_back()
+		get_node("Map/lines/" + str(last.name)).queue_free()

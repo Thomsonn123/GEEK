@@ -179,7 +179,7 @@ script = ExtResource( 3 )
 position = Vector2( -668.5, 626.875 )
 scale = Vector2( 0.761324, 1.17548 )
 frames = ExtResource( 4 )
-frame = 17
+frame = 60
 speed_scale = 2.0
 playing = true
 
@@ -195,7 +195,7 @@ position = Vector2( -194.629, -146.217 )
 rotation = -1.5708
 scale = Vector2( 1.09158, 1.82786 )
 frames = ExtResource( 4 )
-frame = 17
+frame = 60
 speed_scale = 2.0
 playing = true
 
@@ -208,7 +208,7 @@ polygon = PoolVector2Array( -134.867, -244.204, -221.896, -244.204, -222.813, -2
 position = Vector2( 1265.5, -180.5 )
 scale = Vector2( 1.0993, 0.639515 )
 frames = ExtResource( 4 )
-frame = 17
+frame = 60
 speed_scale = 2.0
 playing = true
 
