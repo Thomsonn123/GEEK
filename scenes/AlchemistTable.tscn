@@ -23,5 +23,7 @@ texture = ExtResource( 1 )
 position = Vector2( 10.5, 16 )
 shape = SubResource( 1 )
 
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="playerEntered"]
 [connection signal="body_exited" from="Area2D" to="." method="playerExited"]

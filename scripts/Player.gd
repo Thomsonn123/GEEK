@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+export(NodePath) var Game
 export var walkingSpeed = 200
 export var sprintSpeed = 300
 var Robot1 = null
@@ -20,6 +21,7 @@ onready var overWorld = get_node("..")
 export(NodePath) var localLightPath
 export(NodePath) var sun
 export(NodePath) var map
+export(NodePath) var AlchemistTablePath
 
 var animUp = preload("res://Graphics/SpriteFrames/PlayerUp.tres") 
 var animDown = preload("res://Graphics/SpriteFrames/PlayerDown.tres")
@@ -35,12 +37,15 @@ var invisible = false
 var autocollect = false
 var treeAutocollect = false
 var isNearWater = false
-
+var canHit = true
 
 #sounds
 var normalSoundSpeed = 1.0
 var sprintSoundSpeed = 1.2
 var grassWalking = preload("res://sounds/Grass.mp3")
+var waterFilling = preload("res://sounds/waterFill.mp3")
+var drinking = preload("res://sounds/drinking.mp3")
+var robotAttack = preload("res://sounds/robotAttack.mp3")
 var isOnGrass = true
 
 #eq
@@ -66,18 +71,29 @@ func _ready():
 	$RobotHackGame.visible = false
 	tutHelp("Witaj w grze")
 	startPosition = self.position
+	
 
 func _input(event):
 	if Input.is_action_just_pressed("teleport"):
-		dealDamage(10)
-		#self.position = get_node(teleport).position
+		#dealDamage(10)
+		self.position = get_node(teleport).position
 		pass
 	
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed() and canUse:
 		if eq[currentSlot-1] == 6 and isNearWater:
+			$AudioEffectsPlayer.stream = waterFilling
+			var length = $AudioEffectsPlayer.stream.get_length()
+			$AudioEffectsPlayer/Timer.wait_time = length
+			$AudioEffectsPlayer/Timer.start()
+			$AudioEffectsPlayer.play()
 			potions[5] -= 1
 			potions[4] += 1
 		elif eq[currentSlot-1] == 3:
+			$AudioEffectsPlayer.stream = drinking
+			var length = $AudioEffectsPlayer.stream.get_length()
+			$AudioEffectsPlayer/Timer.wait_time = length
+			$AudioEffectsPlayer/Timer.start()
+			$AudioEffectsPlayer.play()
 			potions[2] -= 1
 			hp += healthToAdd
 			dealDamage(0)
@@ -205,7 +221,7 @@ func _physics_process(_delta):
 			$PlayerAnimations.frame = 12
 	if $PlayerAnimations.playing and $SoundPlayer.playing == false:
 		$SoundPlayer.playing = true
-	if Input.is_action_just_released("ui_up") or Input.is_action_just_released("ui_down") or Input.is_action_just_released("ui_left") or Input.is_action_just_released("ui_right"):
+	if $PlayerAnimations.playing == false:
 		$SoundPlayer.playing = false
 	vel = vel.normalized() * speed
 	var _returrn = move_and_slide(vel)
@@ -264,6 +280,14 @@ func restartGame():
 	dealDamage(0)
 	pass
 
+func robAttack():
+	canHit = false
+	$AudioEffectsPlayer.stream = robotAttack
+	var length = $AudioEffectsPlayer.stream.get_length()
+	$AudioEffectsPlayer/Timer.wait_time = length
+	$AudioEffectsPlayer/Timer.start()
+	$AudioEffectsPlayer.play()
+
 func dealDamage(value):
 	if hp > 100:
 		hp = 100
@@ -289,3 +313,23 @@ func eqChanged(numberOfSlot, texture, scale, hand):
 	eq[numberOfSlot-1] = hand
 	get_node("Camera2D/EqBar/"+str(numberOfSlot)).texture = texture
 	get_node("Camera2D/EqBar/"+str(numberOfSlot)).scale = scale
+
+func finishedPlaying():
+	$AudioEffectsPlayer.stop()
+	$AudioEffectsPlayer/Timer.stop()
+	if !canHit:
+		canHit = true
+
+func alchemistTableSounds(value):
+	get_node(AlchemistTablePath).sounds(value)
+
+func soundValue(value):
+	$SoundPlayer.volume_db = value
+	$AudioEffectsPlayer.volume_db = value
+	var alchemist = get_node(AlchemistTablePath)
+	alchemist.get_node("AudioPlayer").volume_db = value
+	for i in range(1,8):
+		print(i)
+		var path = get_node(Game).find_node("Robot" + str(i)).get_path()
+		get_node(path).soundValue(value)
+		

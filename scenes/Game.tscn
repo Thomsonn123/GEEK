@@ -97,9 +97,9 @@ sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Monitor2" parent="Enemy6" instance=ExtResource( 3 )]
 position = Vector2( 3680, 384 )
-Robot = NodePath("../Robot5")
+Robot = NodePath("../Robot6")
 
-[node name="Robot5" parent="Enemy6" instance=ExtResource( 2 )]
+[node name="Robot6" parent="Enemy6" instance=ExtResource( 2 )]
 position = Vector2( 3640, 528 )
 place1 = Vector2( 3648, 528 )
 place2 = Vector2( 3648, 2640 )
@@ -109,9 +109,9 @@ sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Monitor2" parent="Enemy7" instance=ExtResource( 3 )]
 position = Vector2( 2080, -1032 )
-Robot = NodePath("../Robot5")
+Robot = NodePath("../Robot7")
 
-[node name="Robot5" parent="Enemy7" instance=ExtResource( 2 )]
+[node name="Robot7" parent="Enemy7" instance=ExtResource( 2 )]
 position = Vector2( 2056, -896 )
 place1 = Vector2( 2056, -888 )
 place2 = Vector2( 3472, -888 )
@@ -789,14 +789,16 @@ position = Vector2( -2974, 1175 )
 __meta__ = {
 "_edit_group_": true
 }
+Game = NodePath("..")
 potions = [ 10, 10, 10, 10, 10, 10 ]
 teleport = NodePath("../teleport")
 localLightPath = NodePath("../Lights/SunCenter/Sun")
 sun = NodePath("../Lights/SunCenter/Sun")
 map = NodePath("../Map")
+AlchemistTablePath = NodePath("../AlchemistTable")
 
 [node name="teleport" type="Node2D" parent="."]
-position = Vector2( 593, 1981 )
+position = Vector2( 2573, 2761 )
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false

@@ -22,12 +22,15 @@ var attack = false
 export var isHacked = false
 export(NodePath) var sun
 onready var player = get_node("../../Player")
+var walkingSound = preload("res://sounds/robotWalking.mp3")
 
 func _ready():
 	$Shadow.rotation_degrees = -90
 	walking = true
 	self.position = place2
-
+	$AudioPlayer.stream = walkingSound
+	$AudioPlayer.pitch_scale = 0.6
+	$AudioPlayer.play()
 
 func _process(delta):
 	if isDay:
@@ -36,10 +39,16 @@ func _process(delta):
 		pass
 	elif attack:
 		self.position = self.position
-		player.dealDamage(10)
+		if player.canHit:
+			player.dealDamage(10)
+			player.robAttack()
 	elif seePlayer:
+		if $AudioPlayer.pitch_scale != 0.8:
+			$AudioPlayer.pitch_scale = 0.8
 		self.position = position.move_toward(player.position, delta * sprintSpeed)
 	else:
+		if $AudioPlayer.pitch_scale != 0.6:
+			$AudioPlayer.pitch_scale = 0.6
 		if lastPosition != null and reversion:
 			movePosition = lastPosition
 			reversion = false
@@ -53,7 +62,9 @@ func _process(delta):
 			movePosition = place1
 		self.position = position.move_toward(movePosition, delta * walkingSpeed)
 	$Shadow.look_at(localLight.global_position)
-	
+
+func soundValue(value):
+	$AudioPlayer.volume_db = value
 
 func _on_Area2D_body_entered(body:Node):
 	if body.name == "Player":
@@ -73,6 +84,7 @@ func hacked():
 func walkInPlayerAttack(body:Node):
 	if body.name == "Player" and player.invisible == false:
 		attack = true
+
 func walkOutPlayerAttack(body:Node):
 	if body.name == "Player" or player.invisible == true:
 		attack = false

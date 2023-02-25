@@ -92,12 +92,14 @@ func reset():
 		waterButton.disabled = true
 
 func potionReady():
+	get_node(Player).alchemistTableSounds("finish")
 	$ProgressBar.value = 0
 	collectButton.disabled = false
 	box.visible = false
 
 func GUIButtons(value):
 	if value == "start":
+		get_node(Player).alchemistTableSounds("working")
 		var choosenHerbs = [0,0,0,0]
 		$Timer.start()
 		if choosen == "melisa":
@@ -131,7 +133,7 @@ func GUIButtons(value):
 			get_node(Player).potions[3] += valuee
 		choosen = null
 		collectButton.disabled = true
-		print(get_node(Player).potions)
+		get_node(Player).alchemistTableSounds("end")
 		reset()
 	
 
@@ -140,4 +142,5 @@ func _on_Timer_timeout():
 	if $ProgressBar.value == 100:
 		$Timer.stop()
 		potionReady()
+
 

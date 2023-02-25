@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/SpriteFrames/PlayerDown.tres" type="SpriteFrames" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Graphics/devTree/EqBar.png" type="Texture" id=13]
 [ext_resource path="res://Graphics/devTree/actual.png" type="Texture" id=14]
 [ext_resource path="res://scenes/Menu.tscn" type="PackedScene" id=15]
+[ext_resource path="res://sounds/waterFill.mp3" type="AudioStream" id=16]
 [ext_resource path="res://fonts/RobotoSlab-Regular.ttf" type="DynamicFontData" id=204]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -200,10 +201,17 @@ Player = NodePath("..")
 
 [node name="Menu" parent="." instance=ExtResource( 15 )]
 visible = false
+Player = NodePath("..")
 
 [node name="SoundPlayer" type="AudioStreamPlayer2D" parent="."]
+
+[node name="AudioEffectsPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 16 )
+
+[node name="Timer" type="Timer" parent="AudioEffectsPlayer"]
 
 [connection signal="timeout" from="Camera2D/Label/Timer" to="." method="_tutHelp_Timeout"]
 [connection signal="body_entered" from="Collider" to="." method="body_enter"]
 [connection signal="body_exited" from="Collider" to="." method="body_exit"]
 [connection signal="timeout" from="Status/Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="AudioEffectsPlayer/Timer" to="." method="finishedPlaying"]
