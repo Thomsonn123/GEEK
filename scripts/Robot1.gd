@@ -26,6 +26,9 @@ var walkingSound = preload("res://sounds/robotWalking.mp3")
 
 var robotUp = load("res://Graphics/SpriteFrames/RobotUp.tres")
 var robotDown = load("res://Graphics/SpriteFrames/RobotDown.tres")
+var robotLeft = load("res://Graphics/SpriteFrames/RobotLeft.tres")
+var lastDegrees = 0
+var walkingDirection = "left"
 
 func _ready():
 	$Shadow.rotation_degrees = -90
@@ -46,44 +49,66 @@ func _process(delta):
 		if player.canHit:
 			player.dealDamage(10)
 			player.robAttack()
+		#checkWalking(player.position)
 	elif seePlayer:
 		if $AudioPlayer.pitch_scale != 0.8:
 			$AudioPlayer.pitch_scale = 0.8
-		self.position = position.move_toward(player.position, delta * sprintSpeed)
+		self.position = position.move_toward(player.position, delta * 200)
+		checkWalking(player.position)
 	else:
 		if $AudioPlayer.pitch_scale != 0.6:
 			$AudioPlayer.pitch_scale = 0.6
 		if lastPosition != null and reversion:
 			movePosition = lastPosition
 			reversion = false
-			checkWalking(movePosition)
 		elif lastPosition != null and self.position == lastPosition:
 			movePosition = lastMove
 			lastPosition = null
 			lastMove = null
-			checkWalking(movePosition)
 		elif self.position == place1:
 			movePosition = place2
-			checkWalking(movePosition)
 		elif self.position == place2:
 			movePosition = place1
-			checkWalking(movePosition)
-		self.position = position.move_toward(movePosition, delta * walkingSpeed)
-		
+		self.position = position.move_toward(movePosition, delta * 100)
+		checkWalking(movePosition)
 	$Shadow.look_at(localLight.global_position)
 
 func checkWalking(positionTo):
-	if self.position.y > positionTo.y:
+	var degrees = rad2deg(self.get_angle_to(positionTo))
+	print(degrees)
+	if degrees < -135 or degrees > 135:
+		walkingLeft()
+	elif degrees > -135 and degrees < -45:
 		walkingUp()
-	elif self.position.y < positionTo.y:
+	elif degrees > 45 and degrees < 135:
 		walkingDown()
+	elif degrees > -45 or degrees < 45:
+		walkingRight()
 
 func walkingUp():
-	$AnimatedSprite.frames = robotUp
-	$AnimatedSprite.play()
+	if walkingDirection != "up":
+		$AnimatedSprite.frames = robotUp
+		$AnimatedSprite.play()
+		walkingDirection = "up"
+
 func walkingDown():
-	$AnimatedSprite.frames = robotDown
-	$AnimatedSprite.play()
+	if walkingDirection != "down":
+		$AnimatedSprite.frames = robotDown
+		$AnimatedSprite.play()
+		walkingDirection = "down"
+
+func walkingLeft():
+	if walkingDirection != "left":
+		$AnimatedSprite.frames = robotLeft
+		$AnimatedSprite.play()
+		$AnimatedSprite.flip_h = false
+		walkingDirection = "left"
+
+func walkingRight():
+	if walkingDirection != "right":
+		walkingLeft()
+		$AnimatedSprite.flip_h = true
+		walkingDirection = "right"
 
 func soundValue(value):
 	$AudioPlayer.volume_db = value
@@ -111,3 +136,5 @@ func walkOutPlayerAttack(body:Node):
 	if body.name == "Player" or player.invisible == true:
 		attack = false
 		
+func attackedByPlayer():
+	pass
