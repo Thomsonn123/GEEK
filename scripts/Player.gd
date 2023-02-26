@@ -17,6 +17,8 @@ export var tools = [0]
 #teleport
 export(NodePath) var teleport
 
+export(NodePath) var robot
+
 onready var overWorld = get_node("..")
 export(NodePath) var localLightPath
 export(NodePath) var sun
@@ -76,7 +78,8 @@ func _ready():
 func _input(event):
 	if Input.is_action_just_pressed("teleport"):
 		#dealDamage(10)
-		self.position = get_node(teleport).position
+		#self.position = get_node(teleport).position
+		get_node(robot).attackedByPlayer()
 		pass
 	
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed() and canUse:

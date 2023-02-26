@@ -792,6 +792,7 @@ __meta__ = {
 Game = NodePath("..")
 potions = [ 10, 10, 10, 10, 10, 10 ]
 teleport = NodePath("../teleport")
+robot = NodePath("../Enemy1/Robot1")
 localLightPath = NodePath("../Lights/SunCenter/Sun")
 sun = NodePath("../Lights/SunCenter/Sun")
 map = NodePath("../Map")

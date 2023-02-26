@@ -27,8 +27,12 @@ var walkingSound = preload("res://sounds/robotWalking.mp3")
 var robotUp = load("res://Graphics/SpriteFrames/RobotUp.tres")
 var robotDown = load("res://Graphics/SpriteFrames/RobotDown.tres")
 var robotLeft = load("res://Graphics/SpriteFrames/RobotLeft.tres")
+var robotRustUp = load("res://Graphics/SpriteFrames/RobotRustUp.tres")
+var robotRustDown = load("res://Graphics/SpriteFrames/RobotRustDown.tres")
+var robotRustLeft = load("res://Graphics/SpriteFrames/RobotRustLeft.tres")
 var lastDegrees = 0
 var walkingDirection = "left"
+var poisoned = false
 
 func _ready():
 	$Shadow.rotation_degrees = -90
@@ -61,6 +65,8 @@ func _process(delta):
 		if lastPosition != null and reversion:
 			movePosition = lastPosition
 			reversion = false
+		elif poisoned:
+			self.position = self.position
 		elif lastPosition != null and self.position == lastPosition:
 			movePosition = lastMove
 			lastPosition = null
@@ -137,4 +143,19 @@ func walkOutPlayerAttack(body:Node):
 		attack = false
 		
 func attackedByPlayer():
-	pass
+	poisoned = true
+	$AnimatedSprite.autoplay = false
+	if walkingDirection == "up":
+		$AnimatedSprite.frames = robotRustUp
+		$AnimatedSprite.play()
+	elif walkingDirection == "down":
+		$AnimatedSprite.frames = robotRustDown
+		$AnimatedSprite.play()
+	elif walkingDirection == "left":
+		$AnimatedSprite.frames = robotRustLeft
+		$AnimatedSprite.flip_h = false
+		$AnimatedSprite.play()
+	elif walkingDirection == "right":
+		$AnimatedSprite.frames = robotRustLeft
+		$AnimatedSprite.flip_h = true
+		$AnimatedSprite.play()
