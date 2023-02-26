@@ -24,6 +24,9 @@ export(NodePath) var sun
 onready var player = get_node("../../Player")
 var walkingSound = preload("res://sounds/robotWalking.mp3")
 
+var robotUp = load("res://Graphics/SpriteFrames/RobotUp.tres")
+var robotDown = load("res://Graphics/SpriteFrames/RobotDown.tres")
+
 func _ready():
 	$Shadow.rotation_degrees = -90
 	walking = true
@@ -33,6 +36,7 @@ func _ready():
 	$AudioPlayer.play()
 
 func _process(delta):
+
 	if isDay:
 		localLight = get_node(sun)
 	if isHacked:
@@ -52,16 +56,34 @@ func _process(delta):
 		if lastPosition != null and reversion:
 			movePosition = lastPosition
 			reversion = false
+			checkWalking(movePosition)
 		elif lastPosition != null and self.position == lastPosition:
 			movePosition = lastMove
 			lastPosition = null
 			lastMove = null
+			checkWalking(movePosition)
 		elif self.position == place1:
 			movePosition = place2
+			checkWalking(movePosition)
 		elif self.position == place2:
 			movePosition = place1
+			checkWalking(movePosition)
 		self.position = position.move_toward(movePosition, delta * walkingSpeed)
+		
 	$Shadow.look_at(localLight.global_position)
+
+func checkWalking(positionTo):
+	if self.position.y > positionTo.y:
+		walkingUp()
+	elif self.position.y < positionTo.y:
+		walkingDown()
+
+func walkingUp():
+	$AnimatedSprite.frames = robotUp
+	$AnimatedSprite.play()
+func walkingDown():
+	$AnimatedSprite.frames = robotDown
+	$AnimatedSprite.play()
 
 func soundValue(value):
 	$AudioPlayer.volume_db = value
