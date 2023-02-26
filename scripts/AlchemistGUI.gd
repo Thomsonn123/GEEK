@@ -45,7 +45,6 @@ func button_pressed(name):
 			healthButton.disabled = true
 			waterButton.disabled = true
 			multipler = melisa / neededIngridents[1]
-			print(multipler)
 			spinBox.max_value = multipler
 		elif name == "health":
 			vinegarButton.disabled = true
@@ -127,7 +126,6 @@ func GUIButtons(value):
 		elif choosen == "melisa":
 			get_node(Player).potions[1] += valuee
 		elif choosen == "health":
-			print("działa")
 			get_node(Player).potions[2] += valuee
 		elif choosen == "water":
 			get_node(Player).potions[3] += valuee

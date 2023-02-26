@@ -42,7 +42,7 @@ margin_left = -97.0
 margin_top = -128.0
 margin_bottom = -112.0
 min_value = -50.0
-max_value = 0.0
+max_value = 50.0
 
 [node name="Label2" type="Label" parent="."]
 margin_left = -289.0

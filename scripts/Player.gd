@@ -62,7 +62,7 @@ var MonitTutorial = false
 var startPosition:Vector2 = Vector2()
 
 func _ready():
-	print(potions.size())
+	soundValue(0.0)
 	slots = $DevTree/EqBar.get_child_count()
 	$SoundPlayer.stream = grassWalking
 	$Shadow/ShadowAnimations.rotation_degrees = -90
@@ -97,7 +97,6 @@ func _input(event):
 			potions[2] -= 1
 			hp += healthToAdd
 			dealDamage(0)
-		print("using")
 
 	if Input.is_action_just_pressed("WHEEL_UP"):
 		if currentSlot < 8:
@@ -329,7 +328,6 @@ func soundValue(value):
 	var alchemist = get_node(AlchemistTablePath)
 	alchemist.get_node("AudioPlayer").volume_db = value
 	for i in range(1,8):
-		print(i)
 		var path = get_node(Game).find_node("Robot" + str(i)).get_path()
 		get_node(path).soundValue(value)
 		

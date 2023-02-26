@@ -152,7 +152,6 @@ keep_pressed_outside = true
 text = "Mapa"
 
 [node name="HackingSkills" type="Node2D" parent="."]
-visible = false
 
 [node name="base" type="Button" parent="HackingSkills"]
 margin_left = 96.0
@@ -489,6 +488,7 @@ shape = SubResource( 16 )
 [node name="Sprite" type="Sprite" parent="EqBar/Slot8"]
 
 [node name="Map" type="Node2D" parent="."]
+visible = false
 
 [node name="Area2D" type="Area2D" parent="Map"]
 

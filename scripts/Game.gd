@@ -24,7 +24,6 @@ export var isNight = false
 
 func _ready():
 	flowers +=$Melisa.get_child_count() + $Dandelion.get_child_count() + $Poppy.get_child_count()
-	print(flowers)
 	startGame()
 	#$DayNight/ChangeTimer.start()
 	#currentColorA = dayColorA
