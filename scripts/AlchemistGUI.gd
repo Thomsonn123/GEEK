@@ -12,6 +12,7 @@ onready var spinBox = get_node("Box/SpinBox")
 onready var box = get_node("Box")
 
 var neededIngridents = [10,5,15,5]
+var water
 
 var apple = 0
 var dandelion = 0
@@ -39,25 +40,37 @@ func button_pressed(name):
 			healthButton.disabled = true
 			waterButton.disabled = true
 			multipler = apple / neededIngridents[0]
-			spinBox.max_value = multipler
+			if water >= multipler:
+				spinBox.max_value = multipler
+			else:
+				spinBox.max_value = water
 		elif name == "melisa":
 			vinegarButton.disabled = true
 			healthButton.disabled = true
 			waterButton.disabled = true
 			multipler = melisa / neededIngridents[1]
-			spinBox.max_value = multipler
+			if water >= multipler:
+				spinBox.max_value = multipler
+			else:
+				spinBox.max_value = water
 		elif name == "health":
 			vinegarButton.disabled = true
 			melisaButton.disabled = true
 			waterButton.disabled = true
 			multipler = dandelion / neededIngridents[2]
-			spinBox.max_value = multipler
+			if water >= multipler:
+				spinBox.max_value = multipler
+			else:
+				spinBox.max_value = water
 		elif name == "water":
 			melisaButton.disabled = true
 			vinegarButton.disabled = true
 			healthButton.disabled = true
 			multipler = poppy / neededIngridents[3]
-			spinBox.max_value = multipler
+			if water >= multipler:
+				spinBox.max_value = multipler
+			else:
+				spinBox.max_value = water
 		box.disabled = false
 		box.visible = true
 		choosen = name
@@ -67,6 +80,7 @@ func button_pressed(name):
 		reset()
 
 func reset():
+	water = get_node(Player).potions[4]
 	melisa = get_node(Player).herbs[0]
 	dandelion = get_node(Player).herbs[1]
 	poppy = get_node(Player).herbs[2]

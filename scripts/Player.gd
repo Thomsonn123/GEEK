@@ -119,6 +119,7 @@ func _input(event):
 		
 	if Input.is_action_just_pressed("action_key"):
 		if action != null and "Monitor" in actionName:
+			
 			$RobotHackGame.start()
 		elif action != null and "Herbalist" in actionName:
 			$HerbalistGUI.visible = !$HerbalistGUI.visible
@@ -333,4 +334,7 @@ func soundValue(value):
 	for i in range(1,8):
 		var path = get_node(Game).find_node("Robot" + str(i)).get_path()
 		get_node(path).soundValue(value)
+
+func addMoney(value):
+	money += value
 		

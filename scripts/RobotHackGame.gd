@@ -38,8 +38,11 @@ func _physics_process(_delta):
 	$ProgressBar.value = $GameTimer.time_left
 
 func start():
-	self.visible = true
-	$Button.visible = true
+	self.visible = !self.visible
+	if self.visible == true:
+		$Button.visible = true
+	else:
+		stopGame()
 
 func startHacking():	
 	$Button.visible = false
@@ -76,6 +79,9 @@ func restartGame():
 	$Timer.start()
 
 func finishHack():
+	var rng = RandomNumberGenerator.new()
+	var random = rng.randi_range(100,500)
+	get_node(player).addMoney(random)
 	get_node(player).experiencePoints += experiencePointsAfterHacking
 	hackedGame()
 	$GameTimer.stop()
@@ -95,7 +101,6 @@ func setVisible(status):
 func hackedGame():
 	if robot != null:
 		get_node(robot).hacked()
-
 func upgradeHackingSpeed(value):
 	hackingTime -= value
 
