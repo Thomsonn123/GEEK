@@ -52,6 +52,7 @@ font_data = ExtResource( 3 )
 
 [node name="AlchemistGUI" type="Node2D"]
 script = ExtResource( 1 )
+Player = null
 
 [node name="Sprite" type="Sprite" parent="."]
 position = Vector2( 642.52, 361.78 )
@@ -367,6 +368,10 @@ position = Vector2( 83.1559, 0 )
 scale = Vector2( 0.132414, 0.132414 )
 texture = ExtResource( 11 )
 
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+
+[node name="Timer" type="Timer" parent="Audio"]
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="pressed" from="Button" to="." method="GUIButtons" binds= [ "collect" ]]
 [connection signal="pressed" from="Start" to="." method="GUIButtons" binds= [ "start" ]]
@@ -374,3 +379,4 @@ texture = ExtResource( 11 )
 [connection signal="pressed" from="Potions/2potion" to="." method="button_pressed" binds= [ "melisa" ]]
 [connection signal="pressed" from="Potions/3potion" to="." method="button_pressed" binds= [ "health" ]]
 [connection signal="pressed" from="Potions/4potion" to="." method="button_pressed" binds= [ "water" ]]
+[connection signal="timeout" from="Audio/Timer" to="." method="finishDubbing"]

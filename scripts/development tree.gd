@@ -1,5 +1,14 @@
 extends Node2D
 
+#dubbing
+
+var eqDubbing = load("res://sounds/ekwipunek.mp3")
+var skillsDubbing = load("res://sounds/umiejetnosci.mp3")
+var mapDubbing = load("res://sounds/mapa.mp3")
+
+var isDubbing = [0,0,0]
+
+
 export(NodePath) var robotHacks
 export(NodePath) var Player
 var curPage = 0
@@ -25,6 +34,9 @@ var pressed = false
 var active_line = null
 
 func _ready():
+	get_node("HackingSkills/1price").text = str(buttonsPrice[0])
+	get_node("HackingSkills/2price").text = str(buttonsPrice[1])
+	get_node("HackingSkills/3price").text = str(buttonsPrice[2])
 	rHack = get_node(robotHacks)
 	update()
 
@@ -83,6 +95,12 @@ func update():
 		MenuPage.visible = true
 		Map.visible = false
 	elif curPage == 1:
+		if isDubbing[0] == 0:
+			$Audio.stream = skillsDubbing
+			$Audio/Timer.wait_time = $Audio.stream.get_length()
+			$Audio/Timer.start()
+			$Audio.play()
+			isDubbing[0] = 1
 		$MenuButton.visible = true
 		$Page.text = str(curPage)
 		MenuPage.visible = false
@@ -90,6 +108,12 @@ func update():
 		Eq.visible = false
 		Map.visible = false
 	elif curPage == 2:
+		if isDubbing[1] == 0:
+			$Audio.stream = eqDubbing
+			$Audio/Timer.wait_time = $Audio.stream.get_length()
+			$Audio/Timer.start()
+			$Audio.play()
+			isDubbing[1] = 1
 		$MenuButton.visible = true
 		$Page.text = str(curPage)
 		MenuPage.visible = false
@@ -108,6 +132,12 @@ func update():
 		$Eq/Empty.text = "Pusta butelka: " + str(get_node(Player).potions[5])
 		$EqBar.visible = $Eq.visible
 	elif curPage == 3:
+		if isDubbing[2] == 0:
+			$Audio.stream = skillsDubbing
+			$Audio/Timer.wait_time = $Audio.stream.get_length()
+			$Audio/Timer.start()
+			$Audio.play()
+			isDubbing[2] = 1
 		$MenuButton.visible = true
 		$Page.text = str(curPage)
 		MenuPage.visible = false
@@ -175,3 +205,7 @@ func deleteLastLine():
 	if childs.size() != 0:
 		var last = childs.pop_back()
 		get_node("Map/lines/" + str(last.name)).queue_free()
+
+func turnOff():
+	$Audio.stop()
+	$Audio/Timer.stop()

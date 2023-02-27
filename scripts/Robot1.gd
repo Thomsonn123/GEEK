@@ -85,7 +85,6 @@ func _process(delta):
 
 func checkWalking(positionTo):
 	var degrees = rad2deg(self.get_angle_to(positionTo))
-	print(degrees)
 	if degrees > 0:
 		if degrees < 22.5:
 			walkingRight()

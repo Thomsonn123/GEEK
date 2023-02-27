@@ -43,9 +43,17 @@ var quest5status = true
 onready var buttonQuest5 = $Quests/Quest5/Button
 onready var finishedLabelQuest5 = $Quests/Quest5/Label3
 
+var wasDubbing = false
+var herbalistDubbing = load("res://sounds/zielarz.mp3")
+
 func open():
 	if firstOpen:
-		#Play lector
+		if !wasDubbing:
+			wasDubbing = true
+			$Audio.stream = herbalistDubbing
+			$Audio/Timer.wait_time = $Audio.stream.get_length()
+			$Audio/Timer.start()
+			$Audio.play()
 		firstOpen = false
 	herbs = get_node(Player).herbs
 	refresh()
@@ -229,3 +237,5 @@ func price(priceValue):
 	dandelionValue = $Shop/DandelionValue2/SpinBox.get_value()
 	poppyValue = $Shop/PoppyValue2/SpinBox.get_value()
 
+func dubbingFinish():
+	$Audio.queue_free()

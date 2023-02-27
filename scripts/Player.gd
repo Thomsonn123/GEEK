@@ -41,6 +41,9 @@ var treeAutocollect = false
 var isNearWater = false
 var canHit = true
 
+#throwing
+var poison = preload("res://scenes/Poison.tscn")
+
 #sounds
 var normalSoundSpeed = 1.0
 var sprintSoundSpeed = 1.2
@@ -48,7 +51,10 @@ var grassWalking = preload("res://sounds/Grass.mp3")
 var waterFilling = preload("res://sounds/waterFill.mp3")
 var drinking = preload("res://sounds/drinking.mp3")
 var robotAttack = preload("res://sounds/robotAttack.mp3")
+var breakPotion = preload("res://sounds/glass.mp3")
+var tooFar = load("res://sounds/tooFar.mp3")
 var isOnGrass = true
+var volume
 
 #eq
 var slots = 0
@@ -64,6 +70,7 @@ var MonitTutorial = false
 var startPosition:Vector2 = Vector2()
 
 func _ready():
+	speed = walkingSpeed
 	soundValue(0.0)
 	slots = $DevTree/EqBar.get_child_count()
 	$SoundPlayer.stream = grassWalking
@@ -100,6 +107,8 @@ func _input(event):
 			potions[2] -= 1
 			hp += healthToAdd
 			dealDamage(0)
+		elif eq[currentSlot-1] == 1:
+			throw(get_global_mouse_position(), self.position)
 
 	if Input.is_action_just_pressed("WHEEL_UP"):
 		if currentSlot < 8:
@@ -141,11 +150,10 @@ func _input(event):
 				$DevTree.setPage(0)
 				$DevTree.experiencePoints = experiencePoints
 	
-	if $DevTree.visible == true or $RobotHackGame.visible == true or $HerbalistGUI.visible == true or $AlchemistGUI.visible == true:
+	if $DevTree.visible == true or $RobotHackGame.visible == true or $HerbalistGUI.visible == true or $AlchemistGUI.visible == true and $Menu.visible == false:
 		canUse = false
 	else:
 		canUse = true
-	
 	if $HerbalistGUI.visible and action == null:
 		$HerbalistGUI.visible = false
 		get_node(map).houseRev2Light(!$HerbalistGUI.visible)
@@ -327,8 +335,11 @@ func alchemistTableSounds(value):
 	get_node(AlchemistTablePath).sounds(value)
 
 func soundValue(value):
+	volume = value
 	$SoundPlayer.volume_db = value
 	$AudioEffectsPlayer.volume_db = value
+	$Audio.volume_db = value
+	get_node("DevTree/Audio").volume_db = value
 	var alchemist = get_node(AlchemistTablePath)
 	alchemist.get_node("AudioPlayer").volume_db = value
 	for i in range(1,8):
@@ -337,4 +348,26 @@ func soundValue(value):
 
 func addMoney(value):
 	money += value
-		
+
+func dubbing(sound):
+	$Audio.stream = sound
+	$Audio/Timer.wait_time = $Audio.stream.get_length()
+	$Audio/Timer.start()
+	$Audio.play()
+
+func dubbingFinished():
+	$Audio/Timer.stop()
+	$Audio.stop()
+
+func throw(mousePos, playerPosition):
+	var lengthToPosition = sqrt(pow((playerPosition.y - mousePos.y), 2) + pow((playerPosition.x - mousePos.x), 2))
+	
+	if lengthToPosition <= 250:
+		var instance = poison.instance()
+		instance.position = self.position
+		instance.init(playerPosition, mousePos, breakPotion, volume)
+		get_tree().get_root().add_child(instance)
+		potions[0] -= 1
+	else:
+		dubbing(tooFar)
+	pass

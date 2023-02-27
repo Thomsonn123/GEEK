@@ -1,6 +1,7 @@
 extends Node2D
 
 export(NodePath) var Player
+var wasOpened = false
 
 var prefix = "Potions/"
 onready var collectButton = get_node("Button")
@@ -11,6 +12,7 @@ onready var waterButton = get_node(prefix + "4potion")
 onready var spinBox = get_node("Box/SpinBox")
 onready var box = get_node("Box")
 
+var alchemistDubbing = load("res://sounds/stol_alchemiczny.mp3")
 var neededIngridents = [10,5,15,5]
 var water
 
@@ -29,6 +31,12 @@ func _ready():
 	$Start.disabled = true
 
 func open():
+	if !wasOpened:
+		$Audio.stream = alchemistDubbing
+		$Audio/Timer.wait_time = $Audio.stream.get_length()
+		$Audio/Timer.start()
+		$Audio.play()
+
 	if choosen == null:
 		reset()
 
@@ -155,4 +163,6 @@ func _on_Timer_timeout():
 		$Timer.stop()
 		potionReady()
 
+func finishDubbing():
+	$Audio.queue_free()
 

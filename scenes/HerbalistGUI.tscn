@@ -521,6 +521,10 @@ min_value = 1.0
 value = 1.0
 align = 1
 
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+
+[node name="Timer" type="Timer" parent="Audio"]
+
 [connection signal="pressed" from="Page" to="." method="changePage"]
 [connection signal="pressed" from="Quests/Quest1/Button" to="." method="GetWin" binds= [ "quest1" ]]
 [connection signal="pressed" from="Quests/Quest2/Button" to="." method="GetWin" binds= [ "quest2" ]]
@@ -539,3 +543,4 @@ align = 1
 [connection signal="value_changed" from="Shop/MelisaValue/SpinBox" to="." method="valueChanged" binds= [ "melisa" ]]
 [connection signal="value_changed" from="Shop/DandelionValue2/SpinBox" to="." method="valueChanged" binds= [ "dandelion" ]]
 [connection signal="value_changed" from="Shop/PoppyValue2/SpinBox" to="." method="valueChanged" binds= [ "poppy" ]]
+[connection signal="timeout" from="Audio/Timer" to="." method="dubbingFinish"]

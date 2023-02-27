@@ -210,8 +210,13 @@ stream = ExtResource( 16 )
 
 [node name="Timer" type="Timer" parent="AudioEffectsPlayer"]
 
+[node name="Audio" type="AudioStreamPlayer" parent="."]
+
+[node name="Timer" type="Timer" parent="Audio"]
+
 [connection signal="timeout" from="Camera2D/Label/Timer" to="." method="_tutHelp_Timeout"]
 [connection signal="body_entered" from="Collider" to="." method="body_enter"]
 [connection signal="body_exited" from="Collider" to="." method="body_exit"]
 [connection signal="timeout" from="Status/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="AudioEffectsPlayer/Timer" to="." method="finishedPlaying"]
+[connection signal="timeout" from="Audio/Timer" to="." method="dubbingFinished"]
