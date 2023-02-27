@@ -107,7 +107,7 @@ func _input(event):
 			potions[2] -= 1
 			hp += healthToAdd
 			dealDamage(0)
-		elif eq[currentSlot-1] == 1:
+		elif eq[currentSlot-1] == 1 and $Menu.visible == false:
 			throw(get_global_mouse_position(), self.position)
 
 	if Input.is_action_just_pressed("WHEEL_UP"):
@@ -150,7 +150,7 @@ func _input(event):
 				$DevTree.setPage(0)
 				$DevTree.experiencePoints = experiencePoints
 	
-	if $DevTree.visible == true or $RobotHackGame.visible == true or $HerbalistGUI.visible == true or $AlchemistGUI.visible == true and $Menu.visible == false:
+	if $DevTree.visible == true or $RobotHackGame.visible == true or $HerbalistGUI.visible == true or $AlchemistGUI.visible == true and $Menu.visible == true:
 		canUse = false
 	else:
 		canUse = true
@@ -365,7 +365,7 @@ func throw(mousePos, playerPosition):
 	if lengthToPosition <= 250:
 		var instance = poison.instance()
 		instance.position = self.position
-		instance.init(playerPosition, mousePos, breakPotion, volume)
+		instance.init(playerPosition, mousePos, breakPotion, volume, speed)
 		get_tree().get_root().add_child(instance)
 		potions[0] -= 1
 	else:
