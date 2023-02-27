@@ -8,6 +8,7 @@ var hp = 100
 var experiencePoints = 0
 var entity = null
 var money = 0
+var invisibleTime = 20
 
 #inventory
 export var herbs = [0,0,0,0]
@@ -43,6 +44,7 @@ var canHit = true
 
 #throwing
 var poison = preload("res://scenes/Poison.tscn")
+var poisonMelisa = preload("res://scenes/MelisaPoison.tscn")
 
 #sounds
 var normalSoundSpeed = 1.0
@@ -70,6 +72,7 @@ var MonitTutorial = false
 var startPosition:Vector2 = Vector2()
 
 func _ready():
+	$Invisible.visible = false
 	speed = walkingSpeed
 	soundValue(0.0)
 	slots = $DevTree/EqBar.get_child_count()
@@ -85,8 +88,7 @@ func _ready():
 func _input(event):
 	if Input.is_action_just_pressed("teleport"):
 		#dealDamage(10)
-		#self.position = get_node(teleport).position
-		get_node(robot).attackedByPlayer()
+		self.position = get_node(teleport).position
 		pass
 	
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed() and canUse:
@@ -109,6 +111,16 @@ func _input(event):
 			dealDamage(0)
 		elif eq[currentSlot-1] == 1 and $Menu.visible == false:
 			throw(get_global_mouse_position(), self.position)
+		elif eq[currentSlot-1] == 2 and $Menu.visible == false:
+			throwMelisa(get_global_mouse_position(), self.position)
+		elif eq[currentSlot-1] == 4 and $Menu.visible == false:
+			$AudioEffectsPlayer.stream = drinking
+			var length = $AudioEffectsPlayer.stream.get_length()
+			$AudioEffectsPlayer/Timer.wait_time = length
+			$AudioEffectsPlayer/Timer.start()
+			$AudioEffectsPlayer.play()
+			potions[3] -= 1
+			setInvisible()
 
 	if Input.is_action_just_pressed("WHEEL_UP"):
 		if currentSlot < 8:
@@ -371,3 +383,32 @@ func throw(mousePos, playerPosition):
 		else:
 			dubbing(tooFar)
 	pass
+func throwMelisa(mousePos, playerPosition):
+	var lengthToPosition = sqrt(pow((playerPosition.y - mousePos.y), 2) + pow((playerPosition.x - mousePos.x), 2))
+	if potions[0] >= 1:
+		if lengthToPosition <= 250:
+			var instance = poisonMelisa.instance()
+			instance.position = self.position
+			instance.init(playerPosition, mousePos, breakPotion, volume, speed)
+			get_tree().get_root().add_child(instance)
+			potions[1] -= 1
+		else:
+			dubbing(tooFar)
+
+func setInvisible():
+	$Invisible/Timer.wait_time = invisibleTime / 10
+	$Invisible.visible = true
+	$Invisible/ProgressBar.value = 0
+	$Invisible/ProgressBar.max_value = 10
+	$Invisible/Timer.start()
+
+func invisibleTick():
+	if $Invisible/ProgressBar.value < $Invisible/ProgressBar.max_value:
+		invisible = true
+		$Invisible/Timer.start()
+		$Invisible/ProgressBar.value += 1
+	else:
+		$Invisible.visible = false
+		invisible = false
+		$Invisible/Timer.stop()
+

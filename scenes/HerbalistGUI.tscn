@@ -99,7 +99,6 @@ scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 7 )
 
 [node name="Quests" type="Node2D" parent="."]
-visible = false
 
 [node name="Quest1" type="Node2D" parent="Quests"]
 
@@ -372,6 +371,7 @@ custom_fonts/font = ExtResource( 4 )
 text = "Zadanie zakończone"
 
 [node name="Shop" type="Node2D" parent="."]
+visible = false
 position = Vector2( 37, 82 )
 
 [node name="MelisaBuy" type="Button" parent="Shop"]

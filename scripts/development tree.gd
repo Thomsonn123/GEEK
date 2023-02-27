@@ -125,7 +125,7 @@ func update():
 		$Eq/Poppy.text = "Mak: " + str(get_node(Player).herbs[2])
 		$Eq/Apple.text = "Jabłko: " + str(get_node(Player).herbs[3])
 		$Eq/Health.text = "Lekarstwo: " + str(get_node(Player).potions[2])
-		$Eq/Invisible.text = "Trucizna: " + str(get_node(Player).potions[3])
+		$Eq/Invisible.text = "Niewidzialność: " + str(get_node(Player).potions[3])
 		$Eq/Melisa2.text = "Melisa: " + str(get_node(Player).potions[1])
 		$Eq/Vinegar.text = "Ocet: " + str(get_node(Player).potions[0])
 		$Eq/Water.text = "Woda: " + str(get_node(Player).potions[4])
@@ -144,6 +144,7 @@ func update():
 		HackingSkills.visible = false
 		Eq.visible = false
 		Map.visible = true
+	$EqBar.visible = $Eq.visible
 		
 
 func clicked(name):

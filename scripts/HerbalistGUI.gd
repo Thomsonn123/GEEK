@@ -190,6 +190,7 @@ func GetWin(value):
 		get_node(Player).money += quest5[3]
 		quest5status = false
 	refresh()
+	get_node(Player).addMoney(50)
 	get_node(Player).herbs = herbs
 
 func buy(name):

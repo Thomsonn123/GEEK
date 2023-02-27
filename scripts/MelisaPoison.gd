@@ -21,7 +21,7 @@ func _physics_process(delta):
 
 func bodyIn(body:Node):
 	if "Robot" in body.name:
-		body.attackedByPlayer()
+		body.hackedTime()
 		playSound(sound)
 	
 func playSound(soundToPlay):

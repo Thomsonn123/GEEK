@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://scenes/Map.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Robot1.tscn" type="PackedScene" id=2]
@@ -14,6 +14,10 @@
 [ext_resource path="res://scenes/AppleTree.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Graphics/Map1/concrete.png" type="Texture" id=13]
 [ext_resource path="res://scripts/Alerts.gd" type="Script" id=14]
+[ext_resource path="res://Graphics/Alchemist/Potions/alchemicRight.png" type="Texture" id=15]
+[ext_resource path="res://Graphics/Alchemist/Potions/alchemic.png" type="Texture" id=16]
+[ext_resource path="res://Graphics/Alchemist/Potions/herbalist.png" type="Texture" id=17]
+[ext_resource path="res://Graphics/Alchemist/Potions/herbalistRight.png" type="Texture" id=18]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 324.764, 31 )
@@ -33,146 +37,83 @@ position = Vector2( 19, 22 )
 scale = Vector2( 2, 2 )
 sun = NodePath("../Lights/SunCenter/Sun")
 
-[node name="Enemy1" type="Node2D" parent="."]
+[node name="Alchemic" type="Sprite" parent="."]
+position = Vector2( -1748, 1374 )
+rotation = 0.982878
+scale = Vector2( 0.318715, 0.318715 )
+texture = ExtResource( 15 )
 
-[node name="Monitor" parent="Enemy1" instance=ExtResource( 3 )]
-position = Vector2( -1920, 616 )
-Robot = NodePath("../Robot1")
+[node name="Alchemic2" type="Sprite" parent="."]
+position = Vector2( -1608, 2251 )
+rotation = 0.982878
+scale = Vector2( 0.318715, 0.318715 )
+texture = ExtResource( 15 )
 
-[node name="Robot1" parent="Enemy1" instance=ExtResource( 2 )]
-position = Vector2( -1920, 1488 )
-place1 = Vector2( -1920, 736 )
-place2 = Vector2( -1920, 1488 )
-walkingSpeed = null
-sprintSpeed = null
-seePlayer = null
-isHacked = null
-sun = NodePath("../../Lights/SunCenter/Sun")
+[node name="Alchemic7" type="Sprite" parent="."]
+position = Vector2( -1589, 2669 )
+rotation = -0.00111616
+scale = Vector2( 0.318715, 0.318715 )
+texture = ExtResource( 15 )
 
-[node name="Enemy2" type="Node2D" parent="."]
+[node name="Alchemic3" type="Sprite" parent="."]
+position = Vector2( 1115, 2353 )
+rotation = 0.0153279
+scale = Vector2( 0.318715, 0.318715 )
+texture = ExtResource( 15 )
 
-[node name="Monitor" parent="Enemy2" instance=ExtResource( 3 )]
-position = Vector2( -1616, 1968 )
-Robot = NodePath("../Robot2")
+[node name="Alchemic4" type="Sprite" parent="."]
+position = Vector2( 2472, 3052 )
+rotation = 0.0153279
+scale = Vector2( 0.318715, 0.318715 )
+texture = ExtResource( 15 )
 
-[node name="Robot2" parent="Enemy2" instance=ExtResource( 2 )]
-position = Vector2( -1352, 2096 )
-place1 = Vector2( -1352, 2096 )
-place2 = Vector2( -680, 1448 )
-walkingSpeed = null
-sprintSpeed = null
-seePlayer = null
-isHacked = null
-sun = NodePath("../../Lights/SunCenter/Sun")
+[node name="Alchemic6" type="Sprite" parent="."]
+position = Vector2( 1896, 2426 )
+rotation = 0.480794
+scale = Vector2( 0.318715, 0.318715 )
+texture = ExtResource( 15 )
 
-[node name="Enemy3" type="Node2D" parent="."]
+[node name="Alchemic5" type="Sprite" parent="."]
+position = Vector2( 2801, 3102 )
+rotation = 0.0108978
+scale = Vector2( 0.318715, 0.318715 )
+texture = ExtResource( 16 )
 
-[node name="Monitor2" parent="Enemy3" instance=ExtResource( 3 )]
-position = Vector2( -1704, 1480 )
-Robot = NodePath("../Robot3")
+[node name="Herbalist2" type="Sprite" parent="."]
+position = Vector2( 662, 2354 )
+rotation = 0.00421286
+scale = Vector2( 0.318715, 0.318715 )
+texture = ExtResource( 17 )
 
-[node name="Robot3" parent="Enemy3" instance=ExtResource( 2 )]
-position = Vector2( -1728, 2952 )
-place1 = Vector2( -1728, 1656 )
-place2 = Vector2( -1728, 2952 )
-walkingSpeed = null
-sprintSpeed = null
-seePlayer = null
-isHacked = null
-sun = NodePath("../../Lights/SunCenter/Sun")
+[node name="Herbalist3" type="Sprite" parent="."]
+position = Vector2( -347, 2410 )
+rotation = 0.00421286
+scale = Vector2( 0.318715, 0.318715 )
+texture = ExtResource( 18 )
 
-[node name="Enemy4" type="Node2D" parent="."]
+[node name="Herbalist4" type="Sprite" parent="."]
+position = Vector2( -1505, 2675 )
+rotation = 0.00421286
+scale = Vector2( 0.318715, 0.318715 )
+texture = ExtResource( 18 )
 
-[node name="Monitor2" parent="Enemy4" instance=ExtResource( 3 )]
-position = Vector2( -2216, -72 )
-Robot = NodePath("../Robot4")
+[node name="Herbalist5" type="Sprite" parent="."]
+position = Vector2( -1609, 2030 )
+rotation = 1.07912
+scale = Vector2( 0.318715, 0.318715 )
+texture = ExtResource( 18 )
 
-[node name="Robot4" parent="Enemy4" instance=ExtResource( 2 )]
-position = Vector2( -1772, 434 )
-place1 = Vector2( -1784, -864 )
-place2 = Vector2( -1792, 434 )
-walkingSpeed = null
-sprintSpeed = null
-seePlayer = null
-isHacked = null
-sun = NodePath("../../Lights/SunCenter/Sun")
+[node name="Herbalist6" type="Sprite" parent="."]
+position = Vector2( -1640, 1558 )
+rotation = 0.849646
+scale = Vector2( 0.318715, 0.318715 )
+texture = ExtResource( 18 )
 
-[node name="Enemy5" type="Node2D" parent="."]
-
-[node name="Monitor2" parent="Enemy5" instance=ExtResource( 3 )]
-position = Vector2( 2912, 3008 )
-Robot = NodePath("../Robot5")
-
-[node name="Robot5" parent="Enemy5" instance=ExtResource( 2 )]
-position = Vector2( 312, 3128 )
-place1 = Vector2( 2432, 3128 )
-place2 = Vector2( 312, 3128 )
-walkingSpeed = null
-sprintSpeed = null
-seePlayer = null
-isHacked = null
-sun = NodePath("../../Lights/SunCenter/Sun")
-
-[node name="Enemy6" type="Node2D" parent="."]
-
-[node name="Monitor2" parent="Enemy6" instance=ExtResource( 3 )]
-position = Vector2( 3680, 384 )
-Robot = NodePath("../Robot6")
-
-[node name="Robot6" parent="Enemy6" instance=ExtResource( 2 )]
-position = Vector2( 3640, 528 )
-place1 = Vector2( 3648, 528 )
-place2 = Vector2( 3648, 2640 )
-walkingSpeed = null
-sprintSpeed = null
-seePlayer = null
-isHacked = null
-sun = NodePath("../../Lights/SunCenter/Sun")
-
-[node name="Enemy7" type="Node2D" parent="."]
-
-[node name="Monitor2" parent="Enemy7" instance=ExtResource( 3 )]
-position = Vector2( 2080, -1032 )
-Robot = NodePath("../Robot7")
-
-[node name="Robot7" parent="Enemy7" instance=ExtResource( 2 )]
-position = Vector2( 2056, -896 )
-place1 = Vector2( 2056, -888 )
-place2 = Vector2( 3472, -888 )
-walkingSpeed = null
-sprintSpeed = null
-seePlayer = null
-isHacked = null
-sun = NodePath("../../Lights/SunCenter/Sun")
-
-[node name="Herbalist" parent="." instance=ExtResource( 7 )]
-position = Vector2( 747, 1841 )
-
-[node name="AppleTrees" type="Node2D" parent="."]
-
-[node name="AppleTree" parent="AppleTrees" instance=ExtResource( 12 )]
-position = Vector2( 414, 1630 )
-Player = NodePath("../../Player")
-
-[node name="AppleTree2" parent="AppleTrees" instance=ExtResource( 12 )]
-position = Vector2( 2163, 1635 )
-Player = NodePath("../../Player")
-
-[node name="AppleTree5" parent="AppleTrees" instance=ExtResource( 12 )]
-position = Vector2( -49, 3163 )
-Player = NodePath("../../Player")
-
-[node name="AppleTree6" parent="AppleTrees" instance=ExtResource( 12 )]
-position = Vector2( -587, 3244 )
-Player = NodePath("../../Player")
-
-[node name="AppleTree3" parent="AppleTrees" instance=ExtResource( 12 )]
-position = Vector2( 2692, 1738 )
-Player = NodePath("../../Player")
-
-[node name="AppleTree4" parent="AppleTrees" instance=ExtResource( 12 )]
-position = Vector2( 2389, 1936 )
-Player = NodePath("../../Player")
+[node name="Herbalist7" type="Sprite" parent="."]
+position = Vector2( -1776, 1210 )
+rotation = 1.11188
+scale = Vector2( 0.318715, 0.318715 )
+texture = ExtResource( 18 )
 
 [node name="Melisa" type="Node2D" parent="."]
 
@@ -721,7 +662,7 @@ position = Vector2( -1841, 2617 )
 Player = NodePath("../../Player")
 
 [node name="Poppy32" parent="Poppy" instance=ExtResource( 10 )]
-position = Vector2( -1526, 2640 )
+position = Vector2( -1486, 2595 )
 Player = NodePath("../../Player")
 
 [node name="Poppy3" parent="Poppy" instance=ExtResource( 10 )]
@@ -794,6 +735,147 @@ Player = NodePath("../../Player")
 
 [node name="Poppy22" parent="Poppy" instance=ExtResource( 10 )]
 position = Vector2( 1463, -149 )
+Player = NodePath("../../Player")
+
+[node name="Enemy1" type="Node2D" parent="."]
+
+[node name="Monitor" parent="Enemy1" instance=ExtResource( 3 )]
+position = Vector2( -1920, 616 )
+Robot = NodePath("../Robot1")
+
+[node name="Robot1" parent="Enemy1" instance=ExtResource( 2 )]
+position = Vector2( -1920, 1488 )
+place1 = Vector2( -1920, 736 )
+place2 = Vector2( -1920, 1488 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
+sun = NodePath("../../Lights/SunCenter/Sun")
+
+[node name="Enemy2" type="Node2D" parent="."]
+
+[node name="Monitor" parent="Enemy2" instance=ExtResource( 3 )]
+position = Vector2( -1613, 1914 )
+Robot = NodePath("../Robot2")
+
+[node name="Robot2" parent="Enemy2" instance=ExtResource( 2 )]
+position = Vector2( -1352, 2096 )
+place1 = Vector2( -1352, 2096 )
+place2 = Vector2( -680, 1448 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
+sun = NodePath("../../Lights/SunCenter/Sun")
+
+[node name="Enemy3" type="Node2D" parent="."]
+
+[node name="Monitor2" parent="Enemy3" instance=ExtResource( 3 )]
+position = Vector2( -1704, 1480 )
+Robot = NodePath("../Robot3")
+
+[node name="Robot3" parent="Enemy3" instance=ExtResource( 2 )]
+position = Vector2( -1728, 2952 )
+place1 = Vector2( -1728, 1656 )
+place2 = Vector2( -1728, 2952 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
+sun = NodePath("../../Lights/SunCenter/Sun")
+
+[node name="Enemy4" type="Node2D" parent="."]
+
+[node name="Monitor2" parent="Enemy4" instance=ExtResource( 3 )]
+position = Vector2( -2216, -72 )
+Robot = NodePath("../Robot4")
+
+[node name="Robot4" parent="Enemy4" instance=ExtResource( 2 )]
+position = Vector2( -1772, 434 )
+place1 = Vector2( -1784, -864 )
+place2 = Vector2( -1792, 434 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
+sun = NodePath("../../Lights/SunCenter/Sun")
+
+[node name="Enemy5" type="Node2D" parent="."]
+
+[node name="Monitor2" parent="Enemy5" instance=ExtResource( 3 )]
+position = Vector2( 2912, 3008 )
+Robot = NodePath("../Robot5")
+
+[node name="Robot5" parent="Enemy5" instance=ExtResource( 2 )]
+position = Vector2( 312, 3128 )
+place1 = Vector2( 2432, 3128 )
+place2 = Vector2( 312, 3128 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
+sun = NodePath("../../Lights/SunCenter/Sun")
+
+[node name="Enemy6" type="Node2D" parent="."]
+
+[node name="Monitor2" parent="Enemy6" instance=ExtResource( 3 )]
+position = Vector2( 3680, 384 )
+Robot = NodePath("../Robot6")
+
+[node name="Robot6" parent="Enemy6" instance=ExtResource( 2 )]
+position = Vector2( 3640, 528 )
+place1 = Vector2( 3648, 528 )
+place2 = Vector2( 3648, 2640 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
+sun = NodePath("../../Lights/SunCenter/Sun")
+
+[node name="Enemy7" type="Node2D" parent="."]
+
+[node name="Monitor2" parent="Enemy7" instance=ExtResource( 3 )]
+position = Vector2( 2080, -1032 )
+Robot = NodePath("../Robot7")
+
+[node name="Robot7" parent="Enemy7" instance=ExtResource( 2 )]
+position = Vector2( 2056, -896 )
+place1 = Vector2( 2056, -888 )
+place2 = Vector2( 3472, -888 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
+sun = NodePath("../../Lights/SunCenter/Sun")
+
+[node name="Herbalist" parent="." instance=ExtResource( 7 )]
+position = Vector2( 747, 1841 )
+
+[node name="AppleTrees" type="Node2D" parent="."]
+
+[node name="AppleTree" parent="AppleTrees" instance=ExtResource( 12 )]
+position = Vector2( 414, 1630 )
+Player = NodePath("../../Player")
+
+[node name="AppleTree2" parent="AppleTrees" instance=ExtResource( 12 )]
+position = Vector2( 2163, 1635 )
+Player = NodePath("../../Player")
+
+[node name="AppleTree5" parent="AppleTrees" instance=ExtResource( 12 )]
+position = Vector2( -49, 3163 )
+Player = NodePath("../../Player")
+
+[node name="AppleTree6" parent="AppleTrees" instance=ExtResource( 12 )]
+position = Vector2( -587, 3244 )
+Player = NodePath("../../Player")
+
+[node name="AppleTree3" parent="AppleTrees" instance=ExtResource( 12 )]
+position = Vector2( 2692, 1738 )
+Player = NodePath("../../Player")
+
+[node name="AppleTree4" parent="AppleTrees" instance=ExtResource( 12 )]
+position = Vector2( 2389, 1936 )
 Player = NodePath("../../Player")
 
 [node name="Lights" type="Node2D" parent="."]

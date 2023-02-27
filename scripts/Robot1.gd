@@ -5,7 +5,7 @@ export var place1 = Vector2()
 export var place2 = Vector2()
 export var walkingSpeed = 100
 export var sprintSpeed = 200
-var hackingTimeDelay = 20
+var hackingTimeDelay = 2
 var damage = 10
 var PlayerInCollision
 export var seePlayer = false
@@ -52,13 +52,13 @@ func _process(delta):
 	if isHacked:
 		$AnimatedSprite.stop()
 		$AudioPlayer.stop()
-	elif attack:
+	elif attack and !player.invisible:
 		self.position = self.position
 		if player.canHit:
 			player.dealDamage(10)
 			player.robAttack()
 		checkWalking(player.position)
-	elif seePlayer:
+	elif seePlayer and !player.invisible:
 		if $AudioPlayer.pitch_scale != 0.8:
 			$AudioPlayer.pitch_scale = 0.8
 		self.position = position.move_toward(player.position, delta * 200)
@@ -190,6 +190,7 @@ func walkOutPlayerAttack(body:Node):
 		
 func attackedByPlayer():
 	var rng = RandomNumberGenerator.new()
+	walkingDirection = "wait"
 	randomize()
 	var random = rng.randi_range(100, 500)
 	player.addMoney(random)
@@ -200,6 +201,7 @@ func attackedByPlayer():
 
 func hackedTime():
 	$HackingTimer.wait_time = hackingTimeDelay
+	walkingDirection = "wait"
 	$AnimatedSprite.frames = robotDown
 	$AnimatedSprite.stop()
 	isHacked = true

@@ -55,6 +55,6 @@ frames = ExtResource( 4 )
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]
-[connection signal="timeout" from="HackingTimer" to="." method="hackingTimerTimeout"]
+[connection signal="timeout" from="HackingTimer" to="." method="hackingTimeout"]
 [connection signal="body_entered" from="PlayerAttack" to="." method="walkInPlayerAttack"]
 [connection signal="body_exited" from="PlayerAttack" to="." method="walkOutPlayerAttack"]

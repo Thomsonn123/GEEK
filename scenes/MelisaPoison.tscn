@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://Graphics/Alchemist/Potions/vinegar.png" type="Texture" id=1]
-[ext_resource path="res://scripts/Poison.gd" type="Script" id=2]
+[ext_resource path="res://Graphics/Alchemist/Potions/melisaPotion.png" type="Texture" id=1]
+[ext_resource path="res://scripts/MelisaPoison.gd" type="Script" id=2]
 
 [node name="Melisa" type="Sprite"]
 scale = Vector2( 0.241935, 0.241936 )

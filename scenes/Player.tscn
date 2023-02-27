@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Graphics/SpriteFrames/PlayerDown.tres" type="SpriteFrames" id=2]
@@ -41,6 +41,10 @@ font_data = ExtResource( 204 )
 
 [sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 9
+font_data = ExtResource( 11 )
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -214,9 +218,27 @@ stream = ExtResource( 16 )
 
 [node name="Timer" type="Timer" parent="Audio"]
 
+[node name="Invisible" type="Label" parent="."]
+margin_left = -90.0
+margin_top = -194.0
+margin_right = -50.0
+margin_bottom = -180.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 9 )
+text = "Niewidzialność:"
+
+[node name="ProgressBar" type="ProgressBar" parent="Invisible"]
+margin_left = 81.0
+margin_right = 177.0
+margin_bottom = 14.0
+percent_visible = false
+
+[node name="Timer" type="Timer" parent="Invisible"]
+
 [connection signal="timeout" from="Camera2D/Label/Timer" to="." method="_tutHelp_Timeout"]
 [connection signal="body_entered" from="Collider" to="." method="body_enter"]
 [connection signal="body_exited" from="Collider" to="." method="body_exit"]
 [connection signal="timeout" from="Status/Timer" to="." method="_on_Timer_timeout"]
 [connection signal="timeout" from="AudioEffectsPlayer/Timer" to="." method="finishedPlaying"]
 [connection signal="timeout" from="Audio/Timer" to="." method="dubbingFinished"]
+[connection signal="timeout" from="Invisible/Timer" to="." method="invisibleTick"]

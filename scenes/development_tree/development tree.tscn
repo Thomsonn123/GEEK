@@ -99,7 +99,6 @@ align = 1
 valign = 1
 
 [node name="Menu" type="Node2D" parent="."]
-visible = false
 
 [node name="Eq" type="Button" parent="Menu"]
 margin_left = 512.0
@@ -153,6 +152,7 @@ keep_pressed_outside = true
 text = "Mapa"
 
 [node name="HackingSkills" type="Node2D" parent="."]
+visible = false
 
 [node name="base" type="Button" parent="HackingSkills"]
 margin_left = 96.0
