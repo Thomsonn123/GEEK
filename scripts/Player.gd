@@ -361,13 +361,13 @@ func dubbingFinished():
 
 func throw(mousePos, playerPosition):
 	var lengthToPosition = sqrt(pow((playerPosition.y - mousePos.y), 2) + pow((playerPosition.x - mousePos.x), 2))
-	
-	if lengthToPosition <= 250:
-		var instance = poison.instance()
-		instance.position = self.position
-		instance.init(playerPosition, mousePos, breakPotion, volume, speed)
-		get_tree().get_root().add_child(instance)
-		potions[0] -= 1
-	else:
-		dubbing(tooFar)
+	if potions[0] >= 1:
+		if lengthToPosition <= 250:
+			var instance = poison.instance()
+			instance.position = self.position
+			instance.init(playerPosition, mousePos, breakPotion, volume, speed)
+			get_tree().get_root().add_child(instance)
+			potions[0] -= 1
+		else:
+			dubbing(tooFar)
 	pass

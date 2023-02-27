@@ -43,6 +43,10 @@ Robot = NodePath("../Robot1")
 position = Vector2( -1920, 1488 )
 place1 = Vector2( -1920, 736 )
 place2 = Vector2( -1920, 1488 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
 sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Enemy2" type="Node2D" parent="."]
@@ -55,6 +59,10 @@ Robot = NodePath("../Robot2")
 position = Vector2( -1352, 2096 )
 place1 = Vector2( -1352, 2096 )
 place2 = Vector2( -680, 1448 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
 sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Enemy3" type="Node2D" parent="."]
@@ -67,6 +75,10 @@ Robot = NodePath("../Robot3")
 position = Vector2( -1728, 2952 )
 place1 = Vector2( -1728, 1656 )
 place2 = Vector2( -1728, 2952 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
 sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Enemy4" type="Node2D" parent="."]
@@ -79,6 +91,10 @@ Robot = NodePath("../Robot4")
 position = Vector2( -1772, 434 )
 place1 = Vector2( -1784, -864 )
 place2 = Vector2( -1792, 434 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
 sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Enemy5" type="Node2D" parent="."]
@@ -91,6 +107,10 @@ Robot = NodePath("../Robot5")
 position = Vector2( 312, 3128 )
 place1 = Vector2( 2432, 3128 )
 place2 = Vector2( 312, 3128 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
 sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Enemy6" type="Node2D" parent="."]
@@ -103,6 +123,10 @@ Robot = NodePath("../Robot6")
 position = Vector2( 3640, 528 )
 place1 = Vector2( 3648, 528 )
 place2 = Vector2( 3648, 2640 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
 sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Enemy7" type="Node2D" parent="."]
@@ -115,6 +139,10 @@ Robot = NodePath("../Robot7")
 position = Vector2( 2056, -896 )
 place1 = Vector2( 2056, -888 )
 place2 = Vector2( 3472, -888 )
+walkingSpeed = null
+sprintSpeed = null
+seePlayer = null
+isHacked = null
 sun = NodePath("../../Lights/SunCenter/Sun")
 
 [node name="Herbalist" parent="." instance=ExtResource( 7 )]
