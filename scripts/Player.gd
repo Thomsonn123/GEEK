@@ -21,10 +21,15 @@ export(NodePath) var teleport
 export(NodePath) var robot
 
 onready var overWorld = get_node("..")
+onready var mainMenu = $Main.visible
 export(NodePath) var localLightPath
 export(NodePath) var sun
 export(NodePath) var map
 export(NodePath) var AlchemistTablePath
+
+export(NodePath) var locals1
+export(NodePath) var locals2
+export(NodePath) var locals3
 
 var animUp = preload("res://Graphics/SpriteFrames/PlayerUp.tres") 
 var animDown = preload("res://Graphics/SpriteFrames/PlayerDown.tres")
@@ -49,6 +54,7 @@ var poisonMelisa = preload("res://scenes/MelisaPoison.tscn")
 #sounds
 var normalSoundSpeed = 1.0
 var sprintSoundSpeed = 1.2
+var walking = preload("res://sounds/walking.mp3")
 var grassWalking = preload("res://sounds/Grass.mp3")
 var waterFilling = preload("res://sounds/waterFill.mp3")
 var drinking = preload("res://sounds/drinking.mp3")
@@ -57,6 +63,8 @@ var breakPotion = preload("res://sounds/glass.mp3")
 var tooFar = load("res://sounds/tooFar.mp3")
 var isOnGrass = true
 var volume
+var sound = 0
+var currentWalking
 
 #eq
 var slots = 0
@@ -72,11 +80,14 @@ var MonitTutorial = false
 var startPosition:Vector2 = Vector2()
 
 func _ready():
+	locals1 = get_node(locals1)
+	locals2 = get_node(locals2)
+	locals3 = get_node(locals3)
 	$Invisible.visible = false
 	speed = walkingSpeed
 	soundValue(0.0)
 	slots = $DevTree/EqBar.get_child_count()
-	$SoundPlayer.stream = grassWalking
+	$SoundPlayer.stream = currentWalking
 	$Shadow/ShadowAnimations.rotation_degrees = -90
 	localLight = get_node(sun)
 	$DevTree.visible = false
@@ -84,6 +95,12 @@ func _ready():
 	tutHelp("Witaj w grze")
 	startPosition = self.position
 	
+func updateAnimation():
+	if sound == 0:
+		currentWalking = grassWalking
+	elif sound == 1:
+		currentWalking = walking
+	$SoundPlayer.stream = currentWalking
 
 func _input(event):
 	if Input.is_action_just_pressed("teleport"):
@@ -91,7 +108,7 @@ func _input(event):
 		self.position = get_node(teleport).position
 		pass
 	
-	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed() and canUse:
+	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed() and canUse and !mainMenu:
 		if eq[currentSlot-1] == 6 and isNearWater:
 			$AudioEffectsPlayer.stream = waterFilling
 			var length = $AudioEffectsPlayer.stream.get_length()
@@ -122,23 +139,23 @@ func _input(event):
 			potions[3] -= 1
 			setInvisible()
 
-	if Input.is_action_just_pressed("WHEEL_UP"):
+	if Input.is_action_just_pressed("WHEEL_UP") and !mainMenu:
 		if currentSlot < 8:
 			currentSlot += 1
 		else:
 			currentSlot = 1
 		changeCurrentSlot(currentSlot)
 	
-	if Input.is_action_just_pressed("WHEEL_DOWN"):
+	if Input.is_action_just_pressed("WHEEL_DOWN") and !mainMenu:
 		if currentSlot > 1:
 			currentSlot -= 1
 		else:
 			currentSlot = 8
 		changeCurrentSlot(currentSlot)
-	if Input.is_action_just_pressed("ui_menu"):
+	if Input.is_action_just_pressed("ui_menu") and !mainMenu:
 		$Menu.visible = !$Menu.visible
 		
-	if Input.is_action_just_pressed("action_key"):
+	if Input.is_action_just_pressed("action_key") and !mainMenu:
 		if action != null and "Monitor" in actionName:
 			
 			$RobotHackGame.start()
@@ -154,7 +171,7 @@ func _input(event):
 			var collect = get_node(entity)
 			collect.collect()
 	
-	if Input.is_action_just_pressed("DevTree"):
+	if Input.is_action_just_pressed("DevTree") and !mainMenu:
 		if !$HerbalistGUI.visible:
 			$DevTree.visible = !$DevTree.visible
 			get_node(map).houseRev2Light(!$DevTree.visible)
@@ -166,89 +183,92 @@ func _input(event):
 		canUse = false
 	else:
 		canUse = true
-	if $HerbalistGUI.visible and action == null:
+	if $HerbalistGUI.visible and action == null and !mainMenu:
 		$HerbalistGUI.visible = false
 		get_node(map).houseRev2Light(!$HerbalistGUI.visible)
 
 func _physics_process(_delta):
-	
-	$Money.text = str(money)
-	$Shadow/ShadowAnimations.frames = $PlayerAnimations.frames
-	$Shadow/ShadowAnimations.frame = $PlayerAnimations.frame
-	$Shadow/ShadowAnimations.speed_scale = $PlayerAnimations.speed_scale
-	$Shadow/ShadowAnimations.playing = $PlayerAnimations.playing
-	if localLight != null:
-		$Shadow.look_at(localLight.global_position)
-	var vel = Vector2()
-	if Input.is_action_pressed("ui_sprint"):
-		speed = sprintSpeed
-		$SoundPlayer.pitch_scale = sprintSoundSpeed
-		$PlayerAnimations.speed_scale = 2
-	else:
-		speed = walkingSpeed
-		$SoundPlayer.pitch_scale = normalSoundSpeed
-		$PlayerAnimations.speed_scale = 1.5
-	#poruszanie się lewo prawo
-	if Input.is_action_pressed("ui_left"):
-		vel.x -= 1
-		$PlayerAnimations.frames = animRight
-		$Shadow/ShadowAnimations.flip_h = true
-		$Shadow/ShadowAnimations.flip_h = false
-		$PlayerAnimations.flip_h = true
-		$PlayerAnimations.playing = true
-	elif Input.is_action_pressed("ui_right"):
-		$PlayerAnimations.frames = animRight
-		$PlayerAnimations.flip_h = false
-		$Shadow/ShadowAnimations.flip_h = true
-		$PlayerAnimations.playing = true
-		vel.x += 1
-	else:
-		if $PlayerAnimations.frames == animRight:
-			$PlayerAnimations.frame = 12
-		$PlayerAnimations.playing = false
-#pouszanie się góra dół
-	if Input.is_action_pressed("ui_up"):
-		vel.y -= 1
-		$PlayerAnimations.frames = animUp
-		$PlayerAnimations.flip_h = false
-		$Shadow/ShadowAnimations.flip_h = true
-		if Input.is_action_pressed("ui_right"):
-			$PlayerAnimations.frames = animUpRight
+	if mainMenu:
+		mainMenu = $Main.visible
+		print(mainMenu)
+	if !mainMenu:
+		$Money.text = str(money)
+		$Shadow/ShadowAnimations.frames = $PlayerAnimations.frames
+		$Shadow/ShadowAnimations.frame = $PlayerAnimations.frame
+		$Shadow/ShadowAnimations.speed_scale = $PlayerAnimations.speed_scale
+		$Shadow/ShadowAnimations.playing = $PlayerAnimations.playing
+		if localLight != null:
+			$Shadow.look_at(localLight.global_position)
+		var vel = Vector2()
+		if Input.is_action_pressed("ui_sprint"):
+			speed = sprintSpeed
+			$SoundPlayer.pitch_scale = sprintSoundSpeed
+			$PlayerAnimations.speed_scale = 2
+		else:
+			speed = walkingSpeed
+			$SoundPlayer.pitch_scale = normalSoundSpeed
+			$PlayerAnimations.speed_scale = 1.5
+		#poruszanie się lewo prawo
+		if Input.is_action_pressed("ui_left"):
+			vel.x -= 1
+			$PlayerAnimations.frames = animRight
+			$Shadow/ShadowAnimations.flip_h = true
+			$Shadow/ShadowAnimations.flip_h = false
+			$PlayerAnimations.flip_h = true
+			$PlayerAnimations.playing = true
+		elif Input.is_action_pressed("ui_right"):
+			$PlayerAnimations.frames = animRight
 			$PlayerAnimations.flip_h = false
 			$Shadow/ShadowAnimations.flip_h = true
-		if Input.is_action_pressed("ui_left"):
-			$PlayerAnimations.frames = animUpRight
-			$PlayerAnimations.flip_h = true		
-			$Shadow/ShadowAnimations.flip_h = false
-		$PlayerAnimations.playing = true
-	elif Input.is_action_pressed("ui_down"):
-		vel.y += 1
-		$PlayerAnimations.frames = animDown
-		$PlayerAnimations.playing = true
-		$PlayerAnimations.flip_h = false
-		$Shadow/ShadowAnimations.flip_h = true
-		if Input.is_action_pressed("ui_right"):
-			$PlayerAnimations.frames = animDownRight
-		if Input.is_action_pressed("ui_left"):
-			$PlayerAnimations.frames = animDownRight
-			$PlayerAnimations.flip_h = true
-			$Shadow/ShadowAnimations.flip_h = false
-	else:
-		if $PlayerAnimations.frames == animDown:
-			$PlayerAnimations.frame = 30
-		elif $PlayerAnimations.frames == animUp:
-			$PlayerAnimations.frame = 30
-		elif $PlayerAnimations.frames == animUpRight:
-			$PlayerAnimations.frame = 12
-		elif $PlayerAnimations.frames == animDownRight:
-			$PlayerAnimations.frame = 12
-	if $PlayerAnimations.playing and $SoundPlayer.playing == false:
-		$SoundPlayer.playing = true
-	if $PlayerAnimations.playing == false:
-		$SoundPlayer.playing = false
-	vel = vel.normalized() * speed
-	var _returrn = move_and_slide(vel)
-	$FPS.text = str(Engine.get_frames_per_second())
+			$PlayerAnimations.playing = true
+			vel.x += 1
+		else:
+			if $PlayerAnimations.frames == animRight:
+				$PlayerAnimations.frame = 12
+			$PlayerAnimations.playing = false
+	#pouszanie się góra dół
+		if Input.is_action_pressed("ui_up"):
+			vel.y -= 1
+			$PlayerAnimations.frames = animUp
+			$PlayerAnimations.flip_h = false
+			$Shadow/ShadowAnimations.flip_h = true
+			if Input.is_action_pressed("ui_right"):
+				$PlayerAnimations.frames = animUpRight
+				$PlayerAnimations.flip_h = false
+				$Shadow/ShadowAnimations.flip_h = true
+			if Input.is_action_pressed("ui_left"):
+				$PlayerAnimations.frames = animUpRight
+				$PlayerAnimations.flip_h = true		
+				$Shadow/ShadowAnimations.flip_h = false
+			$PlayerAnimations.playing = true
+		elif Input.is_action_pressed("ui_down"):
+			vel.y += 1
+			$PlayerAnimations.frames = animDown
+			$PlayerAnimations.playing = true
+			$PlayerAnimations.flip_h = false
+			$Shadow/ShadowAnimations.flip_h = true
+			if Input.is_action_pressed("ui_right"):
+				$PlayerAnimations.frames = animDownRight
+			if Input.is_action_pressed("ui_left"):
+				$PlayerAnimations.frames = animDownRight
+				$PlayerAnimations.flip_h = true
+				$Shadow/ShadowAnimations.flip_h = false
+		else:
+			if $PlayerAnimations.frames == animDown:
+				$PlayerAnimations.frame = 30
+			elif $PlayerAnimations.frames == animUp:
+				$PlayerAnimations.frame = 30
+			elif $PlayerAnimations.frames == animUpRight:
+				$PlayerAnimations.frame = 12
+			elif $PlayerAnimations.frames == animDownRight:
+				$PlayerAnimations.frame = 12
+		if $PlayerAnimations.playing and $SoundPlayer.playing == false:
+			$SoundPlayer.playing = true
+		if $PlayerAnimations.playing == false:
+			$SoundPlayer.playing = false
+		vel = vel.normalized() * speed
+		var _returrn = move_and_slide(vel)
+		$FPS.text = str(Engine.get_frames_per_second())
 
 
 func changeStatus(text):
@@ -352,6 +372,9 @@ func soundValue(value):
 	$AudioEffectsPlayer.volume_db = value
 	$Audio.volume_db = value
 	get_node("DevTree/Audio").volume_db = value
+	locals1.setVolume(value)
+	locals2.setVolume(value)
+	locals3.setVolume(value)
 	var alchemist = get_node(AlchemistTablePath)
 	alchemist.get_node("AudioPlayer").volume_db = value
 	for i in range(1,8):
@@ -361,11 +384,10 @@ func soundValue(value):
 func addMoney(value):
 	money += value
 
-func dubbing(sound):
-	$Audio.stream = sound
+func dubbing(soundd):
+	$Audio.stream = soundd
 	$Audio/Timer.wait_time = $Audio.stream.get_length()
 	$Audio/Timer.start()
-	$Audio.play()
 
 func dubbingFinished():
 	$Audio/Timer.stop()

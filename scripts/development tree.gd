@@ -133,7 +133,7 @@ func update():
 		$EqBar.visible = $Eq.visible
 	elif curPage == 3:
 		if isDubbing[2] == 0:
-			$Audio.stream = skillsDubbing
+			$Audio.stream = mapDubbing
 			$Audio/Timer.wait_time = $Audio.stream.get_length()
 			$Audio/Timer.start()
 			$Audio.play()
