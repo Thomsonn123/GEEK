@@ -901,7 +901,8 @@ __meta__ = {
 "_edit_group_": true
 }
 Game = NodePath("..")
-potions = [ 10, 10, 10, 10, 10, 10 ]
+herbs = [ 0, 0, 0, 0 ]
+potions = [ 0, 0, 0, 0, 0, 500 ]
 teleport = NodePath("../teleport")
 robot = NodePath("../Enemy1/Robot1")
 localLightPath = NodePath("../Lights/SunCenter/Sun")
