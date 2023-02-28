@@ -190,7 +190,7 @@ func _input(event):
 func _physics_process(_delta):
 	if mainMenu:
 		mainMenu = $Main.visible
-		print(mainMenu)
+		$AudioStreamPlayer.play()
 	if !mainMenu:
 		$Money.text = str(money)
 		$Shadow/ShadowAnimations.frames = $PlayerAnimations.frames
@@ -372,6 +372,7 @@ func soundValue(value):
 	$AudioEffectsPlayer.volume_db = value
 	$Audio.volume_db = value
 	get_node("DevTree/Audio").volume_db = value
+	$AudioStreamPlayer.volume_db = value
 	locals1.setVolume(value)
 	locals2.setVolume(value)
 	locals3.setVolume(value)
