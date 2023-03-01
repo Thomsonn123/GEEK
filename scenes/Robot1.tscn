@@ -3,7 +3,7 @@
 [ext_resource path="res://Graphics/bot1/robotics.png" type="Texture" id=1]
 [ext_resource path="res://scripts/Robot1.gd" type="Script" id=2]
 [ext_resource path="res://silouette.shader" type="Shader" id=3]
-[ext_resource path="res://Graphics/SpriteFrames/RobotDown.tres" type="SpriteFrames" id=4]
+[ext_resource path="res://Graphics/SpriteFrames/RobotLeft.tres" type="SpriteFrames" id=4]
 
 [sub_resource type="ShaderMaterial" id=4]
 shader = ExtResource( 3 )
@@ -22,6 +22,7 @@ extents = Vector2( 40, 48 )
 script = ExtResource( 2 )
 
 [node name="Shadow" type="Node2D" parent="."]
+visible = false
 position = Vector2( 0, 32 )
 
 [node name="RoboticsShadow" type="Sprite" parent="Shadow"]
@@ -52,6 +53,7 @@ max_distance = 500.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 scale = Vector2( 0.177976, 0.177976 )
 frames = ExtResource( 4 )
+frame = 18
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_Area2D_body_exited"]

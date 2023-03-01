@@ -105,7 +105,7 @@ func updateAnimation():
 func _input(event):
 	if Input.is_action_just_pressed("teleport"):
 		#dealDamage(10)
-		self.position = get_node(teleport).position
+		#self.position = get_node(teleport).position
 		pass
 	
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.is_pressed() and canUse and !mainMenu:

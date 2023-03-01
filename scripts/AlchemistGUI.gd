@@ -24,6 +24,8 @@ var choosen = null
 var valuee = 0
 
 func _ready():
+	$Box/SpinBox.min_value = 0
+	$Box/SpinBox.value = 1
 	reset()
 	collectButton.disabled = true
 	box.disabled = true
@@ -36,6 +38,7 @@ func open():
 		$Audio/Timer.wait_time = $Audio.stream.get_length()
 		$Audio/Timer.start()
 		$Audio.play()
+		wasOpened = true
 
 	if choosen == null:
 		reset()
@@ -95,19 +98,19 @@ func reset():
 	apple = get_node(Player).herbs[3]
 	box.disabled = true
 	box.visible = false
-	if neededIngridents[0] <= apple:
+	if neededIngridents[0] <= apple and water > 1:
 		vinegarButton.disabled = false
 	else:
 		vinegarButton.disabled = true
-	if neededIngridents[1] <= melisa:
+	if neededIngridents[1] <= melisa and water > 1:
 		melisaButton.disabled = false
 	else:
 		melisaButton.disabled = true
-	if neededIngridents[2] <= dandelion:
+	if neededIngridents[2] <= dandelion and water > 1:
 		healthButton.disabled = false
 	else:
 		healthButton.disabled = true
-	if neededIngridents[3] <= poppy:
+	if neededIngridents[3] <= poppy and water > 1:
 		waterButton.disabled = false
 	else:
 		waterButton.disabled = true

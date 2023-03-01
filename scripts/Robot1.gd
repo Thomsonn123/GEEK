@@ -34,7 +34,7 @@ var robotRustUp = load("res://Graphics/SpriteFrames/RobotRustUp.tres")
 var robotRustDown = load("res://Graphics/SpriteFrames/RobotRustDown.tres")
 var robotRustLeft = load("res://Graphics/SpriteFrames/RobotRustLeft.tres")
 var lastDegrees = 0
-var walkingDirection = "left"
+var walkingDirection = ""
 var poisoned = false
 
 func _ready():
@@ -46,7 +46,6 @@ func _ready():
 	$AudioPlayer.play()
 
 func _process(delta):
-
 	if isDay:
 		localLight = get_node(sun)
 	if isHacked:
@@ -69,24 +68,29 @@ func _process(delta):
 		if lastPosition != null and reversion:
 			movePosition = lastPosition
 			reversion = false
+			checkWalking(movePosition)
 		elif poisoned:
 			self.position = self.position
 		elif lastPosition != null and self.position == lastPosition:
 			movePosition = lastMove
 			lastPosition = null
 			lastMove = null
+			checkWalking(movePosition)
 		elif self.position == place1:
 			movePosition = place2
+			checkWalking(movePosition)
 		elif self.position == place2:
 			movePosition = place1
+			checkWalking(movePosition)
 		self.position = position.move_toward(movePosition, delta * 100)
-		checkWalking(movePosition)
+		
 	$Shadow.look_at(localLight.global_position)
 
 func checkWalking(positionTo):
 	var degrees = rad2deg(self.get_angle_to(positionTo))
+	print(self.name, degrees)
 	if degrees > 0:
-		if degrees < 22.5:
+		if degrees < 22.5 and degrees > 0:
 			walkingRight()
 		elif degrees > 22.5 and degrees < 67.5:
 			walkingBevelRightDown()
@@ -94,10 +98,10 @@ func checkWalking(positionTo):
 			walkingDown()
 		elif degrees > 112.5 and degrees < 157.5:
 			walkingBevelLeftDown()
-		elif degrees > 157.5:
+		elif degrees > 157.5 and degrees < 180:
 			walkingLeft()
 	elif degrees < 0:
-		if degrees > -22.5:
+		if degrees > -22.5 and degrees <= 0:
 			walkingRight()
 		elif degrees < -22.5 and degrees > -67.5:
 			walkingBevelRightUp()
@@ -105,8 +109,10 @@ func checkWalking(positionTo):
 			walkingUp()
 		elif degrees < -112.5 and degrees > -157.5:
 			walkingBevelLeftUp()
-		elif degrees < -157.5:
-			walkingLeft()
+		elif degrees < -157.5 and degrees >= -180:
+			walkingUp()
+	
+			
 
 
 func walkingBevelRightUp():
@@ -152,14 +158,15 @@ func walkingDown():
 func walkingLeft():
 	if walkingDirection != "left":
 		$AnimatedSprite.frames = robotLeft
-		$AnimatedSprite.play()
 		$AnimatedSprite.flip_h = false
+		$AnimatedSprite.play()
 		walkingDirection = "left"
 
 func walkingRight():
 	if walkingDirection != "right":
-		walkingLeft()
+		$AnimatedSprite.frames = robotLeft
 		$AnimatedSprite.flip_h = true
+		$AnimatedSprite.play()
 		walkingDirection = "right"
 
 func soundValue(value):
